@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teoria Prawa Jazdy — Kategoria B</title>
+  <meta name="description" content="Kompendium wiedzy teoretycznej do egzaminu na prawo jazdy kategorii B w Polsce." />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #555555;
+      --border: #e5e5e5;
+      --border-strong: #d0d0d0;
+      --code-bg: #f6f6f6;
+      --highlight: #fff3a3;
+      --red: #c63030;
+      --blue: #1f4ea1;
+      --yellow: #d6a800;
+      --green: #2f7a2f;
+      --max-width: 760px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Pasek postępu czytania */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      width: 0%;
+      background: var(--text);
+      z-index: 1000;
+      transition: width 0.05s linear;
+    }
+
+    /* Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      max-width: 1140px;
+      margin: 0 auto;
+      gap: 48px;
+      padding: 32px 24px 96px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: sticky;
+      top: 32px;
+      align-self: start;
+      max-height: calc(100vh - 64px);
+      overflow-y: auto;
+      padding-right: 8px;
+      border-right: 1px solid var(--border);
+    }
+
+    .sidebar h2 {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+
+    .sidebar ol {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      counter-reset: section;
+    }
+
+    .sidebar li {
+      counter-increment: section;
+      margin: 0;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 6px 0;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .sidebar a::before {
+      content: counter(section, decimal-leading-zero) ".  ";
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .sidebar a:hover { border-bottom-color: var(--border-strong); }
+    .sidebar a.active { font-weight: 600; }
+
+    .sidebar-footer {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Wyszukiwarka */
+    .search-wrap { margin-bottom: 20px; }
+    .search-input {
+      width: 100%;
+      padding: 8px 10px;
+      font-family: inherit;
+      font-size: 14px;
+      border: 1px solid var(--border-strong);
+      border-radius: 4px;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .search-input::placeholder { color: var(--muted); }
+    .search-input:focus { outline: 2px solid var(--text); outline-offset: 0; border-color: var(--text); }
+    .search-count {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 6px;
+      min-height: 16px;
+    }
+
+    /* Główna treść */
+    .content { min-width: 0; max-width: var(--max-width); }
+
+    .header {
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    .header .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .header h1 {
+      font-size: 32px;
+      line-height: 1.2;
+      margin: 0 0 12px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .header p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    /* Sekcje */
+    section {
+      margin: 0 0 64px;
+      scroll-margin-top: 24px;
+    }
+    section h2 {
+      font-size: 22px;
+      font-weight: 600;
+      margin: 0 0 8px;
+      letter-spacing: -0.005em;
+    }
+    section .lead { color: var(--muted); font-size: 14px; margin: 0 0 24px; }
+
+    h3 { font-size: 16px; font-weight: 600; margin: 32px 0 8px; }
+    h4 {
+      font-size: 13px;
+      font-weight: 600;
+      margin: 20px 0 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    p { margin: 0 0 16px; }
+    ul, ol { padding-left: 22px; margin: 0 0 16px; }
+    li { margin-bottom: 6px; }
+    strong { font-weight: 600; }
+
+    /* Karty */
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      background: var(--bg);
+    }
+    .card.note { background: var(--code-bg); }
+    .card.warn { border-left: 3px solid var(--red); }
+    .card.info { border-left: 3px solid var(--blue); background: #f4f7fc; }
+    .card.tip  { border-left: 3px solid var(--green); }
+    .card.alert { border-left: 3px solid var(--yellow); background: #fffbe6; }
+    .card.alert .card-title { color: var(--yellow); }
+    .card-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin: 0 0 8px;
+    }
+    .card.warn .card-title { color: var(--red); }
+    .card.info .card-title { color: var(--blue); }
+    .card.tip  .card-title { color: var(--green); }
+
+    /* Tabele */
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      margin: 16px 0;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--code-bg);
+      font-weight: 600;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    tr:last-child td { border-bottom: none; }
+    td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    td.center { text-align: center; }
+
+    /* Hierarchia (numerowana lista) */
+    .hierarchy {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0;
+      counter-reset: hier;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .hierarchy li {
+      counter-increment: hier;
+      padding: 14px 16px 14px 56px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      margin: 0;
+    }
+    .hierarchy li:last-child { border-bottom: none; }
+    .hierarchy li::before {
+      content: counter(hier);
+      position: absolute;
+      left: 16px;
+      top: 14px;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--border-strong);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+    .hierarchy strong { display: block; margin-bottom: 4px; }
+    .hierarchy small { color: var(--muted); font-size: 13px; line-height: 1.5; display: block; }
+
+    /* SVG infografiki */
+    .svg-figure {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 16px;
+      margin: 16px 0;
+      text-align: center;
+    }
+    .svg-figure svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 8px;
+    }
+    .svg-caption { font-size: 12px; color: var(--muted); text-align: center; }
+
+    /* Dwie kolumny */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .col-box {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 14px 16px;
+    }
+    .col-box.allow { border-left: 3px solid var(--green); }
+    .col-box.deny  { border-left: 3px solid var(--red); }
+    .col-box h4 { margin-top: 0; }
+    .col-box ul { margin: 0; }
+
+    /* Siatka sytuacji wymagających szczególnej ostrożności */
+    .situations {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+      margin: 16px 0;
+      list-style: none;
+      padding: 0;
+    }
+    .situations li {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--yellow);
+      border-radius: 4px;
+      padding: 12px 14px;
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+      background: var(--bg);
+    }
+    .situations li strong { display: block; margin-bottom: 2px; font-size: 13px; }
+    .situations li small { color: var(--muted); font-size: 12px; line-height: 1.4; }
+
+    /* Galeria znaków */
+    .signs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .sign-card {
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg);
+    }
+    .sign-card svg { display: block; }
+    .sign-meta { text-align: center; }
+    .sign-code {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+    .sign-name { font-size: 13px; font-weight: 600; line-height: 1.35; margin-top: 2px; }
+    .sign-desc { font-size: 12px; color: var(--muted); line-height: 1.4; margin-top: 4px; }
+
+    .sign-group-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-bottom: 8px;
+    }
+    .sign-group-label.warn { color: var(--red); border: 1px solid var(--red); }
+    .sign-group-label.deny { color: var(--red); border: 1px solid var(--red); }
+    .sign-group-label.order { color: var(--blue); border: 1px solid var(--blue); }
+    .sign-group-label.info { color: var(--text); border: 1px solid var(--border-strong); }
+
+    /* Checklista egzaminacyjna */
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      margin: 0;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist input[type="checkbox"] {
+      margin-top: 4px;
+      width: 16px; height: 16px;
+      accent-color: var(--text);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .checklist label { cursor: pointer; flex: 1; }
+    .checklist input:checked + label { color: var(--muted); text-decoration: line-through; }
+
+    /* Toolbar */
+    .toolbar {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      gap: 8px;
+      z-index: 50;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border: 1px solid var(--border-strong);
+      background: var(--bg);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.15s;
+    }
+    .btn:hover { background: var(--code-bg); }
+    .btn:focus { outline: 2px solid var(--text); outline-offset: 2px; }
+
+    /* Tryb skupienia */
+    body.focus-mode .sidebar { display: none; }
+    body.focus-mode .layout {
+      grid-template-columns: 1fr;
+      max-width: var(--max-width);
+    }
+    body.focus-mode .toolbar .btn[data-action="focus"] {
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    /* Highlight z wyszukiwarki */
+    mark {
+      background: var(--highlight);
+      color: inherit;
+      padding: 0 2px;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+
+    /* Mobile */
+    @media (max-width: 860px) {
+      .layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px 16px 80px;
+      }
+      .sidebar {
+        position: static;
+        max-height: none;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 16px;
+        padding-right: 0;
+      }
+      .sidebar ol { margin-bottom: 8px; }
+      .sidebar-footer { display: none; }
+      .header h1 { font-size: 26px; }
+      .two-col { grid-template-columns: 1fr; }
+      .signs-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+      .toolbar { top: 8px; right: 8px; }
+      .btn { font-size: 12px; padding: 5px 10px; }
+      .btn span { display: none; }
+    }
+
+    @media print {
+      .toolbar, .progress-bar, .sidebar, .search-wrap { display: none; }
+      .layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <div class="toolbar">
+    <button class="btn" data-action="focus" aria-pressed="false" title="Ukryj nawigację dla lepszego skupienia">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"></path>
+      </svg>
+      <span>Tryb skupienia</span>
+    </button>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar" aria-label="Spis treści">
+      <div class="search-wrap">
+        <label for="search" style="display:none">Szukaj</label>
+        <input id="search" class="search-input" type="search" placeholder="Szukaj (np. punkty karne)…" autocomplete="off" />
+        <div class="search-count" id="searchCount" aria-live="polite"></div>
+      </div>
+
+      <h2>Spis treści</h2>
+      <ol>
+        <li><a href="#pojecia">Podstawowe pojęcia</a></li>
+        <li><a href="#hierarchia">Hierarchia ważności</a></li>
+        <li><a href="#ostroznosc">Zasady ostrożności</a></li>
+        <li><a href="#znaki">Znaki i sygnały</a></li>
+        <li><a href="#predkosci">Dopuszczalne prędkości</a></li>
+        <li><a href="#skrzyzowania">Skrzyżowania i ronda</a></li>
+        <li><a href="#manewry">Manewry: wyprzedzanie, wymijanie, omijanie</a></li>
+        <li><a href="#technika">Stan techniczny pojazdu</a></li>
+        <li><a href="#kary">Mandaty i punkty karne</a></li>
+        <li><a href="#egzamin">Egzamin państwowy</a></li>
+        <li><a href="#miedzynarodowy">Kontekst międzynarodowy</a></li>
+      </ol>
+
+      <div class="sidebar-footer">
+        Zgodne z ustawą Prawo o ruchu drogowym (t.j. Dz.U. 2024), rozporządzeniem MI z dn. 31.07.2002 r. o znakach i sygnałach drogowych oraz rozporządzeniem MSWiA o postępowaniu mandatowym (stan: 2024/2025).
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="header">
+        <div class="eyebrow">Kategoria B · Część teoretyczna</div>
+        <h1>Teoria prawa jazdy</h1>
+        <p>Zwięzłe kompendium najważniejszych zasad polskiego ruchu drogowego, niezbędnych do zdania państwowego egzaminu teoretycznego i praktycznego.</p>
+      </header>
+
+      <!-- 1. PODSTAWOWE POJĘCIA -->
+      <section id="pojecia">
+        <h2>1. Podstawowe pojęcia</h2>
+        <p class="lead">Definicje z art. 2 ustawy Prawo o ruchu drogowym, których znajomość warunkuje poprawne odpowiedzi na większość pytań egzaminacyjnych.</p>
+
+        <div class="svg-figure">
+          <svg width="520" height="160" viewBox="0 0 520 160" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Schemat przekroju drogi">
+            <rect x="20"  y="60" width="60"  height="60" fill="#f0f0f0" stroke="#111" stroke-width="1"/>
+            <rect x="80"  y="60" width="360" height="60" fill="#ffffff" stroke="#111" stroke-width="1"/>
+            <rect x="440" y="60" width="60"  height="60" fill="#f0f0f0" stroke="#111" stroke-width="1"/>
+            <line x1="260" y1="68" x2="260" y2="112" stroke="#111" stroke-width="1" stroke-dasharray="6 6"/>
+            <rect x="0"   y="60" width="20"  height="60" fill="#e5e5e5" stroke="#111" stroke-width="1"/>
+            <rect x="500" y="60" width="20"  height="60" fill="#e5e5e5" stroke="#111" stroke-width="1"/>
+            <text x="10"  y="50"  font-size="11" font-family="sans-serif" fill="#111">chodnik</text>
+            <text x="40"  y="140" font-size="11" font-family="sans-serif" fill="#111">pobocze</text>
+            <text x="220" y="50"  font-size="11" font-family="sans-serif" fill="#111">jezdnia (2 pasy ruchu)</text>
+            <text x="450" y="140" font-size="11" font-family="sans-serif" fill="#111">pobocze</text>
+            <text x="495" y="50"  font-size="11" font-family="sans-serif" fill="#111">chodnik</text>
+          </svg>
+          <div class="svg-caption">Przekrój drogi: chodnik – pobocze – jezdnia – pobocze – chodnik.</div>
+        </div>
+
+        <h3>Droga</h3>
+        <p>Wydzielony pas terenu składający się z <strong>jezdni, pobocza, chodnika, drogi dla pieszych lub drogi dla rowerów</strong>, łącznie z torowiskiem, przeznaczony do ruchu lub postoju pojazdów, ruchu pieszych, jazdy wierzchem lub pędzenia zwierząt.</p>
+
+        <h3>Jezdnia</h3>
+        <p>Część drogi przeznaczona do ruchu pojazdów. Pojęcie to nie obejmuje torowisk wydzielonych z jezdni.</p>
+
+        <h3>Pas ruchu</h3>
+        <p>Każdy z podłużnych pasów jezdni wystarczający do ruchu jednego rzędu pojazdów wielośladowych, oznaczony lub nieoznaczony znakami drogowymi.</p>
+
+        <h3>Pobocze</h3>
+        <p>Część drogi przyległa do jezdni, która może być przeznaczona do ruchu pieszych lub niektórych pojazdów, postoju pojazdów, jazdy wierzchem lub pędzenia zwierząt.</p>
+
+        <h3>Chodnik</h3>
+        <p>Część drogi dla pieszych przeznaczona do ruchu pieszych, którą kierujący pojazdem może przejechać tylko w wyjątkowych, dozwolonych przepisami sytuacjach (np. dojazd do nieruchomości).</p>
+
+        <h3>Uczestnik ruchu</h3>
+        <p>Pieszy, kierujący pojazdem, a także inne osoby przebywające w pojeździe lub na pojeździe znajdującym się na drodze.</p>
+
+        <h3>Pieszy</h3>
+        <p>Osoba znajdująca się poza pojazdem na drodze i niewykonująca na niej robót lub czynności przewidzianych odrębnymi przepisami. Za pieszego uważa się również osobę prowadzącą rower, motorower lub motocykl, osobę poruszającą się na wózku inwalidzkim, dziecko do 10. roku życia kierujące rowerem pod opieką dorosłego oraz osobę poruszającą się na <strong>urządzeniu wspomagającym ruch</strong>.</p>
+
+        <h3>Pojazd uprzywilejowany</h3>
+        <p>Pojazd wysyłający jednocześnie sygnały świetlne w postaci niebieskich (lub niebieskich i czerwonych) świateł błyskowych oraz dźwiękowy o zmiennym tonie. Każdy uczestnik ruchu ma obowiązek <strong>ułatwić mu przejazd</strong> — w razie potrzeby przez zatrzymanie pojazdu.</p>
+
+        <h3>Szczególna ostrożność</h3>
+        <p>Ostrożność polegająca na zwiększeniu uwagi i dostosowaniu zachowania uczestnika ruchu do warunków i sytuacji zmieniających się na drodze, w stopniu umożliwiającym <strong>odpowiednio szybkie reagowanie</strong>.</p>
+
+        <h3>Ustąpienie pierwszeństwa</h3>
+        <p>Powstrzymanie się od ruchu, jeżeli ruch ten mógłby zmusić innego uczestnika do <strong>zmiany kierunku, pasa ruchu lub istotnej zmiany prędkości</strong>.</p>
+      </section>
+
+      <!-- 2. HIERARCHIA -->
+      <section id="hierarchia">
+        <h2>2. Hierarchia ważności poleceń i znaków</h2>
+        <p class="lead">W razie sprzeczności obowiązuje to, co jest wyżej w hierarchii. Jedna z najczęściej testowanych zasad na egzaminie.</p>
+
+        <ol class="hierarchy">
+          <li>
+            <strong>Polecenia i sygnały osoby kierującej ruchem</strong>
+            <small>Funkcjonariusz Policji, Żandarmerii Wojskowej, Straży Gminnej (Miejskiej), Inspekcji Transportu Drogowego, pracownik kolei na przejeździe, osoba uprawniona do prowadzenia kolumny pieszych. Polecenia te są nadrzędne nawet wobec sygnalizacji świetlnej i znaków.</small>
+          </li>
+          <li>
+            <strong>Sygnały świetlne</strong>
+            <small>Sygnalizacja S-1 (zielony, żółty, czerwony), sygnalizacja kierunkowa S-3, sygnały dla pieszych S-5 i rowerzystów S-6.</small>
+          </li>
+          <li>
+            <strong>Znaki drogowe (pionowe i poziome)</strong>
+            <small>W razie sprzeczności znaki pionowe są nadrzędne nad poziomymi. Wśród znaków pierwszeństwo mają znaki regulujące pierwszeństwo (B-20 „STOP", A-7, D-1) wobec ogólnych zasad.</small>
+          </li>
+          <li>
+            <strong>Ogólne zasady ruchu drogowego</strong>
+            <small>W tym <strong>zasada prawej ręki</strong> — ustępujemy pojazdowi nadjeżdżającemu z prawej strony. Stosowana, gdy żaden z powyższych elementów nie reguluje pierwszeństwa.</small>
+          </li>
+        </ol>
+
+        <div class="card warn">
+          <div class="card-title">Zapamiętaj</div>
+          <p style="margin:0">Sygnał czerwony nigdy nie jest „ważniejszy" od polecenia osoby kierującej ruchem. Jeżeli policjant nakazuje przejechać przez skrzyżowanie pomimo czerwonego światła — należy go usłuchać.</p>
+        </div>
+
+        <h3>Sygnały dawane przez osobę kierującą ruchem</h3>
+        <ul>
+          <li><strong>Postawa zasadnicza</strong> (ramiona opuszczone wzdłuż tułowia) — odpowiednik światła czerwonego dla wszystkich kierunków, z których kierujący jest widoczny przodem lub tyłem; wjazd na skrzyżowanie zabroniony.</li>
+          <li><strong>Ramię uniesione w górę</strong> — odpowiednik światła żółtego: zakaz wjazdu na skrzyżowanie, należy się zatrzymać przed nim.</li>
+          <li><strong>Ramiona wyciągnięte poziomo (na boki)</strong> — odpowiednik światła czerwonego dla kierunków, z których policjant widoczny jest przodem lub tyłem; <strong>zielonego</strong> dla kierunków, z których widoczny jest bokiem.</li>
+          <li><strong>Lewe ramię uniesione w przód i w bok</strong> — sygnał o zmianie nadawanego sygnału z zielonego na żółty (analogicznie do żółtego światła).</li>
+        </ul>
+      </section>
+
+      <!-- 3. ZASADY OSTROŻNOŚCI -->
+      <section id="ostroznosc">
+        <h2>3. Zasady zachowania ostrożności</h2>
+        <p class="lead">Pojęcia „ostrożności" i „szczególnej ostrożności" definiuje art. 2 ustawy Prawo o ruchu drogowym i decydują one o zakresie odpowiedzialności kierującego w razie zdarzenia drogowego.</p>
+
+        <h3>Ostrożność (zwykła)</h3>
+        <p>Wymóg generalny — uczestnik ruchu i każda inna osoba znajdująca się na drodze są obowiązani zachować ostrożność i unikać <strong>wszelkiego działania, które mogłoby spowodować zagrożenie bezpieczeństwa lub porządku ruchu</strong>, utrudnić ruch albo narazić kogokolwiek na szkodę (art. 3 ust. 1 PoRD).</p>
+        <p>W praktyce oznacza prowadzenie pojazdu z prędkością i w sposób umożliwiający zatrzymanie się przed napotkaną przeszkodą, której kierujący <strong>mógł się spodziewać</strong> (np. pojazd włączający się do ruchu, pieszy idący chodnikiem).</p>
+
+        <h3>Szczególna ostrożność</h3>
+        <div class="card info">
+          <div class="card-title">Definicja — Art. 2 pkt 22 PoRD</div>
+          <p style="margin:0">Ostrożność polegająca na <strong>zwiększeniu uwagi i dostosowaniu zachowania uczestnika ruchu do warunków i sytuacji zmieniających się na drodze</strong>, w stopniu umożliwiającym <strong>odpowiednio szybkie reagowanie</strong>.</p>
+        </div>
+        <p>Szczególna ostrożność jest wymagana <strong>tylko wtedy, gdy konkretny przepis tak stanowi</strong>. Oznacza wyższy próg czujności — kierujący musi spodziewać się <strong>również nieoczywistych zachowań</strong> innych uczestników ruchu (np. wtargnięcie pieszego, błędna decyzja innego kierowcy).</p>
+
+        <h3>Sytuacje wymagające szczególnej ostrożności</h3>
+        <p>Katalog sytuacji wynika wprost z ustawy. Pominięcie wymogu szczególnej ostrożności w którejkolwiek z poniższych sytuacji to <strong>częsta przyczyna niezdania egzaminu praktycznego</strong> i podstawa do przypisania winy w razie kolizji.</p>
+
+        <ul class="situations">
+          <li>
+            <strong>Włączanie się do ruchu</strong>
+            <small>Art. 17 — wjazd z drogi gruntowej na utwardzoną, z parkingu, chodnika, pobocza, ruszanie z miejsca postojowego, jazda po cofnięciu.</small>
+          </li>
+          <li>
+            <strong>Zmiana pasa ruchu</strong>
+            <small>Art. 22 ust. 1 — obowiązek upewnienia się o możliwości manewru i ustąpienia pojazdom poruszającym się po pasie docelowym.</small>
+          </li>
+          <li>
+            <strong>Zmiana kierunku jazdy</strong>
+            <small>Art. 22 — skręt w prawo, w lewo, zawracanie. Wymagane wcześniejsze zasygnalizowanie kierunkowskazem.</small>
+          </li>
+          <li>
+            <strong>Cofanie</strong>
+            <small>Art. 23 ust. 1 pkt 3 — kierujący musi ustąpić pierwszeństwa wszystkim innym uczestnikom ruchu i upewnić się, że za pojazdem nie ma przeszkód.</small>
+          </li>
+          <li>
+            <strong>Wyprzedzanie</strong>
+            <small>Art. 24 — przed wyprzedzaniem należy upewnić się o dostatecznej widoczności i miejscu do powrotu na pas; nie utrudniać manewrów innym kierującym.</small>
+          </li>
+          <li>
+            <strong>Zbliżanie się do skrzyżowania</strong>
+            <small>Art. 25 ust. 1 — niezależnie od tego, czy jesteśmy na drodze z pierwszeństwem, należy zwiększyć uwagę i dostosować prędkość.</small>
+          </li>
+          <li>
+            <strong>Zbliżanie się do przejścia dla pieszych</strong>
+            <small>Art. 26 ust. 1 — szczególna ostrożność, zmniejszenie prędkości i ustąpienie pierwszeństwa pieszemu na przejściu oraz <strong>wchodzącemu na przejście</strong>.</small>
+          </li>
+          <li>
+            <strong>Zbliżanie się do przejazdu dla rowerzystów</strong>
+            <small>Art. 27 ust. 1 — ustąpienie pierwszeństwa rowerzyście znajdującemu się na przejeździe; zakaz wyprzedzania bezpośrednio przed przejazdem.</small>
+          </li>
+          <li>
+            <strong>Przejazd kolejowy lub tramwajowy</strong>
+            <small>Art. 28 — upewnienie się, że nie zbliża się pociąg/tramwaj; obserwacja sygnalizacji i półrogatek.</small>
+          </li>
+          <li>
+            <strong>Jazda w warunkach zmniejszonej przejrzystości powietrza</strong>
+            <small>Art. 30 — mgła, opady, zadymienie. Należy zmniejszyć prędkość i włączyć światła mijania (oraz przeciwmgłowe, gdy widoczność spada poniżej 50 m).</small>
+          </li>
+          <li>
+            <strong>Mijanie pojazdu przewożącego dzieci</strong>
+            <small>Art. 57a — autobus szkolny lub pojazd oznakowany tablicą „przewóz dzieci". Szczególna ostrożność, zmniejszenie prędkości, gotowość do zatrzymania.</small>
+          </li>
+          <li>
+            <strong>Pieszy z białą laską lub psem przewodnikiem</strong>
+            <small>Art. 26 ust. 7 — bezwzględny obowiązek umożliwienia przejścia osobie niewidomej, niezależnie od miejsca pojawienia się na drodze.</small>
+          </li>
+        </ul>
+
+        <div class="card alert">
+          <div class="card-title">Częsty błąd egzaminacyjny</div>
+          <p style="margin:0">Zbliżając się do przejścia dla pieszych <strong>nie wystarczy zwolnić</strong>. Egzaminator oczekuje <strong>obserwacji obu stron jezdni</strong> w celu wykrycia pieszego nadchodzącego do przejścia. Brak takiej obserwacji może być uznany za niezachowanie szczególnej ostrożności — nawet jeżeli na pasach nikogo nie ma.</p>
+        </div>
+
+        <div class="card warn">
+          <div class="card-title">Zapamiętaj</div>
+          <p style="margin:0">Szczególna ostrożność = <strong>aktywna obserwacja + gotowość do natychmiastowej reakcji</strong>. Sama redukcja prędkości nie wystarcza. Brak szczególnej ostrożności tam, gdzie ustawa jej wymaga, jest traktowany jako wykroczenie i zazwyczaj jako podstawowa przyczyna w razie zdarzenia drogowego.</p>
+        </div>
+      </section>
+
+      <!-- 4. ZNAKI I SYGNAŁY -->
+      <section id="znaki">
+        <h2>4. Znaki drogowe i sygnały</h2>
+        <p class="lead">Znaki dzielą się na pięć grup według koloru i kształtu. Kategoria pozwala szybko zorientować się w funkcji znaku, zanim odczytamy jego symbol.</p>
+
+        <h3>Znaki ostrzegawcze (A)</h3>
+        <span class="sign-group-label warn">Trójkąt · żółte tło · czerwona obwódka</span>
+        <p>Uprzedzają o niebezpieczeństwie. Należy <strong>zwiększyć uwagę i dostosować prędkość</strong>. Umieszczane zwykle 150–300 m przed miejscem niebezpiecznym (poza obszarem zabudowanym).</p>
+
+        <div class="signs-grid">
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak A-7">
+              <polygon points="32,56 4,8 60,8" fill="white" stroke="#c63030" stroke-width="5" stroke-linejoin="round"/>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">A-7</div>
+              <div class="sign-name">Ustąp pierwszeństwa</div>
+              <div class="sign-desc">Obowiązek ustąpienia pierwszeństwa pojazdom poruszającym się drogą z pierwszeństwem. Odwrócony trójkąt — jedyny wyjątek wśród znaków A.</div>
+            </div>
+          </div>
+
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak A-30">
+              <polygon points="32,8 60,56 4,56" fill="#ffd84d" stroke="#c63030" stroke-width="5" stroke-linejoin="round"/>
+              <text x="32" y="50" font-family="sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="#111">!</text>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">A-30</div>
+              <div class="sign-name">Inne niebezpieczeństwo</div>
+              <div class="sign-desc">Ostrzega o niebezpieczeństwie nieokreślonym pozostałymi znakami; zazwyczaj uzupełniony tabliczką informacyjną.</div>
+            </div>
+          </div>
+
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak A-17">
+              <polygon points="32,8 60,56 4,56" fill="#ffd84d" stroke="#c63030" stroke-width="5" stroke-linejoin="round"/>
+              <circle cx="26" cy="32" r="2.4" fill="#111"/>
+              <path d="M26 35 L24 44 L21 52 L24 52 L26 46 L28 52 L31 52 L29 44 Z" fill="#111"/>
+              <circle cx="38" cy="36" r="2" fill="#111"/>
+              <path d="M38 38 L36 46 L33 52 L35 52 L37 47 L39 52 L41 52 L40 46 Z" fill="#111"/>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">A-17</div>
+              <div class="sign-name">Dzieci</div>
+              <div class="sign-desc">Miejsce częstego pojawiania się dzieci na drodze (np. szkoły, place zabaw). Wymagana szczególna ostrożność.</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:32px">Znaki zakazu (B)</h3>
+        <span class="sign-group-label deny">Koło · biało-czerwone · symbol czarny</span>
+        <p>Wyrażają zakazy. Obowiązują od miejsca ustawienia do najbliższego skrzyżowania (jeśli przepis nie stanowi inaczej) lub do znaku odwołującego.</p>
+
+        <div class="signs-grid">
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak B-2">
+              <circle cx="32" cy="32" r="28" fill="#c63030"/>
+              <rect x="10" y="28" width="44" height="8" fill="white"/>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">B-2</div>
+              <div class="sign-name">Zakaz wjazdu</div>
+              <div class="sign-desc">Zakaz wjazdu pojazdów na drogę lub jezdnię od strony jego umieszczenia. Najczęściej oznacza drogę jednokierunkową w przeciwnym kierunku.</div>
+            </div>
+          </div>
+
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak B-20 STOP">
+              <polygon points="20,4 44,4 60,20 60,44 44,60 20,60 4,44 4,20" fill="#c63030"/>
+              <text x="32" y="38" font-family="sans-serif" font-size="14" font-weight="800" text-anchor="middle" fill="white" letter-spacing="0.5">STOP</text>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">B-20</div>
+              <div class="sign-name">STOP</div>
+              <div class="sign-desc">Bezwzględny obowiązek zatrzymania pojazdu (nawet gdy droga jest pusta) oraz ustąpienia pierwszeństwa pojazdom z drogi z pierwszeństwem.</div>
+            </div>
+          </div>
+
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak B-21">
+              <circle cx="32" cy="32" r="28" fill="white" stroke="#c63030" stroke-width="6"/>
+              <path d="M40 38 L40 32 L26 32 L26 24 L14 32 L26 40 L26 34 L40 34 Z" fill="#111"/>
+              <line x1="14" y1="14" x2="50" y2="50" stroke="#c63030" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">B-21</div>
+              <div class="sign-name">Zakaz skręcania w lewo</div>
+              <div class="sign-desc">Zakaz skręcania w lewo na najbliższym skrzyżowaniu — obejmuje również zakaz zawracania.</div>
+            </div>
+          </div>
+
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak B-33">
+              <circle cx="32" cy="32" r="28" fill="white" stroke="#c63030" stroke-width="6"/>
+              <text x="32" y="40" font-family="sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#111">50</text>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">B-33</div>
+              <div class="sign-name">Ograniczenie prędkości</div>
+              <div class="sign-desc">Zakaz przekraczania prędkości podanej liczbą. Obowiązuje do najbliższego skrzyżowania lub znaku odwołującego (B-34).</div>
+            </div>
+          </div>
+
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak B-25">
+              <circle cx="32" cy="32" r="28" fill="white" stroke="#c63030" stroke-width="6"/>
+              <rect x="14" y="32" width="14" height="14" fill="#111"/>
+              <rect x="14" y="20" width="14" height="14" fill="#c63030"/>
+              <rect x="34" y="32" width="14" height="14" fill="#111"/>
+              <rect x="34" y="20" width="14" height="14" fill="#111"/>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">B-25</div>
+              <div class="sign-name">Zakaz wyprzedzania</div>
+              <div class="sign-desc">Zakaz wyprzedzania pojazdów silnikowych wielośladowych — obowiązuje do najbliższego skrzyżowania lub znaku B-27.</div>
+            </div>
+          </div>
+
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak B-36">
+              <circle cx="32" cy="32" r="28" fill="#1f4ea1"/>
+              <circle cx="32" cy="32" r="28" fill="none" stroke="#c63030" stroke-width="6"/>
+              <line x1="14" y1="14" x2="50" y2="50" stroke="#c63030" stroke-width="6" stroke-linecap="round"/>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">B-36</div>
+              <div class="sign-name">Zakaz zatrzymywania się</div>
+              <div class="sign-desc">Bezwzględny zakaz zatrzymania (nawet na chwilę). Wyłącza także postój. Często z tabliczką T-24.</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:32px">Znaki nakazu (C)</h3>
+        <span class="sign-group-label order">Koło · niebieskie tło · biały symbol</span>
+        <p>Wskazują obowiązkowy kierunek lub sposób jazdy. Stosowane głównie na skrzyżowaniach i przy zwężeniach.</p>
+
+        <div class="signs-grid">
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak C-2">
+              <circle cx="32" cy="32" r="28" fill="#1f4ea1"/>
+              <path d="M22 28 L38 28 L38 22 L50 32 L38 42 L38 36 L22 36 Z" fill="white"/>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">C-2</div>
+              <div class="sign-name">Nakaz jazdy w prawo (za znakiem)</div>
+              <div class="sign-desc">Obowiązek skręcenia w prawo bezpośrednio za znakiem. Inne kierunki niedozwolone.</div>
+            </div>
+          </div>
+
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak C-12">
+              <circle cx="32" cy="32" r="28" fill="#1f4ea1"/>
+              <g fill="white">
+                <g transform="rotate(0 32 32)"><path d="M22 22 L34 16 L34 19 L42 19 L42 25 L34 25 L34 28 Z"/></g>
+                <g transform="rotate(120 32 32)"><path d="M22 22 L34 16 L34 19 L42 19 L42 25 L34 25 L34 28 Z"/></g>
+                <g transform="rotate(240 32 32)"><path d="M22 22 L34 16 L34 19 L42 19 L42 25 L34 25 L34 28 Z"/></g>
+              </g>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">C-12</div>
+              <div class="sign-name">Ruch okrężny</div>
+              <div class="sign-desc">Nakaz jazdy w kierunku zgodnym ze strzałkami (zwykle z A-7 — wówczas pojazdy na rondzie mają pierwszeństwo).</div>
+            </div>
+          </div>
+
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak C-9">
+              <circle cx="32" cy="32" r="28" fill="#1f4ea1"/>
+              <path d="M32 14 Q44 14 44 26 L44 44 L40 44 L40 26 Q40 18 32 18 Q24 18 24 26 L24 44 L20 44 L20 26 Q20 14 32 14 Z" fill="white"/>
+              <polygon points="44,42 50,46 44,50" fill="white"/>
+              <polygon points="20,42 14,46 20,50" fill="white"/>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">C-9</div>
+              <div class="sign-name">Nakaz jazdy z prawej strony znaku</div>
+              <div class="sign-desc">Stosowany przy wysepkach i wyłączeniach z ruchu — obowiązek omijania przeszkody z prawej strony.</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:32px">Znaki informacyjne (D)</h3>
+        <span class="sign-group-label info">Najczęściej kwadrat lub prostokąt · niebieskie</span>
+        <p>Informują o rodzaju drogi lub o sposobie korzystania z niej oraz o obiektach na drodze i przy drodze.</p>
+
+        <div class="signs-grid">
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak D-1">
+              <polygon points="32,4 60,32 32,60 4,32" fill="white" stroke="#111" stroke-width="2"/>
+              <polygon points="32,12 52,32 32,52 12,32" fill="#ffcc00"/>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">D-1</div>
+              <div class="sign-name">Droga z pierwszeństwem</div>
+              <div class="sign-desc">Pojazdy poruszające się tą drogą mają pierwszeństwo na każdym skrzyżowaniu (chyba że znaki stanowią inaczej).</div>
+            </div>
+          </div>
+
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak D-6">
+              <rect x="4" y="4" width="56" height="56" fill="#1f4ea1"/>
+              <polygon points="32,10 56,54 8,54" fill="white"/>
+              <g fill="#111">
+                <rect x="22" y="34" width="3" height="14"/>
+                <rect x="27" y="34" width="3" height="14"/>
+                <rect x="32" y="34" width="3" height="14"/>
+                <rect x="37" y="34" width="3" height="14"/>
+                <rect x="42" y="34" width="3" height="14"/>
+              </g>
+              <circle cx="33" cy="22" r="3" fill="#111"/>
+              <rect x="30" y="25" width="6" height="8" fill="#111"/>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">D-6</div>
+              <div class="sign-name">Przejście dla pieszych</div>
+              <div class="sign-desc">Oznacza przejście — kierujący ma <strong>obowiązek zachować szczególną ostrożność</strong>, zmniejszyć prędkość, a w razie potrzeby zatrzymać się.</div>
+            </div>
+          </div>
+
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak D-40">
+              <rect x="4" y="4" width="56" height="56" fill="#1f4ea1"/>
+              <rect x="14" y="22" width="14" height="22" fill="white"/>
+              <polygon points="14,22 21,14 28,22" fill="white"/>
+              <rect x="32" y="32" width="22" height="6" fill="white"/>
+              <rect x="34" y="38" width="3" height="6" fill="white"/>
+              <rect x="49" y="38" width="3" height="6" fill="white"/>
+              <circle cx="35" cy="46" r="2" fill="white"/>
+              <circle cx="50" cy="46" r="2" fill="white"/>
+              <circle cx="42" cy="20" r="2.5" fill="white"/>
+              <rect x="40" y="22" width="4" height="6" fill="white"/>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">D-40</div>
+              <div class="sign-name">Strefa zamieszkania</div>
+              <div class="sign-desc">Pieszy ma pierwszeństwo na całej szerokości drogi. Limit 20 km/h. Postój tylko w miejscach wyznaczonych.</div>
+            </div>
+          </div>
+
+          <div class="sign-card">
+            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak D-42">
+              <rect x="4" y="4" width="56" height="56" fill="white" stroke="#111" stroke-width="2"/>
+              <rect x="12" y="24" width="14" height="28" fill="#111"/>
+              <rect x="14" y="28" width="3" height="3" fill="white"/>
+              <rect x="20" y="28" width="3" height="3" fill="white"/>
+              <rect x="14" y="34" width="3" height="3" fill="white"/>
+              <rect x="20" y="34" width="3" height="3" fill="white"/>
+              <rect x="14" y="40" width="3" height="3" fill="white"/>
+              <rect x="20" y="40" width="3" height="3" fill="white"/>
+              <rect x="32" y="18" width="20" height="34" fill="#111"/>
+              <rect x="35" y="22" width="4" height="4" fill="white"/>
+              <rect x="44" y="22" width="4" height="4" fill="white"/>
+              <rect x="35" y="30" width="4" height="4" fill="white"/>
+              <rect x="44" y="30" width="4" height="4" fill="white"/>
+              <rect x="35" y="38" width="4" height="4" fill="white"/>
+              <rect x="44" y="38" width="4" height="4" fill="white"/>
+            </svg>
+            <div class="sign-meta">
+              <div class="sign-code">D-42</div>
+              <div class="sign-name">Obszar zabudowany</div>
+              <div class="sign-desc">Wjazd do obszaru zabudowanego — obowiązuje limit 50 km/h przez całą dobę.</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin-top:32px">Sygnalizacja świetlna (S)</h3>
+        <ul>
+          <li><strong>S-1 (zielony, żółty, czerwony)</strong> – sygnał ogólny dla pojazdów.</li>
+          <li><strong>Zielona strzałka warunkowa</strong> obok czerwonego sygnału — zezwala na skręt w prawo (lub w lewo z drogi jednokierunkowej) <strong>po zatrzymaniu się</strong> i ustąpieniu pierwszeństwa wszystkim innym uczestnikom ruchu, w tym pieszym.</li>
+          <li><strong>Żółty migający</strong> – ostrzega o niesprawnej lub wyłączonej sygnalizacji; pierwszeństwo zgodnie ze znakami lub zasadą prawej ręki.</li>
+          <li><strong>S-3 sygnał kierunkowy</strong> – strzałka w sygnalizatorze; dotyczy wyłącznie wskazanego kierunku.</li>
+          <li><strong>Sygnalizacja taktowa</strong> przy przejazdach kolejowych (czerwony pulsujący lub dwa naprzemienne) – obowiązek zatrzymania.</li>
+        </ul>
+      </section>
+
+      <!-- 4. PRĘDKOŚCI -->
+      <section id="predkosci">
+        <h2>5. Dopuszczalne prędkości</h2>
+        <p class="lead">Limity dla samochodu osobowego (kategoria B) oraz motocykla, jeżeli przepis lokalny lub znak nie stanowi inaczej.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Rodzaj drogi</th>
+                <th>Pora</th>
+                <th class="num">Limit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Obszar zabudowany</td><td>całą dobę</td><td class="num">50 km/h</td></tr>
+              <tr><td>Strefa zamieszkania (D-40)</td><td>—</td><td class="num">20 km/h</td></tr>
+              <tr><td>Poza obszarem zabudowanym — droga jednojezdniowa dwukierunkowa</td><td>—</td><td class="num">90 km/h</td></tr>
+              <tr><td>Poza obszarem zabudowanym — droga dwujezdniowa co najmniej po dwa pasy w każdą stronę</td><td>—</td><td class="num">100 km/h</td></tr>
+              <tr><td>Droga ekspresowa jednojezdniowa</td><td>—</td><td class="num">100 km/h</td></tr>
+              <tr><td>Droga ekspresowa dwujezdniowa</td><td>—</td><td class="num">120 km/h</td></tr>
+              <tr><td>Autostrada</td><td>—</td><td class="num">140 km/h</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Pojazd z przyczepą (kat. B z przyczepą lekką lub B+E)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Rodzaj drogi</th><th class="num">Limit</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Obszar zabudowany</td><td class="num">50 km/h</td></tr>
+              <tr><td>Poza obszarem zabudowanym</td><td class="num">70 km/h</td></tr>
+              <tr><td>Droga ekspresowa / autostrada</td><td class="num">80 km/h</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Holowanie pojazdu silnikowego (art. 31 PoRD)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Rodzaj drogi</th><th class="num">Limit</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Obszar zabudowany</td><td class="num">30 km/h</td></tr>
+              <tr><td>Poza obszarem zabudowanym</td><td class="num">60 km/h</td></tr>
+              <tr><td>Autostrada i droga ekspresowa</td><td class="num">zabronione*</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:13px; color:var(--muted); margin-top:-8px">* Z wyjątkiem holowania przez pojazdy do tego przeznaczone (np. pomoc drogowa) — wyłącznie do najbliższego zjazdu lub MOP.</p>
+
+        <div class="card info">
+          <div class="card-title">Zasady holowania</div>
+          <ul style="margin:0; padding-left:18px">
+            <li>Pojazd holujący musi mieć włączone <strong>światła awaryjne</strong> lub żółte światło błyskowe.</li>
+            <li>Połączenie giętkie (lina): długość <strong>4–6 m</strong>, oznaczone na środku chorągiewką.</li>
+            <li>Połączenie sztywne (hol): długość <strong>3–6 m</strong>, oznaczone na środku chorągiewką lub tablicą ostrzegawczą.</li>
+            <li>Kierujący pojazdem holowanym musi mieć <strong>odpowiednie uprawnienia</strong> do prowadzenia tej kategorii pojazdu.</li>
+            <li>Holowanie zabronione, gdy w pojeździe holowanym <strong>nie działa układ kierowniczy lub hamulcowy</strong> (chyba że jest holowany na sztywnym połączeniu i podniesionych przednich kołach).</li>
+            <li>Zabronione w warunkach zmniejszonej przejrzystości powietrza (mgła, zadymienie).</li>
+          </ul>
+        </div>
+
+        <div class="card warn">
+          <div class="card-title">Sankcja</div>
+          <p style="margin:0">Przekroczenie dopuszczalnej prędkości o ponad <strong>50 km/h w obszarze zabudowanym</strong> skutkuje <strong>zatrzymaniem prawa jazdy na 3 miesiące</strong> (art. 135 ust. 1 PoRD). Po upływie tego okresu okres zostaje przedłużony do 6 miesięcy, jeśli kierowca prowadził w czasie zatrzymania.</p>
+        </div>
+      </section>
+
+      <!-- 5. SKRZYŻOWANIA -->
+      <section id="skrzyzowania">
+        <h2>6. Skrzyżowania i ronda</h2>
+        <p class="lead">Najważniejsze: poprawnie rozpoznać typ skrzyżowania (równorzędne, z drogą podporządkowaną, rondo) i ustalić kolejność przejazdu.</p>
+
+        <h3>Skrzyżowanie równorzędne</h3>
+        <p>Brak znaków regulujących pierwszeństwo i sygnalizacji. Obowiązuje <strong>zasada prawej ręki</strong>: ustępujesz każdemu pojazdowi nadjeżdżającemu z twojej prawej strony.</p>
+
+        <div class="svg-figure">
+          <svg width="320" height="320" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skrzyżowanie równorzędne — zasada prawej ręki">
+            <rect x="120" y="0"   width="80" height="320" fill="#f6f6f6" stroke="#111"/>
+            <rect x="0"   y="120" width="320" height="80" fill="#f6f6f6" stroke="#111"/>
+            <rect x="120" y="120" width="80" height="80" fill="#ffffff" stroke="#111"/>
+            <rect x="148" y="220" width="24" height="40" fill="#111"/>
+            <text x="155" y="280" font-size="11" font-family="sans-serif" fill="#111">A</text>
+            <rect x="240" y="148" width="40" height="24" fill="#111"/>
+            <text x="255" y="142" font-size="11" font-family="sans-serif" fill="#111">B</text>
+            <path d="M160 215 L160 195 M155 200 L160 195 L165 200" stroke="#111" stroke-width="1.5" fill="none"/>
+            <path d="M235 160 L215 160 M220 155 L215 160 L220 165" stroke="#111" stroke-width="1.5" fill="none"/>
+            <text x="20"  y="30"  font-size="12" font-family="sans-serif" fill="#111">A ustępuje B</text>
+            <text x="20"  y="48"  font-size="11" font-family="sans-serif" fill="#555">(B nadjeżdża z prawej strony A)</text>
+          </svg>
+          <div class="svg-caption">Zasada prawej ręki na skrzyżowaniu równorzędnym.</div>
+        </div>
+
+        <h3>Skrzyżowanie ze znakami pierwszeństwa</h3>
+        <ul>
+          <li><strong>D-1</strong> – droga z pierwszeństwem (żółty romb).</li>
+          <li><strong>A-7</strong> – ustąp pierwszeństwa. Należy zwolnić, a w razie potrzeby zatrzymać się i ustąpić.</li>
+          <li><strong>B-20 „STOP"</strong> – <strong>bezwzględny obowiązek zatrzymania się</strong>, nawet jeżeli droga jest pusta. Zatrzymujemy się przed linią P-12, a w razie jej braku — przed znakiem.</li>
+        </ul>
+
+        <h3>Rondo</h3>
+        <p>Sposób przejazdu zależy od oznakowania ronda — to częste źródło błędów.</p>
+
+        <h4>Rondo z A-7 + C-12 (typowe)</h4>
+        <p>Przed wjazdem znajdują się znaki „ustąp pierwszeństwa" oraz „ruch okrężny". Pojazdy <strong>znajdujące się na rondzie</strong> mają pierwszeństwo, a wjeżdżające — ustępują.</p>
+
+        <h4>Rondo z samym C-12 (bez A-7)</h4>
+        <p>Obowiązuje zasada prawej ręki — pojazdy <strong>wjeżdżające</strong> mają pierwszeństwo nad tymi już na rondzie. Spotykane bardzo rzadko.</p>
+
+        <h4>Rondo wielopasowe (turbinowe)</h4>
+        <p>Dodatkowo obowiązują znaki poziome (P-8a/b/c – strzałki kierunkowe). Wybór pasa <strong>przed wjazdem</strong> determinuje, gdzie można zjechać. Z lewego pasa <strong>nie wolno</strong> zjeżdżać pierwszym ani drugim zjazdem, jeżeli strzałki tego nie przewidują.</p>
+
+        <div class="card info">
+          <div class="card-title">Kierunkowskaz na rondzie</div>
+          <p style="margin:0">Wjeżdżając na rondo <strong>nie używamy</strong> lewego kierunkowskazu (chyba że bezpośrednio zmieniamy pas). <strong>Włączamy prawy kierunkowskaz</strong> dopiero przed zjazdem z ronda.</p>
+        </div>
+      </section>
+
+      <!-- 7. MANEWRY -->
+      <section id="manewry">
+        <h2>7. Manewry: wyprzedzanie, wymijanie, omijanie</h2>
+        <p class="lead">Trzy manewry różniące się sytuacją początkową, choć wizualnie podobne. Pomyłka w klasyfikacji manewru i niezastosowanie właściwych reguł to jeden z najczęstszych błędów na egzaminie teoretycznym.</p>
+
+        <h3>Tabela porównawcza</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Manewr</th>
+                <th>Wobec kogo / czego</th>
+                <th>Kierunek drugiego uczestnika</th>
+                <th>Typowy przykład</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Wyprzedzanie</strong></td>
+                <td>inny uczestnik ruchu</td>
+                <td>ten sam</td>
+                <td>Mijanie wolniejszego pojazdu jadącego przed nami</td>
+              </tr>
+              <tr>
+                <td><strong>Wymijanie</strong></td>
+                <td>inny uczestnik ruchu</td>
+                <td>przeciwny</td>
+                <td>Spotkanie pojazdu nadjeżdżającego z naprzeciwka</td>
+              </tr>
+              <tr>
+                <td><strong>Omijanie</strong></td>
+                <td>nieporuszający się uczestnik lub przeszkoda</td>
+                <td>—</td>
+                <td>Objechanie zaparkowanego auta lub leżącej gałęzi</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="margin-top:36px">Wyprzedzanie</h3>
+        <p>Przejeżdżanie obok pojazdu lub uczestnika ruchu poruszającego się <strong>w tym samym kierunku</strong> (art. 24 PoRD). Najbardziej ryzykowny z trzech manewrów — wymaga wjazdu na pas przeciwny lub sąsiedni.</p>
+
+        <h4>Obowiązki przed rozpoczęciem manewru</h4>
+        <ul>
+          <li>Upewnić się o <strong>dostatecznej widoczności</strong> — szczególnie poza obszarem zabudowanym.</li>
+          <li>Sprawdzić, czy <strong>nie wyprzedza nas już inny pojazd</strong> (lusterko + martwe pole).</li>
+          <li>Upewnić się, że na pasie do wyprzedzania jest <strong>miejsce do powrotu</strong> bez utrudnienia ruchu.</li>
+          <li>Zasygnalizować zamiar <strong>lewym kierunkowskazem</strong>.</li>
+        </ul>
+
+        <h4>Obowiązki w trakcie manewru</h4>
+        <ul>
+          <li>Zachować <strong>bezpieczny odstęp boczny</strong> od wyprzedzanego — wobec rowerzystów co najmniej <strong>1 m w obszarze zabudowanym</strong> i <strong>1,5 m poza nim</strong>.</li>
+          <li>Nie utrudniać ruchu wyprzedzanemu (np. nie zmuszać go do hamowania).</li>
+          <li>Wyprzedzający i wyprzedzany zachowują płynność jazdy — wyprzedzanego nie wolno blokować zwolnieniem.</li>
+        </ul>
+
+        <h4>Obowiązki po manewrze</h4>
+        <ul>
+          <li>Zasygnalizować <strong>prawym kierunkowskazem</strong> zamiar powrotu na pas.</li>
+          <li>Powrócić na właściwy pas <strong>dopiero po wyprzedzeniu</strong> pojazdu (kryterium praktyczne: widoczność wyprzedzonego pojazdu w lusterku wewnętrznym).</li>
+        </ul>
+
+        <div class="svg-figure">
+          <svg width="520" height="120" viewBox="0 0 520 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Manewr wyprzedzania">
+            <rect x="0" y="40" width="520" height="50" fill="#ffffff" stroke="#111"/>
+            <line x1="0" y1="65" x2="520" y2="65" stroke="#111" stroke-width="1" stroke-dasharray="6 6"/>
+            <rect x="200" y="68" width="50" height="20" fill="#bbbbbb" stroke="#111"/>
+            <rect x="60"  y="68" width="50" height="20" fill="#111"/>
+            <rect x="200" y="44" width="50" height="20" fill="#111"/>
+            <rect x="350" y="68" width="50" height="20" fill="#111"/>
+            <path d="M115 78 Q160 78 175 60 Q200 44 250 44 Q300 44 325 60 Q345 78 395 78"
+                  fill="none" stroke="#111" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <text x="10"  y="20" font-size="11" font-family="sans-serif" fill="#555">faza 1: zjazd na lewy pas</text>
+            <text x="180" y="20" font-size="11" font-family="sans-serif" fill="#555">faza 2: równoległe wyprzedzanie</text>
+            <text x="380" y="20" font-size="11" font-family="sans-serif" fill="#555">faza 3: powrót na pas</text>
+          </svg>
+          <div class="svg-caption">Wyprzedzanie — oba pojazdy poruszają się w tym samym kierunku (lewy kierunkowskaz → manewr → prawy kierunkowskaz).</div>
+        </div>
+
+        <h4>Wyjątki — kiedy wolno wyprzedzać z prawej strony</h4>
+        <ul>
+          <li>Pojazd <strong>sygnalizujący skręt w lewo</strong> i już zajmujący odpowiednią pozycję — pod warunkiem, że jest miejsce po jego prawej stronie.</li>
+          <li>Pojazdy poruszające się po jezdni <strong>jednokierunkowej</strong> (z obu stron).</li>
+          <li>Pojazdy poruszające się <strong>po pasach ruchu</strong> w obszarze zabudowanym (np. zatłoczone miasto, gdy pojazdy w sąsiednich pasach jadą szybciej).</li>
+          <li>Tramwaj jadący po torowisku wbudowanym w jezdnię (z prawej strony).</li>
+        </ul>
+
+        <h4>Zakazy wyprzedzania</h4>
+        <div class="two-col">
+          <div class="col-box deny">
+            <h4>Ze względu na miejsce</h4>
+            <ul>
+              <li>Przejście dla pieszych i bezpośrednio przed nim (poza przejściami z sygnalizacją).</li>
+              <li>Przejazd dla rowerzystów i bezpośrednio przed nim.</li>
+              <li>Skrzyżowanie — z wyjątkiem ronda, drogi z pierwszeństwem i skrzyżowania z sygnalizacją.</li>
+              <li>Przejazd kolejowy/tramwajowy oraz bezpośrednio przed nim.</li>
+              <li>Tunel, most, wiadukt (jeżeli oznakowanie nie zezwala).</li>
+              <li>Zakręt oznaczony znakami A-1, A-2, A-3, A-4.</li>
+              <li>Strefa znaku B-25 lub B-26 (zakaz wyprzedzania).</li>
+            </ul>
+          </div>
+          <div class="col-box deny">
+            <h4>Ze względu na sytuację</h4>
+            <ul>
+              <li>Pojazd uprzywilejowany w akcji.</li>
+              <li>Pojazd, który sygnalizuje już zamiar wyprzedzania innego pojazdu (zakaz „podwójnego wyprzedzania").</li>
+              <li>Pojazd zatrzymany w celu ustąpienia pierwszeństwa pieszemu na przejściu.</li>
+              <li>Mgła, opady, zadymienie — gdy widoczność jest zmniejszona.</li>
+              <li>Pojazd przewożący zorganizowaną grupę dzieci, gdy zatrzymał się na drodze.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card alert">
+          <div class="card-title">Częsty błąd egzaminacyjny</div>
+          <p style="margin:0">Wyprzedzanie rozpoczęte za późno — manewr nie zostaje zakończony przed znakiem B-25 lub przed przejściem dla pieszych. Wyprzedzanie powinno być w pełni zakończone <strong>przed wjazdem w strefę zakazu</strong>; w przeciwnym razie egzaminator ma podstawę do zakończenia egzaminu z wynikiem negatywnym.</p>
+        </div>
+
+        <h3 style="margin-top:36px">Wymijanie</h3>
+        <p>Przejeżdżanie obok pojazdu lub uczestnika ruchu poruszającego się <strong>w przeciwnym kierunku</strong>. Manewr codzienny — odbywa się na każdej drodze dwukierunkowej, ale przy zwężeniach lub na wąskich jezdniach wymaga uwagi.</p>
+
+        <div class="svg-figure">
+          <svg width="520" height="140" viewBox="0 0 520 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Manewr wymijania">
+            <rect x="0" y="40" width="520" height="60" fill="#ffffff" stroke="#111"/>
+            <line x1="0" y1="70" x2="520" y2="70" stroke="#111" stroke-width="1" stroke-dasharray="6 6"/>
+            <rect x="220" y="78" width="50" height="14" fill="#111"/>
+            <path d="M275 85 L305 85 M300 80 L305 85 L300 90" stroke="#111" stroke-width="1.5" fill="none"/>
+            <rect x="240" y="48" width="50" height="14" fill="#bbbbbb" stroke="#111"/>
+            <path d="M235 55 L205 55 M210 50 L205 55 L210 60" stroke="#111" stroke-width="1.5" fill="none"/>
+            <line x1="265" y1="64" x2="265" y2="78" stroke="#c63030" stroke-width="1.5"/>
+            <text x="270" y="74" font-size="10" font-family="sans-serif" fill="#c63030">odstęp boczny</text>
+            <text x="220" y="118" font-size="11" font-family="sans-serif" fill="#555">→ kierunek własny</text>
+            <text x="160" y="32" font-size="11" font-family="sans-serif" fill="#555">← kierunek przeciwny</text>
+          </svg>
+          <div class="svg-caption">Wymijanie — pojazdy poruszają się w przeciwnych kierunkach, każdy własnym pasem ruchu.</div>
+        </div>
+
+        <h4>Zasady</h4>
+        <ul>
+          <li>Każdy z kierujących jedzie po <strong>swojej prawej stronie</strong> jezdni i utrzymuje bezpieczny odstęp boczny od pojazdu nadjeżdżającego z naprzeciwka.</li>
+          <li>W razie potrzeby należy zjechać <strong>maksymalnie do prawej krawędzi</strong> jezdni, a w wyjątkowych sytuacjach — na pobocze.</li>
+          <li>W warunkach utrudniających wymijanie (zwężenie, zakręt, słaba widoczność) należy zmniejszyć prędkość, a w razie potrzeby <strong>zatrzymać się</strong>.</li>
+          <li>Na drogach o szerokości pozwalającej tylko na jeden pojazd kierowcy ustalają kolejność na podstawie znaków lub poprzez sygnalizację gestami.</li>
+        </ul>
+
+        <h4>Pierwszeństwo przy zwężeniach</h4>
+        <p>Gdy droga jest zbyt wąska, by dwa pojazdy minęły się jednocześnie, pierwszeństwo określają znaki:</p>
+        <ul>
+          <li><strong>D-5</strong> (pierwszeństwo na zwężonym odcinku) — to my mamy pierwszeństwo, pojazd z naprzeciwka ustępuje.</li>
+          <li><strong>B-31</strong> (pierwszeństwo dla nadjeżdżających z przeciwka) — musimy się zatrzymać i przepuścić pojazdy z naprzeciwka.</li>
+        </ul>
+
+        <div class="card info">
+          <div class="card-title">Pamiętaj</div>
+          <p style="margin:0">Przy braku znaków regulujących pierwszeństwo na zwężeniu obowiązuje zasada zdrowego rozsądku: ustępuje ten kierowca, po którego stronie pasa znajduje się przeszkoda zwężająca jezdnię.</p>
+        </div>
+
+        <h3 style="margin-top:36px">Omijanie</h3>
+        <p>Przejeżdżanie obok <strong>nieporuszającego się</strong> uczestnika ruchu, pojazdu lub przeszkody (zaparkowane auto, pieszy stojący przy jezdni, leżący przedmiot, naprawiana droga). Drugi obiekt nie porusza się — to odróżnia omijanie od wyprzedzania i wymijania.</p>
+
+        <div class="svg-figure">
+          <svg width="520" height="140" viewBox="0 0 520 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Manewr omijania">
+            <rect x="0" y="40" width="520" height="60" fill="#ffffff" stroke="#111"/>
+            <line x1="0" y1="70" x2="520" y2="70" stroke="#111" stroke-width="1" stroke-dasharray="6 6"/>
+            <rect x="240" y="78" width="50" height="14" fill="#bbbbbb" stroke="#111"/>
+            <text x="240" y="118" font-size="10" font-family="sans-serif" fill="#555">unieruchomiony pojazd</text>
+            <rect x="60"  y="78" width="50" height="14" fill="#111"/>
+            <rect x="240" y="48" width="50" height="14" fill="#111"/>
+            <rect x="380" y="78" width="50" height="14" fill="#111"/>
+            <path d="M115 85 Q160 85 175 75 Q200 60 240 60 Q280 60 305 75 Q325 85 380 85"
+                  fill="none" stroke="#111" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <path d="M435 85 L460 85 M455 80 L460 85 L455 90" stroke="#111" stroke-width="1.5" fill="none"/>
+            <text x="60" y="32" font-size="11" font-family="sans-serif" fill="#555">tor jazdy pojazdu omijającego (jeden kierunek ruchu)</text>
+          </svg>
+          <div class="svg-caption">Omijanie — przejazd obok nieruchomej przeszkody znajdującej się na jezdni.</div>
+        </div>
+
+        <h4>Zasady</h4>
+        <ul>
+          <li>Przed manewrem należy się upewnić, że nie utrudni się ruchu innym uczestnikom — zwłaszcza pojazdom <strong>nadjeżdżającym z naprzeciwka</strong>, gdy omijanie wiąże się z wjazdem na lewą stronę jezdni.</li>
+          <li>Manewr należy zasygnalizować kierunkowskazem: lewym przy zjeździe, prawym przy powrocie.</li>
+          <li>Zachować <strong>bezpieczny odstęp boczny</strong> — szczególnie wobec pieszych, rowerzystów lub otwierających drzwi pasażerów zaparkowanego pojazdu.</li>
+        </ul>
+
+        <h4>Zakazy omijania</h4>
+        <ul>
+          <li>Na <strong>przejściu dla pieszych</strong> i bezpośrednio przed nim — zakaz omijania pojazdu, który zatrzymał się w celu ustąpienia pierwszeństwa pieszemu.</li>
+          <li>Na przejeździe kolejowym i tramwajowym oraz bezpośrednio przed nim.</li>
+          <li>Na wąskiej jezdni, jeżeli manewr zmusiłby pojazdy z naprzeciwka do hamowania lub zjazdu z drogi.</li>
+        </ul>
+
+        <div class="card warn">
+          <div class="card-title">Autobus szkolny i pojazd przewożący osoby niepełnosprawne</div>
+          <p style="margin:0">Mijając pojazd oznakowany jako przewożący <strong>zorganizowaną grupę dzieci</strong> lub <strong>osoby niepełnosprawne</strong>, który zatrzymał się w celu wsiadania lub wysiadania pasażerów, należy zachować <strong>szczególną ostrożność</strong> i — w razie potrzeby — <strong>zatrzymać się</strong>. Dotyczy to zarówno omijania (z prawej strony), jak i wymijania (z naprzeciwka). Najczęstszym znakiem identyfikującym taki autobus jest <strong>kwadratowa żółta tablica z trójkątem ostrzegawczym</strong>.</p>
+        </div>
+
+        <h3 style="margin-top:36px">Zawracanie</h3>
+        <p>Zmiana kierunku jazdy o 180°.</p>
+
+        <div class="two-col">
+          <div class="col-box allow">
+            <h4>Dopuszczalne</h4>
+            <ul>
+              <li>Na skrzyżowaniu — z lewego pasa (chyba że znaki poziome wskazują inaczej).</li>
+              <li>Po stwierdzeniu, że nie spowoduje zagrożenia ani utrudnienia ruchu.</li>
+              <li>Na drodze dwukierunkowej, wykorzystując całą szerokość jezdni.</li>
+            </ul>
+          </div>
+          <div class="col-box deny">
+            <h4>Zabronione</h4>
+            <ul>
+              <li>W tunelu, na moście, wiadukcie i drodze jednokierunkowej.</li>
+              <li>Na autostradzie i drodze ekspresowej (poza miejscami wyznaczonymi).</li>
+              <li>Przy znaku B-23 (zakaz zawracania) — aż do najbliższego skrzyżowania.</li>
+              <li>W warunkach ograniczonej widoczności (zakręty, wzniesienia).</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>Korytarz życia i jazda na suwak</h3>
+        <div class="card info">
+          <div class="card-title">Korytarz życia</div>
+          <p style="margin:0">W razie zatoru na drodze o co najmniej dwóch pasach w jednym kierunku, pojazdy poruszające się skrajnym lewym pasem zjeżdżają w lewo, a pojazdy z pozostałych pasów — w prawo, tworząc <strong>wolny pas dla służb ratowniczych</strong>.</p>
+        </div>
+        <p>W przypadku zwężenia liczby pasów (z 2 do 1, z 3 do 2), kierujący na pasie zanikającym ma <strong>prawo wjechać przed pojazd</strong> jadący pasem docelowym, naprzemiennie po jednym pojeździe z każdego pasa — to <strong>jazda na suwak</strong>. Stosuje się <strong>bezpośrednio przed miejscem zwężenia</strong>.</p>
+      </section>
+
+      <!-- 7. STAN TECHNICZNY -->
+      <section id="technika">
+        <h2>8. Stan techniczny pojazdu</h2>
+        <p class="lead">Wymagania z rozporządzenia Ministra Infrastruktury w sprawie warunków technicznych pojazdów (Dz.U. 2016 poz. 2022 z późn. zm.) oraz typowe pytania egzaminacyjne.</p>
+
+        <h3>Płyny eksploatacyjne</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Płyn</th><th>Jak sprawdzić</th><th>Uwagi</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Olej silnikowy</td>
+                <td>Bagnetem przy <strong>zimnym silniku</strong>, pojazd na płaskim podłożu. Poziom między MIN a MAX.</td>
+                <td>Niski poziom = ryzyko zatarcia silnika.</td>
+              </tr>
+              <tr>
+                <td>Płyn chłodzący</td>
+                <td>Wzrokowo w zbiorniku wyrównawczym, <strong>tylko przy zimnym silniku</strong>.</td>
+                <td>Otwarcie ciepłego układu grozi poparzeniem parą.</td>
+              </tr>
+              <tr>
+                <td>Płyn hamulcowy</td>
+                <td>Wzrokowo w zbiorniczku przy pompie hamulcowej. Poziom między MIN a MAX.</td>
+                <td>Spadek = zużycie klocków lub nieszczelność. Wymiana co ok. 2 lata (higroskopijny).</td>
+              </tr>
+              <tr>
+                <td>Płyn do spryskiwaczy</td>
+                <td>Wzrokowo w zbiorniku.</td>
+                <td>Zimą — płyn z alkoholem o odpowiedniej temperaturze krzepnięcia.</td>
+              </tr>
+              <tr>
+                <td>Płyn wspomagania kierownicy</td>
+                <td>W pojazdach z hydraulicznym wspomaganiem — zbiornik z miarką.</td>
+                <td>W elektrycznym EPS sprawdzanie zbędne.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Oświetlenie pojazdu</h3>
+        <ul>
+          <li><strong>Światła mijania</strong> — obowiązkowe <strong>całą dobę przez cały rok</strong>. Mogą być zastąpione światłami do jazdy dziennej (DRL) <strong>od świtu do zmierzchu</strong> przy dobrej widoczności.</li>
+          <li><strong>Światła drogowe (długie)</strong> — używamy poza obszarem zabudowanym, gdy nie oślepiamy innych. Wyłączamy co najmniej <strong>200 m przed pojazdem nadjeżdżającym z przeciwka</strong> oraz przy zbliżaniu się od tyłu do pojazdu poprzedzającego.</li>
+          <li><strong>Światła przeciwmgłowe przednie</strong> — wyłącznie w warunkach zmniejszonej przejrzystości powietrza (mgła, opady, zadymienie).</li>
+          <li><strong>Światła przeciwmgłowe tylne</strong> — wolno włączyć, gdy widoczność jest <strong>mniejsza niż 50 m</strong>. W lepszej widoczności należy je wyłączyć.</li>
+          <li><strong>Światła awaryjne</strong> — sygnalizujemy nimi awaryjne zatrzymanie, nagłe hamowanie w obszarze zabudowanym lub holowanie.</li>
+          <li><strong>Światła pozycyjne</strong> — używane są podczas postoju w warunkach ograniczonej widoczności poza obszarem zabudowanym.</li>
+        </ul>
+
+        <h3>Wyposażenie obowiązkowe</h3>
+        <ul>
+          <li><strong>Trójkąt ostrzegawczy</strong> homologowany.</li>
+          <li><strong>Gaśnica</strong> z aktualnym przeglądem, mocowana w sposób umożliwiający szybkie wyjęcie.</li>
+          <li>Apteczka — <strong>nieobowiązkowa</strong> w samochodach osobowych w Polsce (zalecana). Obowiązkowa w autobusach i taksówkach.</li>
+          <li>Kamizelka odblaskowa — niewymagana w Polsce, ale obowiązkowa np. we Włoszech, Hiszpanii, Austrii.</li>
+        </ul>
+
+        <h3>Opony</h3>
+        <ul>
+          <li>Minimalna głębokość bieżnika w samochodzie osobowym: <strong>1,6 mm</strong> (letnich i zimowych).</li>
+          <li>Ciśnienie sprawdzamy przy <strong>zimnych oponach</strong>; wartości podane w instrukcji lub na słupku drzwi kierowcy.</li>
+          <li>Opony zimowe (oznaczenie 3PMSF lub M+S) zalecane są poniżej +7 °C — w Polsce nie są obowiązkowe.</li>
+          <li>Wszystkie cztery opony muszą być tego samego typu (letnie/zimowe), o zbliżonym stopniu zużycia.</li>
+        </ul>
+
+        <h3>Postępowanie po awarii lub kolizji</h3>
+        <ol>
+          <li>Włączyć <strong>światła awaryjne</strong>.</li>
+          <li>Założyć kamizelkę odblaskową (poza obszarem zabudowanym, w nocy lub przy słabej widoczności).</li>
+          <li>Wystawić trójkąt ostrzegawczy:
+            <ul>
+              <li>w obszarze zabudowanym — bezpośrednio za pojazdem lub na nim,</li>
+              <li>poza obszarem zabudowanym — w odległości <strong>30–50 m</strong> za pojazdem,</li>
+              <li>na autostradzie / drodze ekspresowej — w odległości <strong>100 m</strong> za pojazdem.</li>
+            </ul>
+          </li>
+          <li>Udzielić pierwszej pomocy poszkodowanym i zabezpieczyć miejsce zdarzenia.</li>
+          <li>W razie ofiar w ludziach — niezwłocznie wezwać pomoc (112). <strong>Nie przemieszczać pojazdów</strong> do czasu przybycia Policji.</li>
+        </ol>
+
+        <h3>Hamowanie i droga zatrzymania</h3>
+        <p>Droga zatrzymania = droga reakcji + droga hamowania. Reakcja kierowcy trzeźwego trwa średnio <strong>1 sekundę</strong>. Przy 90 km/h pojazd przejedzie w tym czasie <strong>ok. 25 m</strong> bez rozpoczęcia hamowania.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Prędkość</th>
+                <th class="num">Droga reakcji (1 s)</th>
+                <th class="num">Droga hamowania (sucho)</th>
+                <th class="num">Razem</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>50 km/h</td><td class="num">~14 m</td><td class="num">~13 m</td><td class="num">~27 m</td></tr>
+              <tr><td>90 km/h</td><td class="num">~25 m</td><td class="num">~40 m</td><td class="num">~65 m</td></tr>
+              <tr><td>140 km/h</td><td class="num">~39 m</td><td class="num">~98 m</td><td class="num">~137 m</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Na mokrej nawierzchni droga hamowania wydłuża się <strong>1,5–2-krotnie</strong>, na śniegu lub lodzie — kilkukrotnie.</p>
+      </section>
+
+      <!-- 8. KARY -->
+      <section id="kary">
+        <h2>9. Mandaty i punkty karne</h2>
+        <p class="lead">Wybór najczęściej testowanych wykroczeń wraz z taryfikatorem (rozporządzenie Prezesa RM o postępowaniu mandatowym, stan na 2024). Wartości w nawiasach to stawki za <strong>recydywę</strong> w ciągu 2 lat.</p>
+
+        <div class="card warn">
+          <div class="card-title">Limit punktów karnych</div>
+          <p style="margin:0">
+            <strong>24 punkty</strong> — limit dla kierowcy z prawem jazdy ponad rok. Jego przekroczenie skutkuje skierowaniem na egzamin sprawdzający kwalifikacje.<br>
+            <strong>20 punktów</strong> — limit w okresie próbnym (pierwszy rok po uzyskaniu PJ kategorii B). Przekroczenie = cofnięcie uprawnień.<br>
+            Punkty <strong>kasują się po 2 latach</strong> od daty uprawomocnienia się rozstrzygnięcia (od 2022 r.). Można je też zredukować, kończąc szkolenie w WORD (raz na 6 miesięcy, max 6 pkt).
+          </p>
+        </div>
+
+        <h3>Przekroczenie prędkości</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>O ile</th>
+                <th class="num">Mandat</th>
+                <th class="num">Punkty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>do 10 km/h</td><td class="num">50 zł</td><td class="num center">0</td></tr>
+              <tr><td>11–15 km/h</td><td class="num">50–100 zł</td><td class="num center">1</td></tr>
+              <tr><td>16–20 km/h</td><td class="num">100 zł</td><td class="num center">3</td></tr>
+              <tr><td>21–25 km/h</td><td class="num">200 zł</td><td class="num center">5</td></tr>
+              <tr><td>26–30 km/h</td><td class="num">300 zł</td><td class="num center">7</td></tr>
+              <tr><td>31–40 km/h</td><td class="num">800 zł (1600)</td><td class="num center">9</td></tr>
+              <tr><td>41–50 km/h</td><td class="num">1000 zł (2000)</td><td class="num center">11</td></tr>
+              <tr><td>51–60 km/h</td><td class="num">1500 zł (3000)</td><td class="num center">13</td></tr>
+              <tr><td>61–70 km/h</td><td class="num">2000 zł (4000)</td><td class="num center">14</td></tr>
+              <tr><td>powyżej 70 km/h</td><td class="num">2500 zł (5000)</td><td class="num center">15</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Inne typowe wykroczenia</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Wykroczenie</th>
+                <th class="num">Mandat</th>
+                <th class="num">Punkty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Trzymanie telefonu w ręku podczas jazdy</td><td class="num">500 zł</td><td class="num center">12</td></tr>
+              <tr><td>Niezapięte pasy bezpieczeństwa (kierujący lub pasażer)</td><td class="num">100 zł</td><td class="num center">4</td></tr>
+              <tr><td>Niezatrzymanie się przed STOP (B-20)</td><td class="num">300 zł</td><td class="num center">6</td></tr>
+              <tr><td>Wjazd na czerwonym świetle</td><td class="num">500 zł (1000)</td><td class="num center">15</td></tr>
+              <tr><td>Wyprzedzanie w niedozwolonym miejscu</td><td class="num">1000 zł (2000)</td><td class="num center">10</td></tr>
+              <tr><td>Nieustąpienie pierwszeństwa pieszemu na przejściu</td><td class="num">1500 zł (3000)</td><td class="num center">15</td></tr>
+              <tr><td>Wyprzedzanie na przejściu dla pieszych</td><td class="num">1500 zł (3000)</td><td class="num center">15</td></tr>
+              <tr><td>Niestosowanie się do zakazu wjazdu B-2</td><td class="num">500 zł (1000)</td><td class="num center">5</td></tr>
+              <tr><td>Wyprzedzanie pojazdu uprzywilejowanego</td><td class="num">1000 zł (2000)</td><td class="num center">8</td></tr>
+              <tr><td>Niestosowanie się do polecenia osoby kierującej ruchem</td><td class="num">500 zł</td><td class="num center">8</td></tr>
+              <tr><td>Naruszenie zakazu zawracania (B-23)</td><td class="num">200 zł</td><td class="num center">3</td></tr>
+              <tr><td>Cofanie w niedozwolonym miejscu (autostrada, ekspresowa)</td><td class="num">1000 zł (2000)</td><td class="num center">8</td></tr>
+              <tr><td>Przewóz dziecka do 7 lat bez fotelika</td><td class="num">300 zł</td><td class="num center">6</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Alkohol i środki odurzające</h3>
+        <div class="card warn">
+          <div class="card-title">Stan po użyciu alkoholu (0,2–0,5 ‰ we krwi · 0,1–0,25 mg/l w wydychanym powietrzu)</div>
+          <p style="margin:0">Wykroczenie. Mandat <strong>2500–30 000 zł</strong>, <strong>15 punktów</strong>, zatrzymanie prawa jazdy <strong>od 6 miesięcy do 3 lat</strong>.</p>
+        </div>
+        <div class="card warn">
+          <div class="card-title">Stan nietrzeźwości (powyżej 0,5 ‰ · powyżej 0,25 mg/l)</div>
+          <p style="margin:0">Przestępstwo (art. 178a Kodeksu karnego). Grzywna od 5000 zł, ograniczenie wolności lub <strong>do 3 lat pozbawienia wolności</strong>, zakaz prowadzenia pojazdów na <strong>3–15 lat</strong>, świadczenie pieniężne min. 5000 zł, możliwy przepadek pojazdu (od 2024 r. obligatoryjny przy stężeniu &gt; 1,5 ‰).</p>
+        </div>
+      </section>
+
+      <!-- 9. EGZAMIN -->
+      <section id="egzamin">
+        <h2>10. Egzamin państwowy</h2>
+        <p class="lead">Przebieg, zadania i błędy dyskwalifikujące — zgodnie z rozporządzeniem MI z dn. 28.06.2019 r. w sprawie egzaminowania osób ubiegających się o uprawnienia do kierowania pojazdami.</p>
+
+        <h3>Część teoretyczna</h3>
+        <ul>
+          <li><strong>32 pytania</strong> generowane losowo z bazy PWPW: 20 podstawowych + 12 specjalistycznych.</li>
+          <li><strong>Czas:</strong> 25 minut. Każde pytanie wyświetlane indywidualnie z limitem 20 s na zapoznanie się i 15 s na odpowiedź.</li>
+          <li>Pytania podstawowe — odpowiedzi TAK/NIE. Pytania specjalistyczne — wybór A, B lub C (jednokrotny).</li>
+          <li>Punktacja: 1, 2 lub 3 punkty za pytanie zależnie od wagi. <strong>Próg zdania: 68 z 74 punktów</strong> (~92 %).</li>
+          <li>Brak możliwości powrotu do wcześniejszych pytań.</li>
+        </ul>
+
+        <h3>Część praktyczna — plac manewrowy</h3>
+        <p>Trzy obowiązkowe zadania (wszystkie należy wykonać prawidłowo):</p>
+        <ol class="checklist">
+          <li>
+            <input type="checkbox" id="ex1" />
+            <label for="ex1"><strong>Przygotowanie do jazdy</strong> — regulacja fotela, lusterek, zagłówka, zapięcie pasów, sprawdzenie wskazanego przez egzaminatora elementu (poziom oleju, płynu chłodniczego, działanie świateł, sygnału dźwiękowego).</label>
+          </li>
+          <li>
+            <input type="checkbox" id="ex2" />
+            <label for="ex2"><strong>Ruszanie z miejsca + jazda pasem ruchu do przodu i do tyłu</strong> — zadanie wykonujemy w wyznaczonym pasie szerokości ok. 3 m. Niedopuszczalne najechanie na linię ograniczającą.</label>
+          </li>
+          <li>
+            <input type="checkbox" id="ex3" />
+            <label for="ex3"><strong>Parkowanie wybrane przez WORD</strong> — równoległe, prostopadłe lub skośne (zależnie od ośrodka). Maksymalnie dwie korekty toru jazdy.</label>
+          </li>
+        </ol>
+
+        <h3>Część praktyczna — jazda w ruchu drogowym (~40 minut)</h3>
+        <p>Egzaminator wskazuje kolejne zadania:</p>
+        <ul>
+          <li>Włączanie się do ruchu z miejsca postojowego.</li>
+          <li>Jazda na wprost, skręt w prawo, skręt w lewo (różne typy skrzyżowań).</li>
+          <li>Przejazd skrzyżowania o ruchu okrężnym (ronda).</li>
+          <li>Zmiana pasa ruchu i kierunku jazdy.</li>
+          <li>Wyprzedzanie, omijanie i wymijanie.</li>
+          <li>Zawracanie.</li>
+          <li>Hamowanie awaryjne (zazwyczaj zlecane na placu).</li>
+          <li>Przejazd przez przejście dla pieszych i przejazd dla rowerzystów.</li>
+          <li>Parkowanie na drodze publicznej.</li>
+        </ul>
+
+        <h3>Błędy skutkujące przerwaniem egzaminu</h3>
+        <div class="card warn">
+          <div class="card-title">Niedostateczny — egzamin przerwany</div>
+          <ul style="margin:0; padding-left:18px">
+            <li>Spowodowanie kolizji lub wypadku.</li>
+            <li>Wjazd na skrzyżowanie przy <strong>czerwonym świetle</strong>.</li>
+            <li>Niezatrzymanie się przed znakiem <strong>B-20 „STOP"</strong>.</li>
+            <li>Wjechanie na drogę oznakowaną zakazem wjazdu (B-2).</li>
+            <li>Przekroczenie dopuszczalnej prędkości o więcej niż <strong>20 km/h</strong> w obszarze zabudowanym.</li>
+            <li>Stworzenie zagrożenia bezpieczeństwa — zmuszenie innego uczestnika ruchu do gwałtownego hamowania lub ominięcia.</li>
+            <li>Nieustąpienie pierwszeństwa pieszemu na przejściu (D-6).</li>
+            <li>Nieustąpienie pierwszeństwa pojazdowi z drogi z pierwszeństwem.</li>
+            <li>Niezastosowanie się do polecenia egzaminatora (z wyjątkiem polecenia powodującego zagrożenie).</li>
+            <li>Najechanie na pachołek lub krawężnik wysoki na placu manewrowym.</li>
+            <li>Dwukrotne nieprawidłowe wykonanie tego samego zadania na placu.</li>
+          </ul>
+        </div>
+
+        <div class="card tip">
+          <div class="card-title">Drobne błędy — punktowane, ale nie dyskwalifikują</div>
+          <p style="margin:0">Niewłaściwe użycie kierunkowskazów, niewłaściwa prędkość (ale w granicach dopuszczalnych), zbyt wczesne lub zbyt późne zmiany biegów, niepłynna jazda. Egzaminator może uwzględnić maksymalnie kilka takich potknięć.</p>
+        </div>
+
+        <h3>Okres próbny</h3>
+        <p>Pierwszy rok od uzyskania prawa jazdy kategorii B. W tym okresie kierowca:</p>
+        <ul>
+          <li>nie może przekraczać prędkości <strong>50 km/h w obszarze zabudowanym, 80 km/h poza nim, 100 km/h na drogach ekspresowych i autostradach</strong>,</li>
+          <li>w pierwszych 8 miesiącach musi mieć z tyłu i z przodu pojazdu zielony liść („zielony klon"),</li>
+          <li>ma niższy limit punktów karnych — <strong>20 zamiast 24</strong>,</li>
+          <li>w razie 2 wykroczeń (z 3 możliwych w okresie próbnym) musi odbyć kurs reedukacyjny.</li>
+        </ul>
+      </section>
+
+      <!-- 10. KONTEKST MIĘDZYNARODOWY -->
+      <section id="miedzynarodowy">
+        <h2>11. Kontekst międzynarodowy</h2>
+        <p class="lead">Konwencja Wiedeńska o ruchu drogowym z 1968 r. ujednolica zasady ruchu w blisko 80 krajach — w tym we wszystkich państwach UE, na terenie których obowiązuje polskie prawo jazdy.</p>
+
+        <h3>Polskie prawo jazdy za granicą</h3>
+        <ul>
+          <li>Honorowane <strong>bez dodatkowych dokumentów</strong> we wszystkich państwach Unii Europejskiej, EOG i Konfederacji Szwajcarskiej oraz w krajach-stronach Konwencji Wiedeńskiej.</li>
+          <li>W krajach poza Konwencją (m.in. <strong>USA, Kanada, Chiny, Japonia, Australia, Wielka Brytania od 2021 dla pobytów &gt; 12 miesięcy</strong>) zalecane jest dodatkowo <strong>Międzynarodowe Prawo Jazdy (MPJ)</strong>.</li>
+          <li>MPJ wystawia starosta powiatu (wydział komunikacji); jest <strong>ważne 3 lata</strong>, ale tylko łącznie z polskim prawem jazdy.</li>
+          <li>Polskie prawo jazdy wymienia się obowiązkowo na lokalne, jeżeli kierowca staje się rezydentem kraju pobytu (zwykle &gt; 6 miesięcy).</li>
+        </ul>
+
+        <h3>Wspólne zasady według Konwencji</h3>
+        <ul>
+          <li><strong>Kształty znaków</strong> są ujednolicone: trójkąt = ostrzeżenie, koło z czerwoną obwódką = zakaz, niebieskie koło = nakaz, kwadrat lub prostokąt = informacja.</li>
+          <li><strong>Kategorie prawa jazdy</strong> (A — motocykle, B — samochody osobowe do 3,5 t, C — ciężarowe, D — autobusy) i ich zakres są spójne między krajami sygnatariuszami.</li>
+          <li><strong>Strona ruchu:</strong> w UE prawostronna (oprócz Wielkiej Brytanii, Irlandii, Malty i Cypru).</li>
+          <li><strong>Dokumenty wymagane podczas kontroli:</strong> prawo jazdy, dowód rejestracyjny, polisa OC (w niektórych krajach również dowód osobisty lub paszport).</li>
+        </ul>
+
+        <h3>Zielona Karta i ubezpieczenie OC</h3>
+        <p>Polska polisa OC zapewnia ochronę we wszystkich krajach UE oraz w państwach sygnatariuszach systemu Zielonej Karty (m.in. <strong>Albania, Bośnia i Hercegowina, Iran, Izrael, Macedonia Płn., Maroko, Mołdawia, Serbia, Tunezja, Turcja, Ukraina, Wielka Brytania</strong>). Do przekraczania granicy z tymi krajami wymagany jest <strong>papierowy certyfikat Zielonej Karty</strong> (wydawany przez ubezpieczyciela bezpłatnie).</p>
+
+        <div class="card info">
+          <div class="card-title">Numery alarmowe w UE</div>
+          <p style="margin:0"><strong>112</strong> — uniwersalny numer alarmowy działający we wszystkich krajach Unii Europejskiej oraz większości krajów europejskich. Przyjmuje zgłoszenia we wszystkich językach urzędowych UE.</p>
+        </div>
+      </section>
+
+      <footer style="margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted);">
+        <p style="margin: 0">Materiał ma charakter pomocniczy. Wiążące są aktualne przepisy: ustawy z dnia 20 czerwca 1997 r. — Prawo o ruchu drogowym, Kodeksu wykroczeń, rozporządzenia Ministra Infrastruktury z dn. 31.07.2002 w sprawie znaków i sygnałów drogowych oraz rozporządzenia w sprawie warunków technicznych pojazdów (z późn. zm.).</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Pasek postępu czytania
+    (function() {
+      const bar = document.getElementById('progressBar');
+      function update() {
+        const h = document.documentElement;
+        const scrolled = h.scrollTop;
+        const max = h.scrollHeight - h.clientHeight;
+        const pct = max > 0 ? (scrolled / max) * 100 : 0;
+        bar.style.width = pct + '%';
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
+      update();
+    })();
+
+    // Tryb skupienia
+    (function() {
+      const btn = document.querySelector('.btn[data-action="focus"]');
+      const KEY = 'pjb_focus_mode';
+      function apply(on) {
+        document.body.classList.toggle('focus-mode', on);
+        btn.setAttribute('aria-pressed', String(on));
+        try { localStorage.setItem(KEY, on ? '1' : '0'); } catch (e) {}
+      }
+      let saved = '0';
+      try { saved = localStorage.getItem(KEY) || '0'; } catch (e) {}
+      apply(saved === '1');
+      btn.addEventListener('click', () => apply(!document.body.classList.contains('focus-mode')));
+    })();
+
+    // Aktywna pozycja w spisie treści
+    (function() {
+      const links = document.querySelectorAll('.sidebar a[href^="#"]');
+      const map = new Map();
+      links.forEach(a => {
+        const id = a.getAttribute('href').slice(1);
+        const sec = document.getElementById(id);
+        if (sec) map.set(sec, a);
+      });
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          const link = map.get(e.target);
+          if (!link) return;
+          if (e.isIntersecting) {
+            links.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+      map.forEach((_, sec) => observer.observe(sec));
+    })();
+
+    // Wyszukiwarka
+    (function() {
+      const input = document.getElementById('search');
+      const counter = document.getElementById('searchCount');
+      const content = document.querySelector('.content');
+      const SKIP_TAGS = new Set(['SCRIPT', 'STYLE', 'MARK', 'NOSCRIPT', 'INPUT', 'TEXTAREA']);
+
+      function escapeRegex(s) {
+        return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      }
+
+      function clearMarks(root) {
+        const marks = root.querySelectorAll('mark');
+        marks.forEach(m => {
+          const parent = m.parentNode;
+          if (!parent) return;
+          parent.replaceChild(document.createTextNode(m.textContent), m);
+          parent.normalize();
+        });
+      }
+
+      function highlight(node, regex) {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.nodeValue;
+          if (!text || !text.trim()) return 0;
+          regex.lastIndex = 0;
+          if (!regex.test(text)) return 0;
+
+          regex.lastIndex = 0;
+          const frag = document.createDocumentFragment();
+          let lastIdx = 0;
+          let count = 0;
+          let m;
+          while ((m = regex.exec(text)) !== null) {
+            if (m.index > lastIdx) frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
+            const mark = document.createElement('mark');
+            mark.textContent = m[0];
+            frag.appendChild(mark);
+            lastIdx = m.index + m[0].length;
+            count++;
+            if (m[0].length === 0) regex.lastIndex++;
+          }
+          if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+          if (node.parentNode) node.parentNode.replaceChild(frag, node);
+          return count;
+        }
+        if (node.nodeType !== Node.ELEMENT_NODE) return 0;
+        const tag = node.tagName;
+        if (SKIP_TAGS.has(tag)) return 0;
+        if (tag.toLowerCase() === 'svg') return 0;
+
+        let total = 0;
+        const children = Array.from(node.childNodes);
+        for (const child of children) total += highlight(child, regex);
+        return total;
+      }
+
+      let timer;
+      function run() {
+        clearMarks(content);
+        const q = input.value.trim();
+        if (q.length < 2) { counter.textContent = ''; return; }
+        const regex = new RegExp(escapeRegex(q), 'gi');
+        const count = highlight(content, regex);
+        if (count > 0) {
+          counter.textContent = `${count} ${count === 1 ? 'dopasowanie' : (count < 5 ? 'dopasowania' : 'dopasowań')}`;
+          const first = content.querySelector('mark');
+          if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          counter.textContent = 'brak wyników';
+        }
+      }
+
+      input.addEventListener('input', () => {
+        clearTimeout(timer);
+        timer = setTimeout(run, 200);
+      });
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') { input.value = ''; clearMarks(content); counter.textContent = ''; }
+      });
+    })();
+  </script>
+</body>
+</html>
