@@ -453,6 +453,54 @@
       font-weight: 600;
     }
 
+    /* Szybki test — moduł interaktywnych pytań TAK/NIE z natychmiastową informacją zwrotną */
+    .quick-quiz {
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--blue);
+      border-radius: 4px;
+      padding: 18px 22px;
+      margin: 36px 0 16px;
+      background: #f8f9fb;
+    }
+    .quick-quiz-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--blue);
+      margin: 0 0 14px;
+    }
+    .quick-quiz-title::before { content: "→ "; opacity: 0.5; }
+    .quiz-question { padding: 14px 0; border-top: 1px solid var(--border); }
+    .quiz-question:first-of-type { border-top: none; padding-top: 0; }
+    .quiz-q { font-size: 14px; margin: 0 0 10px; line-height: 1.5; }
+    .quiz-buttons { display: flex; gap: 8px; }
+    .quiz-btn {
+      border: 1px solid var(--border-strong);
+      background: var(--bg);
+      padding: 6px 18px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+      min-width: 64px;
+      color: var(--text);
+    }
+    .quiz-btn:hover { background: var(--code-bg); }
+    .quiz-btn.selected { background: var(--text); color: var(--bg); border-color: var(--text); }
+    .quiz-feedback {
+      margin-top: 10px;
+      font-size: 13px;
+      line-height: 1.55;
+      padding: 10px 12px;
+      border-radius: 4px;
+      display: none;
+    }
+    .quiz-feedback.shown { display: block; }
+    .quiz-feedback.correct { background: #ecf7ec; color: #1e5e1e; border-left: 3px solid var(--green); }
+    .quiz-feedback.wrong   { background: #fdeeee; color: #8b1f1f; border-left: 3px solid var(--red); }
+
     /* Mobile */
     @media (max-width: 860px) {
       .layout {
@@ -518,6 +566,7 @@
         <li><a href="#technika">Stan techniczny pojazdu</a></li>
         <li><a href="#kary">Mandaty i punkty karne</a></li>
         <li><a href="#egzamin">Egzamin państwowy</a></li>
+        <li><a href="#pierwsza-pomoc">Pierwsza pomoc</a></li>
         <li><a href="#miedzynarodowy">Kontekst międzynarodowy</a></li>
       </ol>
 
@@ -583,7 +632,49 @@
         <p>Ostrożność polegająca na zwiększeniu uwagi i dostosowaniu zachowania uczestnika ruchu do warunków i sytuacji zmieniających się na drodze, w stopniu umożliwiającym <strong>odpowiednio szybkie reagowanie</strong>.</p>
 
         <h3>Ustąpienie pierwszeństwa</h3>
-        <p>Powstrzymanie się od ruchu, jeżeli ruch ten mógłby zmusić innego uczestnika do <strong>zmiany kierunku, pasa ruchu lub istotnej zmiany prędkości</strong>.</p>
+        <p>Powstrzymanie się od ruchu, jeżeli ruch ten mógłby zmusić innego uczestnika do <strong>zmiany kierunku, pasa ruchu lub istotnej zmiany prędkości</strong>. Nie zawsze oznacza zatrzymanie — wystarczy zwolnić, jeżeli pozwala to spokojnie wpuścić uprzywilejowany pojazd.</p>
+
+        <h3>Skrzyżowanie</h3>
+        <p>Przecięcie się w jednym poziomie dróg <strong>mających jezdnię</strong>, ich połączenie lub rozwidlenie, łącznie z powierzchniami utworzonymi przez takie przecięcia. Na skrzyżowaniu działają znaki regulujące pierwszeństwo (D-1, A-7, B-20) i — w razie ich braku — zasada prawej ręki.</p>
+
+        <div class="card alert">
+          <div class="card-title">Co skrzyżowaniem NIE jest (typowa pułapka)</div>
+          <ul style="margin:0; padding-left:18px">
+            <li><strong>Wyjazd z drogi gruntowej, polnej lub leśnej</strong> na drogę utwardzoną.</li>
+            <li><strong>Wyjazd z parkingu, stacji paliw, posesji</strong> czy stacji obsługi.</li>
+            <li><strong>Wyjazd z drogi wewnętrznej</strong> oznaczonej znakiem D-46 / D-47.</li>
+            <li>Połączenie z drogą oznaczoną jako „strefa zamieszkania" (D-40).</li>
+          </ul>
+          <p style="margin: 12px 0 0">W tych miejscach <strong>nie działa zasada prawej ręki</strong>. Kierujący wyjeżdżający z drogi nieuznawanej za drogę publiczną <strong>zawsze ustępuje pierwszeństwa</strong> wszystkim pojazdom poruszającym się drogą, na którą wjeżdża (włączanie się do ruchu, art. 17).</p>
+        </div>
+
+        <div class="quick-quiz">
+          <div class="quick-quiz-title">Szybki test</div>
+          <div class="quiz-question" data-answer="tak" data-explain="Definicja drogi (art. 2 pkt 1 PoRD) obejmuje jezdnię, pobocze, chodnik oraz drogę dla pieszych lub rowerów.">
+            <p class="quiz-q">Czy chodnik jest częścią drogi w rozumieniu ustawy?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="nie" data-explain="Wystarczy powstrzymać się od ruchu tak, by nie zmusić innego uczestnika do zmiany kierunku lub istotnej zmiany prędkości. Bezwzględne zatrzymanie obowiązuje tylko przy znaku B-20 STOP.">
+            <p class="quiz-q">Czy ustąpienie pierwszeństwa zawsze oznacza obowiązek zatrzymania pojazdu?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="nie" data-explain="Wyjazd z parkingu, drogi gruntowej czy posesji to nie skrzyżowanie. Kierujący wykonuje wówczas manewr włączania się do ruchu (art. 17) i ustępuje wszystkim.">
+            <p class="quiz-q">Czy wyjazd z parkingu na drogę publiczną jest skrzyżowaniem?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
       </section>
 
       <!-- 2. HIERARCHIA -->
@@ -622,6 +713,26 @@
           <li><strong>Ramiona wyciągnięte poziomo (na boki)</strong> — odpowiednik światła czerwonego dla kierunków, z których policjant widoczny jest przodem lub tyłem; <strong>zielonego</strong> dla kierunków, z których widoczny jest bokiem.</li>
           <li><strong>Lewe ramię uniesione w przód i w bok</strong> — sygnał o zmianie nadawanego sygnału z zielonego na żółty (analogicznie do żółtego światła).</li>
         </ul>
+
+        <div class="quick-quiz">
+          <div class="quick-quiz-title">Szybki test</div>
+          <div class="quiz-question" data-answer="tak" data-explain="Polecenia osoby kierującej ruchem są na samym szczycie hierarchii — nadrzędne wobec sygnalizacji świetlnej i wszystkich znaków drogowych.">
+            <p class="quiz-q">Czy polecenie policjanta jest ważniejsze od czerwonego światła?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="nie" data-explain="Odwrotnie — w razie sprzeczności znaki pionowe są nadrzędne nad poziomymi. Zasada prawej ręki działa dopiero, gdy żaden inny element hierarchii nie reguluje pierwszeństwa.">
+            <p class="quiz-q">Czy w razie sprzeczności znak poziomy ma pierwszeństwo nad pionowym?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
       </section>
 
       <!-- 3. ZASADY OSTROŻNOŚCI -->
@@ -702,6 +813,44 @@
         <div class="card warn">
           <div class="card-title">Zapamiętaj</div>
           <p style="margin:0">Szczególna ostrożność = <strong>aktywna obserwacja + gotowość do natychmiastowej reakcji</strong>. Sama redukcja prędkości nie wystarcza. Brak szczególnej ostrożności tam, gdzie ustawa jej wymaga, jest traktowany jako wykroczenie i zazwyczaj jako podstawowa przyczyna w razie zdarzenia drogowego.</p>
+        </div>
+
+        <h3>Zasada ograniczonego zaufania (art. 4 PoRD)</h3>
+        <p>Domyślnie kierujący <strong>ma prawo zakładać</strong>, że inni uczestnicy ruchu przestrzegają przepisów. Jednak <strong>okoliczności mogą wskazywać</strong>, że inny uczestnik może zachować się nieprawidłowo — wtedy nakaz zmienia się: kierujący <strong>musi przewidywać błędne zachowanie</strong> i być gotów na reakcję.</p>
+
+        <h4>Sytuacje, w których obowiązuje pełne ograniczenie zaufania</h4>
+        <ul>
+          <li><strong>Dziecko do 15. roku życia</strong> przy jezdni lub na chodniku — może niespodziewanie wbiec na drogę.</li>
+          <li><strong>Osoba o widocznych oznakach niesprawności</strong> — niewidomy z białą laską, osoba o kulach, osoba na wózku.</li>
+          <li><strong>Osoba w widocznym stanie nietrzeźwości</strong> — chwiejny chód, zataczanie się.</li>
+          <li><strong>Osoba w podeszłym wieku</strong> w pobliżu jezdni — może źle ocenić odległość lub prędkość.</li>
+          <li><strong>Pojazd z literą „L"</strong> (nauka jazdy) — kierowca uczący się może popełnić błąd przewidywalny dla doświadczonego.</li>
+          <li><strong>Kierowca, który już wcześniej zachował się nietypowo</strong> — np. zatoczył się, niespodziewanie hamował, zmieniał pasy bez kierunkowskazu.</li>
+        </ul>
+
+        <div class="card info">
+          <div class="card-title">Pamiętaj</div>
+          <p style="margin:0">Ograniczone zaufanie nie oznacza paranoi — nie musisz zakładać, że <strong>każdy</strong> popełni błąd. Reagujesz tylko na <strong>konkretne sygnały</strong>, że ktoś może zachować się nietypowo. Egzaminator zwraca uwagę, czy widzisz dziecko biegnące w kierunku przejścia i czy odpowiednio wcześnie zwalniasz.</p>
+        </div>
+
+        <div class="quick-quiz">
+          <div class="quick-quiz-title">Szybki test</div>
+          <div class="quiz-question" data-answer="nie" data-explain="Szczególna ostrożność jest wymagana tylko w sytuacjach wymienionych w ustawie (m.in. zmiana pasa, wyprzedzanie, zbliżanie się do skrzyżowania, przejście dla pieszych). Poza nimi obowiązuje ostrożność zwykła.">
+            <p class="quiz-q">Czy szczególna ostrożność jest wymagana w każdej sytuacji na drodze?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="tak" data-explain="Widząc dziecko przy jezdni masz obowiązek przewidzieć, że może wtargnąć na drogę. Zasada ograniczonego zaufania wymaga zwolnienia i gotowości do zatrzymania.">
+            <p class="quiz-q">Widząc dziecko biegnące w kierunku przejścia powinieneś zwolnić, nawet jeżeli pali się dla Ciebie zielone światło?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
         </div>
       </section>
 
@@ -977,6 +1126,26 @@
           <li><strong>S-3 sygnał kierunkowy</strong> – strzałka w sygnalizatorze; dotyczy wyłącznie wskazanego kierunku.</li>
           <li><strong>Sygnalizacja taktowa</strong> przy przejazdach kolejowych (czerwony pulsujący lub dwa naprzemienne) – obowiązek zatrzymania.</li>
         </ul>
+
+        <div class="quick-quiz">
+          <div class="quick-quiz-title">Szybki test</div>
+          <div class="quiz-question" data-answer="tak" data-explain="Bezwzględny obowiązek — zatrzymanie pojazdu przed linią P-12 (lub przed znakiem, jeśli linii nie ma) i ustąpienie pierwszeństwa pojazdom z drogi z pierwszeństwem.">
+            <p class="quiz-q">Czy przy znaku B-20 STOP musisz się zatrzymać nawet wtedy, gdy droga z pierwszeństwem jest pusta?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="nie" data-explain="Sam C-12 oznacza tylko nakaz jazdy w kierunku wyznaczonym strzałkami. Pierwszeństwo pojazdów na rondzie wynika dopiero z dodania znaku A-7 (ustąp pierwszeństwa) przed wjazdem.">
+            <p class="quiz-q">Czy znak C-12 (ruch okrężny) sam z siebie daje pierwszeństwo pojazdom poruszającym się po rondzie?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
       </section>
 
       <!-- 4. PRĘDKOŚCI -->
@@ -1050,6 +1219,69 @@
           <div class="card-title">Sankcja</div>
           <p style="margin:0">Przekroczenie dopuszczalnej prędkości o ponad <strong>50 km/h w obszarze zabudowanym</strong> skutkuje <strong>zatrzymaniem prawa jazdy na 3 miesiące</strong> (art. 135 ust. 1 PoRD). Po upływie tego okresu okres zostaje przedłużony do 6 miesięcy, jeśli kierowca prowadził w czasie zatrzymania.</p>
         </div>
+
+        <h3>Bezpieczny odstęp — zasada 2 sekund</h3>
+        <p>Bezpieczny odstęp od pojazdu poprzedzającego mierzymy <strong>czasem</strong>, a nie metrami — bo przy większej prędkości potrzebujemy więcej miejsca na zatrzymanie.</p>
+
+        <h4>Jak zmierzyć odstęp w praktyce</h4>
+        <ol>
+          <li>Wybierz <strong>nieruchomy punkt</strong> na poboczu (drzewo, znak, latarnia).</li>
+          <li>Gdy pojazd przed Tobą minie ten punkt, zacznij liczyć: <em>„dwadzieścia jeden, dwadzieścia dwa"</em>.</li>
+          <li>Jeżeli mijasz punkt <strong>przed skończeniem liczenia</strong>, odstęp jest za mały — zwolnij.</li>
+        </ol>
+
+        <h4>Zalecane wartości odstępu</h4>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Warunki</th><th class="num">Minimalny odstęp</th><th>Praktycznie</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Sucho, dobra widoczność</td><td class="num">2 sekundy</td><td>~ 25 m przy 50 km/h, ~ 50 m przy 90 km/h</td></tr>
+              <tr><td>Mokra nawierzchnia, deszcz</td><td class="num">4 sekundy</td><td>droga hamowania wydłuża się 1,5–2-krotnie</td></tr>
+              <tr><td>Śnieg, lód, mgła</td><td class="num">6 sekund</td><td>przyczepność spada wielokrotnie</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>Odstępy ustawowe (art. 19a PoRD)</h4>
+        <ul>
+          <li><strong>Tunel powyżej 500 m</strong> — minimum <strong>50 m</strong> między pojazdami osobowymi.</li>
+          <li><strong>Autostrada i droga ekspresowa</strong> — minimum <strong>50 m</strong> między pojazdami (poza zatorem). Praktyczna zasada: <em>„połowa wskazanej prędkości w metrach"</em> — przy 100 km/h trzymaj 50 m.</li>
+        </ul>
+
+        <div class="card alert">
+          <div class="card-title">Częsty błąd egzaminacyjny</div>
+          <p style="margin:0">Jazda zbyt blisko pojazdu poprzedzającego („ogon"). Egzaminator obserwuje, czy widoczne są tablice rejestracyjne pojazdu z przodu — jeżeli nie, odstęp jest za mały. Zbyt mały odstęp w ruchu drogowym może być <strong>powodem zakończenia egzaminu</strong>.</p>
+        </div>
+
+        <div class="quick-quiz">
+          <div class="quick-quiz-title">Szybki test</div>
+          <div class="quiz-question" data-answer="nie" data-explain="Limit ustawowy w obszarze zabudowanym to 50 km/h przez całą dobę (art. 20 ust. 1 PoRD). Brak znaku oznacza limit ustawowy, nie zezwolenie na szybszą jazdę.">
+            <p class="quiz-q">Czy w obszarze zabudowanym wolno jechać 60 km/h, jeżeli nie ma znaku ograniczającego prędkość?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="nie" data-explain="Przy mokrej nawierzchni odstęp należy zwiększyć do co najmniej 4 sekund — droga hamowania wydłuża się 1,5–2-krotnie.">
+            <p class="quiz-q">Czy odstęp 2 sekund od poprzedzającego pojazdu wystarcza w deszczu?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="tak" data-explain="W tunelu powyżej 500 m oraz na autostradzie/drodze ekspresowej minimalny odstęp to 50 m między pojazdami (poza zatorem) — art. 19a PoRD.">
+            <p class="quiz-q">Czy w tunelu powyżej 500 m obowiązuje minimalny odstęp 50 m od pojazdu poprzedzającego?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
       </section>
 
       <!-- 5. SKRZYŻOWANIA -->
@@ -1099,6 +1331,63 @@
         <div class="card info">
           <div class="card-title">Kierunkowskaz na rondzie</div>
           <p style="margin:0">Wjeżdżając na rondo <strong>nie używamy</strong> lewego kierunkowskazu (chyba że bezpośrednio zmieniamy pas). <strong>Włączamy prawy kierunkowskaz</strong> dopiero przed zjazdem z ronda.</p>
+        </div>
+
+        <h3>Tramwaj — pierwszeństwo i trzy wyjątki</h3>
+        <p>Tramwaj porusza się po wydzielonym torowisku, ma <strong>długą drogę hamowania</strong> i nie może wykonać uniku. Dlatego ustawa daje mu szczególne pierwszeństwo.</p>
+
+        <div class="card info">
+          <div class="card-title">Zasada główna — Art. 25 ust. 2 PoRD</div>
+          <p style="margin:0">Na <strong>skrzyżowaniu równorzędnym</strong> kierujący pojazdem szynowym ma <strong>pierwszeństwo przed innymi pojazdami</strong>, niezależnie od kierunku, z którego nadjeżdża. Nawet wobec pojazdu nadjeżdżającego z prawej strony tramwaju.</p>
+        </div>
+
+        <h4>Trzy wyjątki — kiedy tramwaj NIE ma pierwszeństwa</h4>
+        <ol class="hierarchy">
+          <li>
+            <strong>Sygnalizacja świetlna na skrzyżowaniu</strong>
+            <small>Jeżeli skrzyżowanie ma sygnalizację, tramwaj porusza się <strong>tylko zgodnie z nią</strong> (sygnalizator ogólny S-1 lub specjalny S-2 dla tramwajów). Czerwone światło zatrzymuje również tramwaj.</small>
+          </li>
+          <li>
+            <strong>Tramwaj wyjeżdża z drogi podporządkowanej</strong>
+            <small>Jeżeli pierwszeństwo regulują znaki (D-1 droga z pierwszeństwem, A-7 ustąp pierwszeństwa, B-20 STOP), tramwaj <strong>traktujemy jak każdy inny pojazd</strong>. Tramwaj na drodze podporządkowanej ustępuje pojazdom z drogi z pierwszeństwem.</small>
+          </li>
+          <li>
+            <strong>Pojazd uprzywilejowany w akcji</strong>
+            <small>Karetka, straż pożarna, policja — pojazdy uprzywilejowane mają pierwszeństwo <strong>nawet przed tramwajem</strong>. Tramwaj musi ustąpić jak każdy inny uczestnik ruchu.</small>
+          </li>
+        </ol>
+
+        <div class="card alert">
+          <div class="card-title">Praktyczna pułapka — skręt w lewo obok torowiska</div>
+          <p style="margin:0">Skręcając w lewo z pasa biegnącego obok torowiska, <strong>zawsze sprawdź, czy tramwaj nie nadjeżdża z naprzeciwka</strong>. Tramwaj ma pierwszeństwo — masz obowiązek go przepuścić, niezależnie od tego, że Ty jedziesz na wprost po drodze z pierwszeństwem.</p>
+        </div>
+
+        <div class="quick-quiz">
+          <div class="quick-quiz-title">Szybki test</div>
+          <div class="quiz-question" data-answer="nie" data-explain="Na skrzyżowaniu równorzędnym ustępuje się pojazdowi z prawej strony — to klasyczna „zasada prawej ręki".">
+            <p class="quiz-q">Czy na skrzyżowaniu równorzędnym ustępujesz pojazdowi nadjeżdżającemu z lewej strony?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="nie" data-explain="Tramwaj nie zawsze ma pierwszeństwo. Trzy wyjątki: (1) sygnalizacja świetlna, (2) wjazd tramwaju z drogi podporządkowanej, (3) pojazd uprzywilejowany w akcji.">
+            <p class="quiz-q">Czy tramwaj ma pierwszeństwo zawsze i wszędzie?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="tak" data-explain="Skręcając w lewo musisz przepuścić tramwaj jadący z naprzeciwka, mimo że Ty jedziesz po drodze z pierwszeństwem. Tramwaj na skrzyżowaniu równorzędnym ma pierwszeństwo niezależnie od kierunku.">
+            <p class="quiz-q">Czy skręcając w lewo musisz ustąpić pierwszeństwa tramwajowi nadjeżdżającemu z naprzeciwka?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
         </div>
       </section>
 
@@ -1328,6 +1617,34 @@
           <p style="margin:0">W razie zatoru na drodze o co najmniej dwóch pasach w jednym kierunku, pojazdy poruszające się skrajnym lewym pasem zjeżdżają w lewo, a pojazdy z pozostałych pasów — w prawo, tworząc <strong>wolny pas dla służb ratowniczych</strong>.</p>
         </div>
         <p>W przypadku zwężenia liczby pasów (z 2 do 1, z 3 do 2), kierujący na pasie zanikającym ma <strong>prawo wjechać przed pojazd</strong> jadący pasem docelowym, naprzemiennie po jednym pojeździe z każdego pasa — to <strong>jazda na suwak</strong>. Stosuje się <strong>bezpośrednio przed miejscem zwężenia</strong>.</p>
+
+        <div class="quick-quiz">
+          <div class="quick-quiz-title">Szybki test</div>
+          <div class="quiz-question" data-answer="nie" data-explain="Objechanie zaparkowanego pojazdu to omijanie. Wyprzedzanie dotyczy tylko poruszających się uczestników ruchu jadących w tym samym kierunku.">
+            <p class="quiz-q">Czy objechanie zaparkowanego samochodu to wyprzedzanie?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="tak" data-explain="Rondo jest wyjątkiem od ogólnego zakazu wyprzedzania na skrzyżowaniach. Innym wyjątkiem jest droga z pierwszeństwem oraz skrzyżowanie z sygnalizacją.">
+            <p class="quiz-q">Czy na rondzie z A-7 wolno wyprzedzać inny pojazd?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="nie" data-explain="Wymijanie dotyczy pojazdów poruszających się w przeciwnym kierunku. To codzienny manewr na każdej drodze dwukierunkowej.">
+            <p class="quiz-q">Czy wymijanie to przejeżdżanie obok pojazdu jadącego w tym samym kierunku?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
       </section>
 
       <!-- 7. STAN TECHNICZNY -->
@@ -1433,6 +1750,90 @@
           </table>
         </div>
         <p>Na mokrej nawierzchni droga hamowania wydłuża się <strong>1,5–2-krotnie</strong>, na śniegu lub lodzie — kilkukrotnie.</p>
+
+        <h3>Kontrolki na desce rozdzielczej</h3>
+        <p>Kolor kontrolki niesie informację o pilności reakcji. Reguła: <strong>czerwona = STOP, żółta/pomarańczowa = SERWIS, zielona/niebieska = INFO</strong>.</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th>Kolor</th><th>Znaczenie</th><th>Reakcja</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span style="display:inline-block;width:10px;height:10px;background:#c63030;border-radius:50%;vertical-align:middle"></span> Czerwona</td>
+                <td>Awaria zagrażająca bezpieczeństwu lub trwałości pojazdu</td>
+                <td>Bezpiecznie się <strong>zatrzymać</strong> i sprawdzić problem.</td>
+              </tr>
+              <tr>
+                <td><span style="display:inline-block;width:10px;height:10px;background:#d6a800;border-radius:50%;vertical-align:middle"></span> Żółta / pomarańczowa</td>
+                <td>Awaria niewymagająca natychmiastowego zatrzymania</td>
+                <td>Można jechać ostrożnie do najbliższego serwisu.</td>
+              </tr>
+              <tr>
+                <td><span style="display:inline-block;width:10px;height:10px;background:#2f7a2f;border-radius:50%;vertical-align:middle"></span> Zielona / niebieska</td>
+                <td>Informacja o aktywnym systemie</td>
+                <td>Brak działania — to potwierdzenie pracy układu.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4>Czerwone — alarm, zatrzymaj się</h4>
+        <ul>
+          <li><strong>Niskie ciśnienie oleju</strong> (puszka oliwy) — natychmiast zatrzymaj silnik. Dalsza jazda grozi zatarciem.</li>
+          <li><strong>Wysoka temperatura silnika</strong> (termometr w cieczy) — pozwól silnikowi ostygnąć przed uzupełnieniem płynu.</li>
+          <li><strong>Brak ładowania akumulatora</strong> (akumulator) — alternator nie ładuje; dojedź do serwisu na zapasie energii.</li>
+          <li><strong>Hamulec ręczny / niski poziom płynu hamulcowego</strong> (wykrzyknik w okręgu) — sprawdź zaciągnięcie hamulca; jeżeli świeci nadal, nie kontynuuj jazdy.</li>
+          <li><strong>Niezapięte pasy bezpieczeństwa</strong> — zapnij pasy.</li>
+          <li><strong>Awaria poduszki powietrznej (airbag)</strong> — pasażerowie nie są chronieni; pilna wizyta w serwisie.</li>
+        </ul>
+
+        <h4>Żółte / pomarańczowe — uwaga, do serwisu</h4>
+        <ul>
+          <li><strong>Check engine</strong> (kontur silnika) — kontrolka systemu diagnostycznego OBD; usterka w pracy silnika lub układu emisji spalin.</li>
+          <li><strong>Awaria ABS</strong> — hamulce działają, ale bez systemu zapobiegającego blokowaniu kół.</li>
+          <li><strong>Awaria kontroli trakcji ESP / ASR</strong> — pojazd nie wspomaga utrzymania toru jazdy.</li>
+          <li><strong>Niskie ciśnienie w oponach</strong> (TPMS) — sprawdź i uzupełnij ciśnienie.</li>
+          <li><strong>Rezerwa paliwa</strong> — zatankuj możliwie szybko.</li>
+          <li><strong>DPF</strong> (filtr cząstek stałych w dieslu) — wykonaj jazdę „regeneracyjną" lub zgłoś się do serwisu.</li>
+        </ul>
+
+        <h4>Zielone / niebieskie — informacja</h4>
+        <ul>
+          <li><strong>Kierunkowskazy</strong> — migająca strzałka.</li>
+          <li><strong>Światła mijania</strong> (zielona ikona reflektora) i <strong>drogowe</strong> (niebieska).</li>
+          <li><strong>DRL</strong> (światła do jazdy dziennej) — automatyczna praca w dzień.</li>
+          <li><strong>Tempomat</strong> — aktywny układ utrzymania prędkości.</li>
+        </ul>
+
+        <div class="quick-quiz">
+          <div class="quick-quiz-title">Szybki test</div>
+          <div class="quiz-question" data-answer="nie" data-explain="Płyn chłodzący sprawdzamy tylko przy zimnym silniku. Otwarcie nagrzanego układu grozi gwałtownym wytryskiem pary i poważnym poparzeniem.">
+            <p class="quiz-q">Czy poziom płynu chłodzącego sprawdza się przy gorącym silniku?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="tak" data-explain="Światła mijania są obowiązkowe całą dobę przez cały rok. Mogą być zastąpione światłami do jazdy dziennej (DRL) tylko od świtu do zmierzchu przy dobrej widoczności.">
+            <p class="quiz-q">Czy światła mijania są obowiązkowe przez całą dobę?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="tak" data-explain="Czerwona kontrolka oznacza awarię zagrażającą bezpieczeństwu lub trwałości pojazdu. Reguła: czerwona = STOP, żółta = SERWIS.">
+            <p class="quiz-q">Czy zapalenie się czerwonej kontrolki ciśnienia oleju wymaga natychmiastowego zatrzymania pojazdu?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
       </section>
 
       <!-- 8. KARY -->
@@ -1510,6 +1911,34 @@
         <div class="card warn">
           <div class="card-title">Stan nietrzeźwości (powyżej 0,5 ‰ · powyżej 0,25 mg/l)</div>
           <p style="margin:0">Przestępstwo (art. 178a Kodeksu karnego). Grzywna od 5000 zł, ograniczenie wolności lub <strong>do 3 lat pozbawienia wolności</strong>, zakaz prowadzenia pojazdów na <strong>3–15 lat</strong>, świadczenie pieniężne min. 5000 zł, możliwy przepadek pojazdu (od 2024 r. obligatoryjny przy stężeniu &gt; 1,5 ‰).</p>
+        </div>
+
+        <div class="quick-quiz">
+          <div class="quick-quiz-title">Szybki test</div>
+          <div class="quiz-question" data-answer="nie" data-explain="24 punkty oznaczają skierowanie na egzamin sprawdzający kwalifikacje (dla kierowcy z PJ ponad rok). Cofnięcie uprawnień następuje dopiero po niezdaniu egzaminu lub w okresie próbnym (gdy próg wynosi 20 pkt).">
+            <p class="quiz-q">Czy 24 punkty karne automatycznie pozbawiają prawa jazdy?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="nie" data-explain="0,2–0,5 ‰ to wykroczenie (mandat 2500–30 000 zł i 15 punktów). Przestępstwo zaczyna się powyżej 0,5 ‰ we krwi (art. 178a Kodeksu karnego).">
+            <p class="quiz-q">Czy stan po użyciu alkoholu (0,3 ‰) to przestępstwo zagrożone karą pozbawienia wolności?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="tak" data-explain="Można zredukować punkty kończąc szkolenie w WORD (Wojewódzkim Ośrodku Ruchu Drogowego) — raz na 6 miesięcy, maksymalnie 6 punktów.">
+            <p class="quiz-q">Czy można zmniejszyć liczbę punktów karnych poprzez ukończenie szkolenia w WORD?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
         </div>
       </section>
 
@@ -1589,11 +2018,170 @@
           <li>ma niższy limit punktów karnych — <strong>20 zamiast 24</strong>,</li>
           <li>w razie 2 wykroczeń (z 3 możliwych w okresie próbnym) musi odbyć kurs reedukacyjny.</li>
         </ul>
+
+        <div class="quick-quiz">
+          <div class="quick-quiz-title">Szybki test</div>
+          <div class="quiz-question" data-answer="nie" data-explain="Pytania w egzaminie teoretycznym są wyświetlane kolejno z limitem czasu na każde — brak możliwości powrotu do wcześniejszych pytań.">
+            <p class="quiz-q">Czy w trakcie egzaminu teoretycznego można wrócić do poprzedniego pytania?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="tak" data-explain="Najechanie na pachołek lub krawężnik wysoki na placu manewrowym jest błędem kończącym egzamin praktyczny.">
+            <p class="quiz-q">Czy najechanie na pachołek na placu manewrowym oznacza zakończenie egzaminu z wynikiem negatywnym?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="tak" data-explain="W okresie próbnym (pierwszy rok) limit punktów karnych wynosi 20 (zamiast standardowych 24). Pierwsze 8 miesięcy obowiązuje też zielony liść z przodu i z tyłu pojazdu.">
+            <p class="quiz-q">Czy w okresie próbnym obowiązuje niższy limit punktów karnych niż dla pozostałych kierowców?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
       </section>
 
-      <!-- 10. KONTEKST MIĘDZYNARODOWY -->
+      <!-- 11. PIERWSZA POMOC -->
+      <section id="pierwsza-pomoc">
+        <h2>11. Pierwsza pomoc na drodze</h2>
+        <p class="lead">Algorytm BLS (Basic Life Support) dostosowany do warunków drogowych. Każdy kierowca ma <strong>obowiązek</strong> udzielenia pierwszej pomocy poszkodowanemu (art. 162 Kodeksu karnego — kara do 3 lat pozbawienia wolności za nieudzielenie).</p>
+
+        <h3>Algorytm krok po kroku</h3>
+        <ol class="hierarchy">
+          <li>
+            <strong>Bezpieczeństwo</strong>
+            <small>Włącz światła awaryjne, ustaw trójkąt (30–50 m poza obszarem zabudowanym, 100 m na autostradzie), załóż kamizelkę odblaskową. Sprawdź zagrożenia: ruch drogowy, wyciek paliwa, dym, drzewa nad pojazdem. Dopiero po zabezpieczeniu sceny zbliżamy się do poszkodowanego.</small>
+          </li>
+          <li>
+            <strong>Sprawdzenie świadomości</strong>
+            <small>Potrząśnij delikatnie ramionami i głośno zapytaj: <em>„Czy mnie pan/pani słyszy?"</em>. Reaguje — pomóż mu, ustal urazy. Brak reakcji — przejdź dalej.</small>
+          </li>
+          <li>
+            <strong>Wezwanie pomocy — 112</strong>
+            <small>Numer alarmowy <strong>112</strong> we wszystkich krajach UE. W Polsce również: 999 (pogotowie), 998 (straż), 997 (policja). Powiedz: <em>kim jesteś, gdzie jesteś, co się stało, ile osób, w jakim stanie</em>. Nie rozłączaj się — dyspozytor zakończy rozmowę pierwszy.</small>
+          </li>
+          <li>
+            <strong>Udrożnienie dróg oddechowych</strong>
+            <small>Połóż jedną rękę na czole poszkodowanego, dwa palce drugiej ręki na żuchwie. Odchyl głowę i unieś żuchwę — to <strong>rękoczyn czoło-żuchwa</strong>. Usuń widoczne ciała obce z ust.</small>
+          </li>
+          <li>
+            <strong>Sprawdzenie oddechu — 10 sekund</strong>
+            <small>Pochyl się nad twarzą poszkodowanego: patrz na klatkę piersiową, słuchaj oddechu, czuj wydech na policzku. Liczymy <strong>10 sekund</strong>. Pojedyncze, sporadyczne westchnienia to <strong>nie oddech</strong>.</small>
+          </li>
+          <li>
+            <strong>Decyzja: oddycha czy nie oddycha</strong>
+            <small>Oddycha — pozycja boczna ustalona, kontroluj oddech co minutę. Nie oddycha — natychmiast rozpocznij <strong>RKO</strong>.</small>
+          </li>
+        </ol>
+
+        <h3>RKO — resuscytacja krążeniowo-oddechowa (30 : 2)</h3>
+        <div class="card warn">
+          <div class="card-title">Schemat 30 uciśnięć + 2 oddechy</div>
+          <ul style="margin:0; padding-left:18px">
+            <li><strong>Pozycja:</strong> poszkodowany leży na plecach na twardym podłożu (jezdnia, pobocze).</li>
+            <li><strong>Miejsce uciśnięć:</strong> środek klatki piersiowej (dolna połowa mostka).</li>
+            <li><strong>Technika:</strong> nadgarstek jednej ręki na mostku, druga ręka na pierwszej, palce splecione. Wyprostowane łokcie, ciężar ciała przenoszony pionowo.</li>
+            <li><strong>Głębokość:</strong> 5–6 cm (u dorosłego).</li>
+            <li><strong>Częstotliwość:</strong> 100–120 uciśnięć na minutę (rytm piosenki <em>„Stayin' Alive"</em>).</li>
+            <li><strong>Po 30 uciśnięciach:</strong> 2 oddechy ratownicze (jeśli umiesz i chcesz). Bez oddechów — kontynuuj same uciśnięcia (compression-only CPR).</li>
+            <li><strong>Kontynuuj</strong> aż do przybycia pomocy, powrotu oddechu lub własnego wyczerpania. Jeżeli jest druga osoba — zmieniajcie się co 2 minuty.</li>
+          </ul>
+        </div>
+
+        <h3>Pozycja boczna ustalona (gdy poszkodowany oddycha)</h3>
+        <ol>
+          <li>Klęknij obok poszkodowanego.</li>
+          <li>Bliższą rękę ułóż pod kątem prostym do tułowia, dłonią do góry.</li>
+          <li>Drugą rękę przełóż przez klatkę piersiową, dłoń pod policzek.</li>
+          <li>Zegnij dalszą nogę w kolanie, stopa płasko na ziemi.</li>
+          <li>Pociągnij za zgięte kolano i obróć poszkodowanego na bok do siebie.</li>
+          <li>Odchyl głowę do tyłu, by udrożnić drogi oddechowe.</li>
+          <li>Sprawdzaj oddech co minutę do przybycia służb.</li>
+        </ol>
+
+        <h3>AED — automatyczny defibrylator zewnętrzny</h3>
+        <p>Coraz częściej dostępny w przestrzeni publicznej (stacje benzynowe, MOP-y, supermarkety, dworce). Wystarczy włączyć — urządzenie <strong>krok po kroku samodzielnie poprowadzi</strong> przez procedurę. Stosujemy razem z RKO. AED nie zaszkodzi nawet osobie, która nie potrzebuje defibrylacji — analizuje rytm serca i sam decyduje, czy podać impuls.</p>
+
+        <div class="card warn">
+          <div class="card-title">Czego NIE wolno robić</div>
+          <ul style="margin:0; padding-left:18px">
+            <li><strong>Nie ruszaj poszkodowanego</strong>, jeżeli nie ma bezpośredniego zagrożenia (pożar, ryzyko najechania). Może mieć uraz kręgosłupa.</li>
+            <li><strong>Nie zdejmuj kasku motocyklisty</strong> — chyba że jest to konieczne dla udrożnienia dróg oddechowych lub RKO. Robi to dwóch ratowników jednocześnie, stabilizując głowę.</li>
+            <li><strong>Nie podawaj nic do picia ani jedzenia</strong> — może mieć uraz wewnętrzny lub planowaną interwencję chirurgiczną.</li>
+            <li><strong>Nie zostawiaj poszkodowanego samego</strong>, dopóki nie przybędzie pomoc.</li>
+            <li>Nieprzytomnemu <strong>nie wkładaj nic do ust</strong> (opowieści o „przygryzieniu języka" przy ataku padaczki to mit).</li>
+          </ul>
+        </div>
+
+        <h3>Apteczka samochodowa — co warto mieć</h3>
+        <p>W Polsce apteczka <strong>nie jest obowiązkowa</strong> w samochodach osobowych (wymagana w autobusach i taksówkach). Mimo to warto mieć:</p>
+        <ul>
+          <li>Rękawiczki jednorazowe (3–5 par) — ochrona przed kontaktem z krwią.</li>
+          <li>Maseczka do sztucznego oddychania z zaworkiem.</li>
+          <li>Folia termiczna NRC (ratunkowa) — chroni przed wychłodzeniem.</li>
+          <li>Bandaże, opatrunki uciskowe, plastry, gaziki.</li>
+          <li>Nożyczki (do cięcia pasów lub odzieży).</li>
+          <li>Kamizelka odblaskowa (poza obszarem zabudowanym — przydatna nawet w Polsce).</li>
+        </ul>
+
+        <div class="card info">
+          <div class="card-title">Numery alarmowe</div>
+          <p style="margin:0">
+            <strong>112</strong> — uniwersalny w UE (działa nawet bez karty SIM i z zablokowaną klawiaturą).<br>
+            <strong>999</strong> — pogotowie ratunkowe.<br>
+            <strong>998</strong> — straż pożarna.<br>
+            <strong>997</strong> — policja.<br>
+            Lokalizacja jest automatycznie przekazywana z telefonu (system AML).
+          </p>
+        </div>
+
+        <div class="quick-quiz">
+          <div class="quick-quiz-title">Szybki test</div>
+          <div class="quiz-question" data-answer="tak" data-explain="Bezpieczeństwo to pierwsza zasada. Bez zabezpieczenia sceny zdarzenia ratownik sam może stać się ofiarą — wówczas poszkodowanym jest dwoje ludzi.">
+            <p class="quiz-q">Czy przed udzieleniem pierwszej pomocy należy najpierw zabezpieczyć miejsce zdarzenia?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="nie" data-explain="Pozycja boczna jest dla osób oddychających. Nieoddychającemu należy natychmiast rozpocząć RKO (30 uciśnięć : 2 oddechy lub same uciśnięcia, jeśli nie czujemy się komfortowo z oddychaniem).">
+            <p class="quiz-q">Czy poszkodowanego, który nie oddycha, należy ułożyć w pozycji bocznej ustalonej?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="tak" data-explain="Numer 112 działa we wszystkich krajach UE — także bez karty SIM i z zablokowaną klawiaturą. To pierwszy numer, który należy zapamiętać.">
+            <p class="quiz-q">Czy numer 112 działa we wszystkich krajach Unii Europejskiej?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="nie" data-explain="Kasku motocyklisty nie zdejmujemy, chyba że jest to konieczne do udrożnienia dróg oddechowych lub RKO. Niewłaściwe zdjęcie kasku może pogłębić uraz kręgosłupa.">
+            <p class="quiz-q">Czy poszkodowanemu motocykliście zawsze należy zdjąć kask?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 12. KONTEKST MIĘDZYNARODOWY -->
       <section id="miedzynarodowy">
-        <h2>11. Kontekst międzynarodowy</h2>
+        <h2>12. Kontekst międzynarodowy</h2>
         <p class="lead">Konwencja Wiedeńska o ruchu drogowym z 1968 r. ujednolica zasady ruchu w blisko 80 krajach — w tym we wszystkich państwach UE, na terenie których obowiązuje polskie prawo jazdy.</p>
 
         <h3>Polskie prawo jazdy za granicą</h3>
@@ -1618,6 +2206,26 @@
         <div class="card info">
           <div class="card-title">Numery alarmowe w UE</div>
           <p style="margin:0"><strong>112</strong> — uniwersalny numer alarmowy działający we wszystkich krajach Unii Europejskiej oraz większości krajów europejskich. Przyjmuje zgłoszenia we wszystkich językach urzędowych UE.</p>
+        </div>
+
+        <div class="quick-quiz">
+          <div class="quick-quiz-title">Szybki test</div>
+          <div class="quiz-question" data-answer="tak" data-explain="Polskie prawo jazdy jest honorowane bez dodatkowych dokumentów we wszystkich państwach UE, EOG, Szwajcarii oraz krajach-stronach Konwencji Wiedeńskiej.">
+            <p class="quiz-q">Czy polskie prawo jazdy jest honorowane w państwach UE bez dodatkowych dokumentów?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+          <div class="quiz-question" data-answer="nie" data-explain="MPJ to dokument dodatkowy, ważny tylko razem z polskim prawem jazdy. Nie zastępuje krajowego dokumentu — to tłumaczenie pomocnicze dla państw poza Konwencją Wiedeńską.">
+            <p class="quiz-q">Czy Międzynarodowe Prawo Jazdy zastępuje polskie prawo jazdy za granicą?</p>
+            <div class="quiz-buttons">
+              <button class="quiz-btn" data-value="tak">Tak</button>
+              <button class="quiz-btn" data-value="nie">Nie</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
         </div>
       </section>
 
@@ -1760,6 +2368,33 @@
 
       input.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') { input.value = ''; clearMarks(content); counter.textContent = ''; }
+      });
+    })();
+
+    // Szybki test — moduł obsługujący pytania TAK/NIE z natychmiastową informacją zwrotną.
+    // Każde pytanie ma data-answer ("tak"/"nie") i data-explain (treść wyjaśnienia po odpowiedzi).
+    (function() {
+      document.querySelectorAll('.quiz-question').forEach(q => {
+        const correct = (q.dataset.answer || '').toLowerCase();
+        const explain = q.dataset.explain || '';
+        const buttons = q.querySelectorAll('.quiz-btn');
+        const fb = q.querySelector('.quiz-feedback');
+        if (!fb || !correct) return;
+
+        buttons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const choice = (btn.dataset.value || '').toLowerCase();
+            const ok = choice === correct;
+            // Wizualne zaznaczenie wybranego przycisku
+            buttons.forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            // Feedback z wyjaśnieniem (zielony / czerwony)
+            fb.classList.remove('correct', 'wrong');
+            fb.classList.add('shown', ok ? 'correct' : 'wrong');
+            const prefix = ok ? '✓ Tak, zgadza się.' : '✗ Niepoprawnie.';
+            fb.innerHTML = '<strong>' + prefix + '</strong> ' + explain;
+          });
+        });
       });
     })();
   </script>
