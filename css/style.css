@@ -16,6 +16,9 @@
    ============================================================= */
 
 /* 1. Zmienne kolorystyczne ----------------------------------- */
+/* Light Mode (domyślny) — wszystkie kolory tła/tekstów/komponentów
+   spięte w zmiennych CSS. Dark Mode w bloku @media niżej tylko
+   przesłania wartości; reguły komponentów pozostają wspólne. */
 :root {
   --bg: #ffffff;
   --text: #111111;
@@ -29,7 +32,82 @@
   --blue: #1f4ea1;
   --yellow: #d6a800;
   --green: #2f7a2f;
+
+  /* Komponenty: tła kart i banerów */
+  --card-info-bg: #f4f7fc;
+  --card-alert-bg: #fffbe6;
+  --quiz-bg: #f8f9fb;
+  --quiz-correct-bg: #ecf7ec;
+  --quiz-correct-text: #1e5e1e;
+  --quiz-wrong-bg: #fdeeee;
+  --quiz-wrong-text: #8b1f1f;
+  --banner-bg: #fcfcfc;
+  --btn-primary-bg: var(--text);
+  --btn-primary-text: var(--bg);
+  --btn-primary-hover-bg: #2a2a2a;
+  --btn-primary-hover-border: #2a2a2a;
+
+  /* Filtr stosowany do inline'owych schematów SVG (.svg-figure svg).
+     W Light Mode = brak; w Dark Mode invert+hue-rotate utrzymuje
+     hue (niebieski / czerwony / zielony) i odwraca jasność. */
+  --schematic-filter: none;
+
   --max-width: 760px;
+}
+
+/* Dark Mode — automatyczne przełączenie na podstawie ustawień systemu.
+   Brak JS, brak FOUC. Paleta: bardzo ciemne tło (#121212), jasnoszary
+   tekst (#e0e0e0), subtelne ramki (#2d2d2d), nieco jaśniejsze sekcje
+   (#1e1e1e). Akcenty rozjaśnione dla czytelności na ciemnym tle. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121212;
+    --text: #e0e0e0;
+    --muted: #9a9a9a;
+    --border: #2d2d2d;
+    --border-strong: #3d3d3d;
+    --code-bg: #1e1e1e;
+    --highlight: #5a4a00;
+    --flash-bg: #3a3000;
+
+    /* Akcenty „drogowe" — rozjaśnione warianty */
+    --red: #ff6b6b;
+    --blue: #6ea8ff;
+    --yellow: #f0c84a;
+    --green: #6ec96e;
+
+    /* Tła kart – delikatne podbarwienie na bazie #1e1e1e */
+    --card-info-bg: #182230;
+    --card-alert-bg: #2a2410;
+    --quiz-bg: #1a1d24;
+    --quiz-correct-bg: #15291a;
+    --quiz-correct-text: #9ed79e;
+    --quiz-wrong-bg: #2a1717;
+    --quiz-wrong-text: #ff9b9b;
+    --banner-bg: #1a1a1a;
+
+    /* Przycisk wsparcia w Dark Mode — subtelniejszy, z ramką, nie raniący wzroku.
+       (Light: jasne tło z ciemnym tekstem; Dark: ciemnoszare tło + jasna ramka.) */
+    --btn-primary-bg: #2a2a2a;
+    --btn-primary-text: #f0f0f0;
+    --btn-primary-hover-bg: #3a3a3a;
+    --btn-primary-hover-border: #4a4a4a;
+
+    /* Schematy poglądowe (rysowane inline w HTML) — invert+hue-rotate
+       odwraca jasność (białe drogi → ciemne, czarny tekst → jasny),
+       a hue-rotate(180deg) anuluje przesunięcie hue, więc niebieskie
+       pojazdy zostają niebieskie, czerwone czerwone itd. */
+    --schematic-filter: invert(0.92) hue-rotate(180deg);
+  }
+
+  /* Oficjalne znaki drogowe (assets/signs/*.svg) muszą zachować ścisłe
+     kolory PoRD — opakowujemy je w jasne tło, żeby były czytelne na
+     ciemnej stronie bez zmiany pliku SVG. Tekst meta na tym jasnym
+     tle wymaga ciemnych kolorów (nie odziedziczonych z body). */
+  .sign-card { background: #f5f5f5; }
+  .sign-card .sign-name { color: #111; }
+  .sign-card .sign-code,
+  .sign-card .sign-desc { color: #555; }
 }
 
 * { box-sizing: border-box; }
@@ -126,7 +204,7 @@ body {
 #support-banner {
   margin: 24px -8px 20px -8px;
   padding: 16px 14px;
-  background: #fcfcfc;
+  background: var(--banner-bg);
   border-top: 1px solid var(--border);
   text-align: center;
 }
@@ -142,9 +220,9 @@ body {
   justify-content: center;
   gap: 7px;
   padding: 8px 14px;
-  background: var(--text);
-  color: var(--bg);
-  border: 1px solid var(--text);
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  border: 1px solid var(--btn-primary-bg);
   border-radius: 4px;
   font-family: inherit;
   font-size: 13px;
@@ -155,8 +233,8 @@ body {
 /* Wyłącz licznik z .sidebar a::before dla przycisku */
 #support-banner .btn-coffee::before { content: none; }
 #support-banner .btn-coffee:hover {
-  background: #2a2a2a;
-  border-color: #2a2a2a;
+  background: var(--btn-primary-hover-bg);
+  border-color: var(--btn-primary-hover-border);
 }
 #support-banner .btn-coffee:focus {
   outline: 2px solid var(--text);
@@ -275,9 +353,9 @@ strong { font-weight: 600; }
 
 .card.note { background: var(--code-bg); }
 .card.warn { border-left: 3px solid var(--red); }
-.card.info { border-left: 3px solid var(--blue); background: #f4f7fc; }
+.card.info { border-left: 3px solid var(--blue); background: var(--card-info-bg); }
 .card.tip  { border-left: 3px solid var(--green); }
-.card.alert { border-left: 3px solid var(--yellow); background: #fffbe6; }
+.card.alert { border-left: 3px solid var(--yellow); background: var(--card-alert-bg); }
 
 .card-title {
   font-size: 12px;
@@ -474,6 +552,11 @@ td.center { text-align: center; }
   height: auto;
   display: block;
   margin: 0 auto 8px;
+  /* W Light Mode: filter:none. W Dark Mode invert+hue-rotate odwraca
+     jasność kolorów (białe drogi → ciemne, czarny tekst → jasny),
+     a hue-rotate(180deg) anuluje przesunięcie odcienia tak, że niebieskie/
+     czerwone/zielone pojazdy zachowują swoje kolory semantyczne. */
+  filter: var(--schematic-filter);
 }
 
 .svg-caption { font-size: 12px; color: var(--muted); text-align: center; }
@@ -605,7 +688,7 @@ section.highlight {
   border-radius: 4px;
   padding: 18px 22px;
   margin: 36px 0 16px;
-  background: #f8f9fb;
+  background: var(--quiz-bg);
 }
 
 .quick-quiz-header {
@@ -673,8 +756,8 @@ section.highlight {
 }
 
 .quiz-feedback.shown { display: block; }
-.quiz-feedback.correct { background: #ecf7ec; color: #1e5e1e; border-left: 3px solid var(--green); }
-.quiz-feedback.wrong   { background: #fdeeee; color: #8b1f1f; border-left: 3px solid var(--red); }
+.quiz-feedback.correct { background: var(--quiz-correct-bg); color: var(--quiz-correct-text); border-left: 3px solid var(--green); }
+.quiz-feedback.wrong   { background: var(--quiz-wrong-bg); color: var(--quiz-wrong-text); border-left: 3px solid var(--red); }
 
 /* Footer strony (poza <main>) */
 .page-footer {
