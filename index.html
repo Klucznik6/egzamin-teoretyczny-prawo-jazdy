@@ -25,7 +25,7 @@
     <nav class="sidebar" aria-label="Spis treści">
       <div class="search-wrap" role="search">
         <label for="search" style="display:none">Szukaj</label>
-        <input id="search" class="search-input" type="search" placeholder="Szukaj (np. punkty karne)…" autocomplete="off" />
+        <input id="search" class="search-input" type="search" placeholder="Szukaj — Enter skacze po wynikach…" autocomplete="off" />
         <div class="search-count" id="searchCount" aria-live="polite"></div>
       </div>
 
@@ -600,15 +600,22 @@
         <p style="font-size:13px; color:var(--muted); margin-top:-8px">* Z wyjątkiem holowania przez pojazdy do tego przeznaczone (np. pomoc drogowa) — wyłącznie do najbliższego zjazdu lub MOP.</p>
 
         <div class="card info">
-          <div class="card-title">Zasady holowania</div>
+          <div class="card-title">Zasady holowania (art. 31 PoRD)</div>
           <ul style="margin:0; padding-left:18px">
-            <li>Pojazd holujący musi mieć włączone <strong>światła awaryjne</strong> lub żółte światło błyskowe.</li>
-            <li>Połączenie giętkie (lina): długość <strong>4–6 m</strong>, oznaczone na środku chorągiewką.</li>
-            <li>Połączenie sztywne (hol): długość <strong>3–6 m</strong>, oznaczone na środku chorągiewką lub tablicą ostrzegawczą.</li>
-            <li>Kierujący pojazdem holowanym musi mieć <strong>odpowiednie uprawnienia</strong> do prowadzenia tej kategorii pojazdu.</li>
-            <li>Holowanie zabronione, gdy w pojeździe holowanym <strong>nie działa układ kierowniczy lub hamulcowy</strong> (chyba że jest holowany na sztywnym połączeniu i podniesionych przednich kołach).</li>
+            <li><strong>Pojazd holujący</strong> ma włączone <strong>światła mijania</strong> również w okresie dostatecznej widoczności (cały dzień, niezależnie od pory).</li>
+            <li><strong>Pojazd holowany</strong> jest oznaczony z tyłu, po lewej stronie, <strong>ostrzegawczym trójkątem odblaskowym</strong>. Może być też zastosowane żółte światło błyskowe widoczne ze wszystkich stron.</li>
+            <li>W okresie niedostatecznej widoczności pojazd holowany musi mieć dodatkowo włączone <strong>światła pozycyjne</strong>.</li>
+            <li>Połączenie giętkie (lina): długość <strong>4–6 m</strong>, oznaczone na środku białą chorągiewką lub tablicą biało-czerwoną.</li>
+            <li>Połączenie sztywne (hol): długość <strong>nie większa niż 3 m</strong>.</li>
+            <li>Kierujący pojazdem holowanym musi mieć <strong>uprawnienia</strong> do prowadzenia tej kategorii pojazdu (chyba że holowanie wyklucza potrzebę kierowania — np. pojazd na lawecie lub z podniesionymi kołami).</li>
+            <li>Holowanie zabronione, gdy w pojeździe holowanym <strong>nie działa układ kierowniczy lub układ hamulcowy</strong> (chyba że holowanie wyklucza potrzebę ich użycia).</li>
             <li>Zabronione w warunkach zmniejszonej przejrzystości powietrza (mgła, zadymienie).</li>
           </ul>
+        </div>
+
+        <div class="card alert">
+          <div class="card-title">Częsty mit</div>
+          <p style="margin:0">Wbrew popularnemu przekonaniu, podczas holowania <strong>nie używamy świateł awaryjnych</strong> — sygnalizują one awaryjne zatrzymanie lub zagrożenie, a nie powolny ruch. Pojazd holujący jedzie ze światłami <strong>mijania</strong>, holowany jest oznakowany trójkątem odblaskowym (lub żółtym światłem błyskowym).</p>
         </div>
 
         <div class="card warn">
@@ -855,56 +862,65 @@
         </div>
 
         <div class="svg-figure">
-          <svg width="400" height="280" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skręt w lewo a tramwaj nadjeżdżający z naprzeciwka">
-            <rect x="0" y="0" width="400" height="280" fill="#f3f3f3"/>
-            <!-- Jezdnia pozioma z dwoma pasami w każdą stronę -->
-            <rect x="0" y="80" width="400" height="120" fill="#e8e8e8"/>
-            <!-- Torowisko po środku jezdni — tramwaj jedzie po lewej stronie pojazdu skręcającego -->
-            <rect x="0" y="130" width="400" height="20" fill="#d0d0d0"/>
-            <!-- Tory -->
-            <line x1="0" y1="135" x2="400" y2="135" stroke="#7a7a7a" stroke-width="1"/>
-            <line x1="0" y1="145" x2="400" y2="145" stroke="#7a7a7a" stroke-width="1"/>
-            <!-- Linia środkowa (P-1) między pasami w obie strony -->
-            <line x1="0" y1="115" x2="400" y2="115" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
-            <line x1="0" y1="165" x2="400" y2="165" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
-            <!-- Linie krawędziowe -->
-            <line x1="0" y1="80"  x2="400" y2="80"  stroke="#fff" stroke-width="1"/>
-            <line x1="0" y1="200" x2="400" y2="200" stroke="#fff" stroke-width="1"/>
-            <!-- Droga prostopadła (cel skrętu) -->
-            <rect x="170" y="200" width="60" height="80" fill="#e8e8e8"/>
-            <line x1="200" y1="200" x2="200" y2="280" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
-            <line x1="170" y1="200" x2="170" y2="280" stroke="#fff" stroke-width="1"/>
-            <line x1="230" y1="200" x2="230" y2="280" stroke="#fff" stroke-width="1"/>
-            <!-- Pojazd 1: niebieski, jedzie z prawej w lewo, sygnalizuje skręt w lewo (do drogi w dół) -->
+          <svg width="400" height="320" viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skręt w lewo a tramwaj nadjeżdżający z naprzeciwka — ruch prawostronny">
+            <rect x="0" y="0" width="400" height="320" fill="#f3f3f3"/>
+            <!-- Jezdnia pozioma -->
+            <rect x="0" y="120" width="400" height="120" fill="#e8e8e8"/>
+            <!-- Torowisko po środku jezdni (dwa tory: górny — zachodni, dolny — wschodni) -->
+            <rect x="0" y="160" width="400" height="40" fill="#d0d0d0"/>
+            <line x1="0" y1="165" x2="400" y2="165" stroke="#7a7a7a"/>
+            <line x1="0" y1="175" x2="400" y2="175" stroke="#7a7a7a"/>
+            <line x1="0" y1="185" x2="400" y2="185" stroke="#7a7a7a"/>
+            <line x1="0" y1="195" x2="400" y2="195" stroke="#7a7a7a"/>
+            <!-- Linia środkowa między dwoma torami -->
+            <line x1="0" y1="180" x2="400" y2="180" stroke="#fff" stroke-width="1" stroke-dasharray="4 4"/>
+            <!-- Linie krawędziowe pasów ruchu (oddziela pas auta od torowiska) -->
+            <line x1="0" y1="160" x2="400" y2="160" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
+            <line x1="0" y1="200" x2="400" y2="200" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
+            <!-- Krawędzie zewnętrzne -->
+            <line x1="0" y1="120" x2="400" y2="120" stroke="#fff"/>
+            <line x1="0" y1="240" x2="400" y2="240" stroke="#fff"/>
+            <!-- Droga poprzeczna idąca w górę (cel skrętu) -->
+            <rect x="170" y="0" width="60" height="120" fill="#e8e8e8"/>
+            <line x1="200" y1="0" x2="200" y2="118" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
+            <line x1="170" y1="0" x2="170" y2="118" stroke="#fff"/>
+            <line x1="230" y1="0" x2="230" y2="118" stroke="#fff"/>
+
+            <!-- Pojazd 1: w dolnym pasie (południowym, wschodnim) — RHT, jedzie w prawo (na wschód) -->
             <g>
-              <rect x="248" y="170" width="50" height="24" fill="#1f4ea1" stroke="#0a285c" stroke-width="1" rx="3"/>
-              <rect x="252" y="174" width="14" height="16" fill="#9bb6df" rx="1"/>
-              <circle cx="283" cy="182" r="8" fill="#fff"/>
-              <text x="283" y="186" font-size="11" font-weight="700" text-anchor="middle" fill="#1f4ea1">1</text>
-              <!-- mrugające światło lewego kierunkowskazu -->
-              <circle cx="248" cy="172" r="3" fill="#ffaa00"/>
-              <!-- planowany tor — łuk w lewo -->
-              <path d="M243 182 Q210 182 200 220 L200 250" stroke="#1f4ea1" stroke-width="2" fill="none" stroke-dasharray="4 4" stroke-linecap="round"/>
-              <path d="M194 244 L200 254 L206 244" stroke="#1f4ea1" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <rect x="60" y="210" width="50" height="24" fill="#1f4ea1" stroke="#0a285c" stroke-width="1" rx="3"/>
+              <rect x="64" y="214" width="14" height="16" fill="#9bb6df" rx="1"/>
+              <circle cx="95" cy="222" r="8" fill="#fff"/>
+              <text x="95" y="226" font-size="11" font-weight="700" text-anchor="middle" fill="#1f4ea1">1</text>
+              <!-- Lewy kierunkowskaz: w aucie skierowanym w prawo lewa strona kierowcy = górna krawędź auta z przodu -->
+              <circle cx="108" cy="212" r="3" fill="#ffaa00"/>
+              <!-- Tor jazdy: prosto, potem łuk w górę do drogi poprzecznej -->
+              <path d="M112 222 Q160 222 180 200 Q200 165 200 120 L200 60"
+                    stroke="#1f4ea1" stroke-width="2" fill="none" stroke-dasharray="4 4" stroke-linecap="round"/>
+              <path d="M194 66 L200 56 L206 66" stroke="#1f4ea1" stroke-width="2" fill="none" stroke-linecap="round"/>
             </g>
-            <!-- Tramwaj: nadjeżdża z lewej, jedzie torowiskiem w prawo -->
+
+            <!-- Tramwaj: na górnym torze (zachodnim), jedzie w lewo (na zachód) — z naprzeciwka -->
             <g>
-              <rect x="60" y="128" width="80" height="24" fill="#c63030" stroke="#5d1010" stroke-width="1" rx="2"/>
-              <rect x="68" y="132" width="14" height="16" fill="#fff" opacity="0.55" rx="1"/>
-              <rect x="86" y="132" width="14" height="16" fill="#fff" opacity="0.55" rx="1"/>
-              <rect x="104" y="132" width="14" height="16" fill="#fff" opacity="0.55" rx="1"/>
-              <circle cx="124" cy="140" r="8" fill="#fff"/>
-              <text x="124" y="144" font-size="11" font-weight="700" text-anchor="middle" fill="#c63030">T</text>
-              <!-- strzałka -->
-              <path d="M148 140 L165 140 M159 134 L165 140 L159 146" stroke="#c63030" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <rect x="280" y="166" width="80" height="22" fill="#c63030" stroke="#5d1010" stroke-width="1" rx="2"/>
+              <rect x="288" y="170" width="14" height="14" fill="#fff" opacity="0.55" rx="1"/>
+              <rect x="306" y="170" width="14" height="14" fill="#fff" opacity="0.55" rx="1"/>
+              <rect x="324" y="170" width="14" height="14" fill="#fff" opacity="0.55" rx="1"/>
+              <circle cx="345" cy="177" r="8" fill="#fff"/>
+              <text x="345" y="181" font-size="11" font-weight="700" text-anchor="middle" fill="#c63030">T</text>
+              <!-- Strzałka kierunku tramwaju (w lewo) -->
+              <path d="M275 177 L255 177 M261 171 L255 177 L261 183" stroke="#c63030" stroke-width="2" fill="none" stroke-linecap="round"/>
             </g>
-            <!-- Etykieta-zatrzymanie -->
+
+            <!-- Punkt obowiązkowego ustąpienia (przed torowiskiem zachodnim) -->
             <g>
-              <circle cx="200" cy="218" r="14" fill="#fff" stroke="#c63030" stroke-width="2"/>
-              <text x="200" y="222" font-size="12" font-weight="700" text-anchor="middle" fill="#c63030">!</text>
+              <circle cx="200" cy="172" r="14" fill="#fff" stroke="#c63030" stroke-width="2"/>
+              <text x="200" y="176" font-size="12" font-weight="700" text-anchor="middle" fill="#c63030">!</text>
             </g>
-            <text x="10" y="22" font-size="13" font-weight="600" font-family="sans-serif" fill="#111">Skręcasz w lewo — tramwaj nadjeżdża z naprzeciwka</text>
-            <text x="10" y="38" font-size="11" font-family="sans-serif" fill="#555">Pojazd 1 musi się zatrzymać przed torowiskiem i przepuścić tramwaj T.</text>
+
+            <text x="10" y="22" font-size="13" font-weight="600" font-family="sans-serif" fill="#111">Skręt w lewo · ruch prawostronny</text>
+            <text x="10" y="38" font-size="11" font-family="sans-serif" fill="#555">Pojazd 1 jedzie pasem południowym (na wschód →) i skręca w lewo (na północ ↑).</text>
+            <text x="10" y="52" font-size="11" font-family="sans-serif" fill="#555">Tramwaj T jedzie torem północnym z naprzeciwka (na zachód ←) i ma pierwszeństwo.</text>
           </svg>
           <div class="svg-caption">Skręcając w lewo, ustępujesz pierwszeństwa tramwajowi nadjeżdżającemu z naprzeciwka.</div>
           <div class="svg-legend">
@@ -1279,7 +1295,7 @@
           <li><strong>Światła drogowe (długie)</strong> — używamy poza obszarem zabudowanym, gdy nie oślepiamy innych. Wyłączamy co najmniej <strong>200 m przed pojazdem nadjeżdżającym z przeciwka</strong> oraz przy zbliżaniu się od tyłu do pojazdu poprzedzającego.</li>
           <li><strong>Światła przeciwmgłowe przednie</strong> — wyłącznie w warunkach zmniejszonej przejrzystości powietrza (mgła, opady, zadymienie).</li>
           <li><strong>Światła przeciwmgłowe tylne</strong> — wolno włączyć, gdy widoczność jest <strong>mniejsza niż 50 m</strong>. W lepszej widoczności należy je wyłączyć.</li>
-          <li><strong>Światła awaryjne</strong> — sygnalizujemy nimi awaryjne zatrzymanie, nagłe hamowanie w obszarze zabudowanym lub holowanie.</li>
+          <li><strong>Światła awaryjne</strong> — sygnalizujemy nimi awaryjne zatrzymanie pojazdu lub nagłe, gwałtowne hamowanie w obszarze zabudowanym (gdy istnieje ryzyko najechania z tyłu). <em>Nie</em> używamy ich podczas holowania ani jako dodatkowego ostrzeżenia w czasie normalnej jazdy.</li>
           <li><strong>Światła pozycyjne</strong> — używane są podczas postoju w warunkach ograniczonej widoczności poza obszarem zabudowanym.</li>
         </ul>
 

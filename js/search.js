@@ -1,12 +1,19 @@
 /* =============================================================
-   search.js — Smart Search
+   search.js — Smart Search z nawigacją Enter
    ----------------------------------------------------------------
    Moduł wyszukiwarki przeszukujący pełną treść (innerText) sekcji.
-   Po znalezieniu wyniku:
-     1. wszystkie dopasowane fragmenty są podświetlane <mark>,
-     2. strona płynnie scrolluje do pierwszej sekcji z dopasowaniem,
-     3. ta sekcja dostaje na 2s klasę .highlight (flash tła).
-   Esc czyści wyszukiwanie. Debounce 200 ms.
+
+   Działanie:
+     1. Wpisanie ≥ 2 znaków (debounce 200 ms) podświetla wszystkie
+        wystąpienia w treści tagiem <mark>.
+     2. Strona płynnie scrolluje do pierwszego dopasowania, sekcja
+        z wynikiem dostaje na 2 s klasę .highlight (flash tła).
+     3. Wciśnięcie Enter w polu wyszukiwarki przeskakuje do KOLEJNEGO
+        wystąpienia (cyklicznie). Aktualne dopasowanie ma klasę
+        mark.current (pomarańczowe tło + obramowanie).
+     4. Esc czyści wyszukiwanie.
+
+   Licznik pokazuje „X z Y" dla aktualnego wystąpienia.
    ============================================================= */
 (function () {
   const input    = document.getElementById('search');
@@ -17,6 +24,10 @@
   // Tagi pomijane przy walce po DOM (nie chcemy rwać struktury layoutu).
   const SKIP_TAGS = new Set(['SCRIPT', 'STYLE', 'MARK', 'NOSCRIPT', 'INPUT', 'TEXTAREA', 'BUTTON']);
   const FLASH_MS = 2000;
+
+  // Stan wyszukiwarki — lista <mark> w kolejności DOM + wskaźnik aktualnego
+  let matches = [];
+  let currentIndex = -1;
 
   /** Escape znaków specjalnych regexa. */
   function escapeRegex(s) {
@@ -34,6 +45,8 @@
     });
     // Usuń klasę highlight z poprzednio podświetlonej sekcji
     root.querySelectorAll('section.highlight').forEach(s => s.classList.remove('highlight'));
+    matches = [];
+    currentIndex = -1;
   }
 
   /** Rekurencyjnie podświetla dopasowania w drzewie DOM. Zwraca liczbę dopasowań. */
@@ -78,15 +91,40 @@
     return total;
   }
 
-  /** Płynny scroll do sekcji + 2s flash tła. */
-  function scrollAndFlash(section) {
-    if (!section) return;
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    section.classList.add('highlight');
-    setTimeout(() => section.classList.remove('highlight'), FLASH_MS);
+  /** Aktualizuje licznik („X z Y" lub liczba dopasowań). */
+  function updateCounter() {
+    if (matches.length === 0) { counter.textContent = ''; return; }
+    if (currentIndex < 0) {
+      const n = matches.length;
+      counter.textContent = n + ' ' +
+        (n === 1 ? 'dopasowanie' : (n < 5 ? 'dopasowania' : 'dopasowań')) +
+        ' · Enter, aby przejść';
+    } else {
+      counter.textContent = (currentIndex + 1) + ' z ' + matches.length +
+        ' · Enter = następne';
+    }
   }
 
-  /** Główna pętla — uruchamiana z debounce 200 ms. */
+  /** Ustawia aktualny <mark> i scrolluje do niego (z flashem sekcji przy pierwszym wejściu). */
+  function focusMatch(index, flashSection) {
+    if (matches.length === 0) return;
+    matches.forEach(m => m.classList.remove('current'));
+    const target = matches[index];
+    if (!target) return;
+    target.classList.add('current');
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (flashSection) {
+      const sec = target.closest('section');
+      if (sec) {
+        sec.classList.add('highlight');
+        setTimeout(() => sec.classList.remove('highlight'), FLASH_MS);
+      }
+    }
+    currentIndex = index;
+    updateCounter();
+  }
+
+  /** Główna pętla — uruchamiana z debounce po wpisaniu znaków. */
   let timer;
   function run() {
     clearMarks(content);
@@ -97,14 +135,16 @@
     const count = highlight(content, regex);
 
     if (count > 0) {
-      counter.textContent = count + ' ' +
-        (count === 1 ? 'dopasowanie' : (count < 5 ? 'dopasowania' : 'dopasowań'));
-
-      // Znajdź pierwszą sekcję zawierającą dopasowanie i przewiń do niej
-      const firstMark = content.querySelector('mark');
-      if (firstMark) {
-        const parentSection = firstMark.closest('section');
-        scrollAndFlash(parentSection);
+      matches = Array.from(content.querySelectorAll('mark'));
+      currentIndex = -1;
+      updateCounter();
+      // Auto-przewiń do pierwszego wyniku, ale nie zaznaczaj go jako "current"
+      // — pierwszy Enter stanie się świadomym przeskokiem na #1.
+      const firstSection = matches[0] && matches[0].closest('section');
+      if (firstSection) {
+        firstSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        firstSection.classList.add('highlight');
+        setTimeout(() => firstSection.classList.remove('highlight'), FLASH_MS);
       }
     } else {
       counter.textContent = 'brak wyników';
@@ -116,12 +156,30 @@
     timer = setTimeout(run, 200);
   });
 
-  // Esc czyści input i wszystkie podświetlenia
+  /** Klawiatura: Enter = następne wystąpienie, Shift+Enter = poprzednie, Esc = czyść. */
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       input.value = '';
       clearMarks(content);
       counter.textContent = '';
+      return;
+    }
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      // Jeżeli wpisano nowe zapytanie, ale debounce jeszcze nie zakończył pracy
+      // — wymuszamy natychmiastowe wyszukiwanie.
+      if (matches.length === 0 && input.value.trim().length >= 2) {
+        clearTimeout(timer);
+        run();
+        // Po `run()` pierwszy Enter ma od razu skoczyć na #1.
+        if (matches.length > 0) focusMatch(0, false);
+        return;
+      }
+      if (matches.length === 0) return;
+      const next = e.shiftKey
+        ? (currentIndex - 1 + matches.length) % matches.length
+        : (currentIndex + 1) % matches.length;
+      focusMatch(next, false);
     }
   });
 })();
