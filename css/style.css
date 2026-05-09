@@ -118,6 +118,61 @@ body {
   border-top: 1px solid var(--border);
 }
 
+/* Baner wsparcia (donacja) — między spisem treści a stopką sidebara
+   Kolory dobrane do palety strony: tło ledwo odróżnialne od białego (#fcfcfc),
+   przycisk używa var(--text) — tej samej "primary" co .quiz-btn.selected.
+   Selektory scope'owane pod #support-banner, żeby nadpisać globalne reguły
+   .sidebar a (counter w ::before, display: block, border-bottom). */
+#support-banner {
+  margin: 24px -8px 20px -8px;
+  padding: 16px 14px;
+  background: #fcfcfc;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+#support-banner p {
+  margin: 0 0 12px;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+#support-banner .btn-coffee {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 14px;
+  background: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--text);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+/* Wyłącz licznik z .sidebar a::before dla przycisku */
+#support-banner .btn-coffee::before { content: none; }
+#support-banner .btn-coffee:hover {
+  background: #2a2a2a;
+  border-color: #2a2a2a;
+}
+#support-banner .btn-coffee:focus {
+  outline: 2px solid var(--text);
+  outline-offset: 2px;
+}
+#support-banner .btn-coffee-icon { flex-shrink: 0; }
+
+@media (max-width: 860px) {
+  #support-banner {
+    margin: 20px 0 16px;
+    padding: 14px 12px;
+  }
+  #support-banner p { font-size: 13px; }
+  #support-banner .btn-coffee { padding: 10px 16px; font-size: 14px; }
+}
+
 .content { min-width: 0; max-width: var(--max-width); }
 
 /* 3. Wyszukiwarka i pasek postępu ---------------------------- */
