@@ -5,532 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Teoria Prawa Jazdy — Kategoria B</title>
   <meta name="description" content="Kompendium wiedzy teoretycznej do egzaminu na prawo jazdy kategorii B w Polsce." />
-  <style>
-    :root {
-      --bg: #ffffff;
-      --text: #111111;
-      --muted: #555555;
-      --border: #e5e5e5;
-      --border-strong: #d0d0d0;
-      --code-bg: #f6f6f6;
-      --highlight: #fff3a3;
-      --red: #c63030;
-      --blue: #1f4ea1;
-      --yellow: #d6a800;
-      --green: #2f7a2f;
-      --max-width: 760px;
-    }
-
-    * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 24px;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      color: var(--text);
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    /* Pasek postępu czytania */
-    .progress-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 2px;
-      width: 0%;
-      background: var(--text);
-      z-index: 1000;
-      transition: width 0.05s linear;
-    }
-
-    /* Layout */
-    .layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      max-width: 1140px;
-      margin: 0 auto;
-      gap: 48px;
-      padding: 32px 24px 96px;
-    }
-
-    /* Sidebar */
-    .sidebar {
-      position: sticky;
-      top: 32px;
-      align-self: start;
-      max-height: calc(100vh - 64px);
-      overflow-y: auto;
-      padding-right: 8px;
-      border-right: 1px solid var(--border);
-    }
-
-    .sidebar h2 {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin: 0 0 12px;
-    }
-
-    .sidebar ol {
-      list-style: none;
-      padding: 0;
-      margin: 0 0 24px;
-      counter-reset: section;
-    }
-
-    .sidebar li {
-      counter-increment: section;
-      margin: 0;
-    }
-
-    .sidebar a {
-      display: block;
-      padding: 6px 0;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 14px;
-      border-bottom: 1px solid transparent;
-    }
-
-    .sidebar a::before {
-      content: counter(section, decimal-leading-zero) ".  ";
-      color: var(--muted);
-      font-variant-numeric: tabular-nums;
-    }
-
-    .sidebar a:hover { border-bottom-color: var(--border-strong); }
-    .sidebar a.active { font-weight: 600; }
-
-    .sidebar-footer {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-    }
-
-    /* Wyszukiwarka */
-    .search-wrap { margin-bottom: 20px; }
-    .search-input {
-      width: 100%;
-      padding: 8px 10px;
-      font-family: inherit;
-      font-size: 14px;
-      border: 1px solid var(--border-strong);
-      border-radius: 4px;
-      background: var(--bg);
-      color: var(--text);
-    }
-    .search-input::placeholder { color: var(--muted); }
-    .search-input:focus { outline: 2px solid var(--text); outline-offset: 0; border-color: var(--text); }
-    .search-count {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 6px;
-      min-height: 16px;
-    }
-
-    /* Główna treść */
-    .content { min-width: 0; max-width: var(--max-width); }
-
-    .header {
-      margin-bottom: 48px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border);
-    }
-    .header .eyebrow {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-    .header h1 {
-      font-size: 32px;
-      line-height: 1.2;
-      margin: 0 0 12px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-    .header p { margin: 0; color: var(--muted); font-size: 15px; }
-
-    /* Sekcje */
-    section {
-      margin: 0 0 64px;
-      scroll-margin-top: 24px;
-    }
-    section h2 {
-      font-size: 22px;
-      font-weight: 600;
-      margin: 0 0 8px;
-      letter-spacing: -0.005em;
-    }
-    section .lead { color: var(--muted); font-size: 14px; margin: 0 0 24px; }
-
-    h3 { font-size: 16px; font-weight: 600; margin: 32px 0 8px; }
-    h4 {
-      font-size: 13px;
-      font-weight: 600;
-      margin: 20px 0 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-    }
-
-    p { margin: 0 0 16px; }
-    ul, ol { padding-left: 22px; margin: 0 0 16px; }
-    li { margin-bottom: 6px; }
-    strong { font-weight: 600; }
-
-    /* Karty */
-    .card {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 16px 20px;
-      margin: 16px 0;
-      background: var(--bg);
-    }
-    .card.note { background: var(--code-bg); }
-    .card.warn { border-left: 3px solid var(--red); }
-    .card.info { border-left: 3px solid var(--blue); background: #f4f7fc; }
-    .card.tip  { border-left: 3px solid var(--green); }
-    .card.alert { border-left: 3px solid var(--yellow); background: #fffbe6; }
-    .card.alert .card-title { color: var(--yellow); }
-    .card-title {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin: 0 0 8px;
-    }
-    .card.warn .card-title { color: var(--red); }
-    .card.info .card-title { color: var(--blue); }
-    .card.tip  .card-title { color: var(--green); }
-
-    /* Tabele */
-    .table-wrap {
-      overflow-x: auto;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      margin: 16px 0;
-    }
-    table { width: 100%; border-collapse: collapse; font-size: 14px; }
-    th, td {
-      padding: 12px 14px;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-    th {
-      background: var(--code-bg);
-      font-weight: 600;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      color: var(--muted);
-    }
-    tr:last-child td { border-bottom: none; }
-    td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
-    td.center { text-align: center; }
-
-    /* Hierarchia (numerowana lista) */
-    .hierarchy {
-      list-style: none;
-      padding: 0;
-      margin: 16px 0;
-      counter-reset: hier;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-    .hierarchy li {
-      counter-increment: hier;
-      padding: 14px 16px 14px 56px;
-      position: relative;
-      border-bottom: 1px solid var(--border);
-      margin: 0;
-    }
-    .hierarchy li:last-child { border-bottom: none; }
-    .hierarchy li::before {
-      content: counter(hier);
-      position: absolute;
-      left: 16px;
-      top: 14px;
-      width: 28px;
-      height: 28px;
-      border: 1px solid var(--border-strong);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 600;
-      font-variant-numeric: tabular-nums;
-    }
-    .hierarchy strong { display: block; margin-bottom: 4px; }
-    .hierarchy small { color: var(--muted); font-size: 13px; line-height: 1.5; display: block; }
-
-    /* SVG infografiki */
-    .svg-figure {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 16px;
-      margin: 16px 0;
-      text-align: center;
-    }
-    .svg-figure svg {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto 8px;
-    }
-    .svg-caption { font-size: 12px; color: var(--muted); text-align: center; }
-
-    /* Dwie kolumny */
-    .two-col {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin: 16px 0;
-    }
-    .col-box {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 14px 16px;
-    }
-    .col-box.allow { border-left: 3px solid var(--green); }
-    .col-box.deny  { border-left: 3px solid var(--red); }
-    .col-box h4 { margin-top: 0; }
-    .col-box ul { margin: 0; }
-
-    /* Siatka sytuacji wymagających szczególnej ostrożności */
-    .situations {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 10px;
-      margin: 16px 0;
-      list-style: none;
-      padding: 0;
-    }
-    .situations li {
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--yellow);
-      border-radius: 4px;
-      padding: 12px 14px;
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.45;
-      background: var(--bg);
-    }
-    .situations li strong { display: block; margin-bottom: 2px; font-size: 13px; }
-    .situations li small { color: var(--muted); font-size: 12px; line-height: 1.4; }
-
-    /* Galeria znaków */
-    .signs-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 12px;
-      margin: 16px 0;
-    }
-    .sign-card {
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 14px 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      background: var(--bg);
-    }
-    .sign-card svg { display: block; }
-    .sign-meta { text-align: center; }
-    .sign-code {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-    .sign-name { font-size: 13px; font-weight: 600; line-height: 1.35; margin-top: 2px; }
-    .sign-desc { font-size: 12px; color: var(--muted); line-height: 1.4; margin-top: 4px; }
-
-    .sign-group-label {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 2px 8px;
-      border-radius: 2px;
-      margin-bottom: 8px;
-    }
-    .sign-group-label.warn { color: var(--red); border: 1px solid var(--red); }
-    .sign-group-label.deny { color: var(--red); border: 1px solid var(--red); }
-    .sign-group-label.order { color: var(--blue); border: 1px solid var(--blue); }
-    .sign-group-label.info { color: var(--text); border: 1px solid var(--border-strong); }
-
-    /* Checklista egzaminacyjna */
-    .checklist {
-      list-style: none;
-      padding: 0;
-      margin: 16px 0;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-    }
-    .checklist li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--border);
-      margin: 0;
-    }
-    .checklist li:last-child { border-bottom: none; }
-    .checklist input[type="checkbox"] {
-      margin-top: 4px;
-      width: 16px; height: 16px;
-      accent-color: var(--text);
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .checklist label { cursor: pointer; flex: 1; }
-    .checklist input:checked + label { color: var(--muted); text-decoration: line-through; }
-
-    /* Toolbar */
-    .toolbar {
-      position: fixed;
-      top: 16px;
-      right: 16px;
-      display: flex;
-      gap: 8px;
-      z-index: 50;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border: 1px solid var(--border-strong);
-      background: var(--bg);
-      color: var(--text);
-      font-family: inherit;
-      font-size: 13px;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: background 0.15s;
-    }
-    .btn:hover { background: var(--code-bg); }
-    .btn:focus { outline: 2px solid var(--text); outline-offset: 2px; }
-
-    /* Tryb skupienia */
-    body.focus-mode .sidebar { display: none; }
-    body.focus-mode .layout {
-      grid-template-columns: 1fr;
-      max-width: var(--max-width);
-    }
-    body.focus-mode .toolbar .btn[data-action="focus"] {
-      background: var(--text);
-      color: var(--bg);
-    }
-
-    /* Highlight z wyszukiwarki */
-    mark {
-      background: var(--highlight);
-      color: inherit;
-      padding: 0 2px;
-      border-radius: 2px;
-      font-weight: 600;
-    }
-
-    /* Szybki test — moduł interaktywnych pytań TAK/NIE z natychmiastową informacją zwrotną */
-    .quick-quiz {
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--blue);
-      border-radius: 4px;
-      padding: 18px 22px;
-      margin: 36px 0 16px;
-      background: #f8f9fb;
-    }
-    .quick-quiz-title {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--blue);
-      margin: 0 0 14px;
-    }
-    .quick-quiz-title::before { content: "→ "; opacity: 0.5; }
-    .quiz-question { padding: 14px 0; border-top: 1px solid var(--border); }
-    .quiz-question:first-of-type { border-top: none; padding-top: 0; }
-    .quiz-q { font-size: 14px; margin: 0 0 10px; line-height: 1.5; }
-    .quiz-buttons { display: flex; gap: 8px; }
-    .quiz-btn {
-      border: 1px solid var(--border-strong);
-      background: var(--bg);
-      padding: 6px 18px;
-      border-radius: 4px;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 13px;
-      font-weight: 500;
-      min-width: 64px;
-      color: var(--text);
-    }
-    .quiz-btn:hover { background: var(--code-bg); }
-    .quiz-btn.selected { background: var(--text); color: var(--bg); border-color: var(--text); }
-    .quiz-feedback {
-      margin-top: 10px;
-      font-size: 13px;
-      line-height: 1.55;
-      padding: 10px 12px;
-      border-radius: 4px;
-      display: none;
-    }
-    .quiz-feedback.shown { display: block; }
-    .quiz-feedback.correct { background: #ecf7ec; color: #1e5e1e; border-left: 3px solid var(--green); }
-    .quiz-feedback.wrong   { background: #fdeeee; color: #8b1f1f; border-left: 3px solid var(--red); }
-
-    /* Mobile */
-    @media (max-width: 860px) {
-      .layout {
-        grid-template-columns: 1fr;
-        gap: 24px;
-        padding: 24px 16px 80px;
-      }
-      .sidebar {
-        position: static;
-        max-height: none;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
-        padding-bottom: 16px;
-        padding-right: 0;
-      }
-      .sidebar ol { margin-bottom: 8px; }
-      .sidebar-footer { display: none; }
-      .header h1 { font-size: 26px; }
-      .two-col { grid-template-columns: 1fr; }
-      .signs-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
-      .toolbar { top: 8px; right: 8px; }
-      .btn { font-size: 12px; padding: 5px 10px; }
-      .btn span { display: none; }
-    }
-
-    @media print {
-      .toolbar, .progress-bar, .sidebar, .search-wrap { display: none; }
-      .layout { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -547,8 +22,8 @@
   </div>
 
   <div class="layout">
-    <aside class="sidebar" aria-label="Spis treści">
-      <div class="search-wrap">
+    <nav class="sidebar" aria-label="Spis treści">
+      <div class="search-wrap" role="search">
         <label for="search" style="display:none">Szukaj</label>
         <input id="search" class="search-input" type="search" placeholder="Szukaj (np. punkty karne)…" autocomplete="off" />
         <div class="search-count" id="searchCount" aria-live="polite"></div>
@@ -573,7 +48,7 @@
       <div class="sidebar-footer">
         Zgodne z ustawą Prawo o ruchu drogowym (t.j. Dz.U. 2024), rozporządzeniem MI z dn. 31.07.2002 r. o znakach i sygnałach drogowych oraz rozporządzeniem MSWiA o postępowaniu mandatowym (stan: 2024/2025).
       </div>
-    </aside>
+    </nav>
 
     <main class="content">
       <header class="header">
@@ -648,8 +123,11 @@
           <p style="margin: 12px 0 0">W tych miejscach <strong>nie działa zasada prawej ręki</strong>. Kierujący wyjeżdżający z drogi nieuznawanej za drogę publiczną <strong>zawsze ustępuje pierwszeństwa</strong> wszystkim pojazdom poruszającym się drogą, na którą wjeżdża (włączanie się do ruchu, art. 17).</p>
         </div>
 
-        <div class="quick-quiz">
-          <div class="quick-quiz-title">Szybki test</div>
+        <div class="quick-quiz" id="quiz-1">
+          <div class="quick-quiz-header">
+            <p class="quick-quiz-title">Szybki test</p>
+            <button class="quiz-reset-btn" type="button" aria-label="Resetuj odpowiedzi">Resetuj</button>
+          </div>
           <div class="quiz-question" data-answer="tak" data-explain="Definicja drogi (art. 2 pkt 1 PoRD) obejmuje jezdnię, pobocze, chodnik oraz drogę dla pieszych lub rowerów.">
             <p class="quiz-q">Czy chodnik jest częścią drogi w rozumieniu ustawy?</p>
             <div class="quiz-buttons">
@@ -714,8 +192,11 @@
           <li><strong>Lewe ramię uniesione w przód i w bok</strong> — sygnał o zmianie nadawanego sygnału z zielonego na żółty (analogicznie do żółtego światła).</li>
         </ul>
 
-        <div class="quick-quiz">
-          <div class="quick-quiz-title">Szybki test</div>
+        <div class="quick-quiz" id="quiz-2">
+          <div class="quick-quiz-header">
+            <p class="quick-quiz-title">Szybki test</p>
+            <button class="quiz-reset-btn" type="button" aria-label="Resetuj odpowiedzi">Resetuj</button>
+          </div>
           <div class="quiz-question" data-answer="tak" data-explain="Polecenia osoby kierującej ruchem są na samym szczycie hierarchii — nadrzędne wobec sygnalizacji świetlnej i wszystkich znaków drogowych.">
             <p class="quiz-q">Czy polecenie policjanta jest ważniejsze od czerwonego światła?</p>
             <div class="quiz-buttons">
@@ -833,8 +314,11 @@
           <p style="margin:0">Ograniczone zaufanie nie oznacza paranoi — nie musisz zakładać, że <strong>każdy</strong> popełni błąd. Reagujesz tylko na <strong>konkretne sygnały</strong>, że ktoś może zachować się nietypowo. Egzaminator zwraca uwagę, czy widzisz dziecko biegnące w kierunku przejścia i czy odpowiednio wcześnie zwalniasz.</p>
         </div>
 
-        <div class="quick-quiz">
-          <div class="quick-quiz-title">Szybki test</div>
+        <div class="quick-quiz" id="quiz-3">
+          <div class="quick-quiz-header">
+            <p class="quick-quiz-title">Szybki test</p>
+            <button class="quiz-reset-btn" type="button" aria-label="Resetuj odpowiedzi">Resetuj</button>
+          </div>
           <div class="quiz-question" data-answer="nie" data-explain="Szczególna ostrożność jest wymagana tylko w sytuacjach wymienionych w ustawie (m.in. zmiana pasa, wyprzedzanie, zbliżanie się do skrzyżowania, przejście dla pieszych). Poza nimi obowiązuje ostrożność zwykła.">
             <p class="quiz-q">Czy szczególna ostrożność jest wymagana w każdej sytuacji na drodze?</p>
             <div class="quiz-buttons">
@@ -865,9 +349,7 @@
 
         <div class="signs-grid">
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak A-7">
-              <polygon points="32,56 4,8 60,8" fill="white" stroke="#c63030" stroke-width="5" stroke-linejoin="round"/>
-            </svg>
+            <img src="assets/signs/A-7.svg" alt="Znak A-7" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">A-7</div>
               <div class="sign-name">Ustąp pierwszeństwa</div>
@@ -876,10 +358,7 @@
           </div>
 
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak A-30">
-              <polygon points="32,8 60,56 4,56" fill="#ffd84d" stroke="#c63030" stroke-width="5" stroke-linejoin="round"/>
-              <text x="32" y="50" font-family="sans-serif" font-size="28" font-weight="700" text-anchor="middle" fill="#111">!</text>
-            </svg>
+            <img src="assets/signs/A-30.svg" alt="Znak A-30" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">A-30</div>
               <div class="sign-name">Inne niebezpieczeństwo</div>
@@ -888,13 +367,7 @@
           </div>
 
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak A-17">
-              <polygon points="32,8 60,56 4,56" fill="#ffd84d" stroke="#c63030" stroke-width="5" stroke-linejoin="round"/>
-              <circle cx="26" cy="32" r="2.4" fill="#111"/>
-              <path d="M26 35 L24 44 L21 52 L24 52 L26 46 L28 52 L31 52 L29 44 Z" fill="#111"/>
-              <circle cx="38" cy="36" r="2" fill="#111"/>
-              <path d="M38 38 L36 46 L33 52 L35 52 L37 47 L39 52 L41 52 L40 46 Z" fill="#111"/>
-            </svg>
+            <img src="assets/signs/A-17.svg" alt="Znak A-17" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">A-17</div>
               <div class="sign-name">Dzieci</div>
@@ -909,10 +382,7 @@
 
         <div class="signs-grid">
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak B-2">
-              <circle cx="32" cy="32" r="28" fill="#c63030"/>
-              <rect x="10" y="28" width="44" height="8" fill="white"/>
-            </svg>
+            <img src="assets/signs/B-2.svg" alt="Znak B-2" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">B-2</div>
               <div class="sign-name">Zakaz wjazdu</div>
@@ -921,10 +391,7 @@
           </div>
 
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak B-20 STOP">
-              <polygon points="20,4 44,4 60,20 60,44 44,60 20,60 4,44 4,20" fill="#c63030"/>
-              <text x="32" y="38" font-family="sans-serif" font-size="14" font-weight="800" text-anchor="middle" fill="white" letter-spacing="0.5">STOP</text>
-            </svg>
+            <img src="assets/signs/B-20.svg" alt="Znak B-20" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">B-20</div>
               <div class="sign-name">STOP</div>
@@ -933,11 +400,7 @@
           </div>
 
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak B-21">
-              <circle cx="32" cy="32" r="28" fill="white" stroke="#c63030" stroke-width="6"/>
-              <path d="M40 38 L40 32 L26 32 L26 24 L14 32 L26 40 L26 34 L40 34 Z" fill="#111"/>
-              <line x1="14" y1="14" x2="50" y2="50" stroke="#c63030" stroke-width="5" stroke-linecap="round"/>
-            </svg>
+            <img src="assets/signs/B-21.svg" alt="Znak B-21" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">B-21</div>
               <div class="sign-name">Zakaz skręcania w lewo</div>
@@ -946,10 +409,7 @@
           </div>
 
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak B-33">
-              <circle cx="32" cy="32" r="28" fill="white" stroke="#c63030" stroke-width="6"/>
-              <text x="32" y="40" font-family="sans-serif" font-size="22" font-weight="700" text-anchor="middle" fill="#111">50</text>
-            </svg>
+            <img src="assets/signs/B-33.svg" alt="Znak B-33" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">B-33</div>
               <div class="sign-name">Ograniczenie prędkości</div>
@@ -958,13 +418,7 @@
           </div>
 
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak B-25">
-              <circle cx="32" cy="32" r="28" fill="white" stroke="#c63030" stroke-width="6"/>
-              <rect x="14" y="32" width="14" height="14" fill="#111"/>
-              <rect x="14" y="20" width="14" height="14" fill="#c63030"/>
-              <rect x="34" y="32" width="14" height="14" fill="#111"/>
-              <rect x="34" y="20" width="14" height="14" fill="#111"/>
-            </svg>
+            <img src="assets/signs/B-25.svg" alt="Znak B-25" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">B-25</div>
               <div class="sign-name">Zakaz wyprzedzania</div>
@@ -973,11 +427,7 @@
           </div>
 
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak B-36">
-              <circle cx="32" cy="32" r="28" fill="#1f4ea1"/>
-              <circle cx="32" cy="32" r="28" fill="none" stroke="#c63030" stroke-width="6"/>
-              <line x1="14" y1="14" x2="50" y2="50" stroke="#c63030" stroke-width="6" stroke-linecap="round"/>
-            </svg>
+            <img src="assets/signs/B-36.svg" alt="Znak B-36" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">B-36</div>
               <div class="sign-name">Zakaz zatrzymywania się</div>
@@ -992,10 +442,7 @@
 
         <div class="signs-grid">
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak C-2">
-              <circle cx="32" cy="32" r="28" fill="#1f4ea1"/>
-              <path d="M22 28 L38 28 L38 22 L50 32 L38 42 L38 36 L22 36 Z" fill="white"/>
-            </svg>
+            <img src="assets/signs/C-2.svg" alt="Znak C-2" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">C-2</div>
               <div class="sign-name">Nakaz jazdy w prawo (za znakiem)</div>
@@ -1004,14 +451,7 @@
           </div>
 
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak C-12">
-              <circle cx="32" cy="32" r="28" fill="#1f4ea1"/>
-              <g fill="white">
-                <g transform="rotate(0 32 32)"><path d="M22 22 L34 16 L34 19 L42 19 L42 25 L34 25 L34 28 Z"/></g>
-                <g transform="rotate(120 32 32)"><path d="M22 22 L34 16 L34 19 L42 19 L42 25 L34 25 L34 28 Z"/></g>
-                <g transform="rotate(240 32 32)"><path d="M22 22 L34 16 L34 19 L42 19 L42 25 L34 25 L34 28 Z"/></g>
-              </g>
-            </svg>
+            <img src="assets/signs/C-12.svg" alt="Znak C-12" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">C-12</div>
               <div class="sign-name">Ruch okrężny</div>
@@ -1020,12 +460,7 @@
           </div>
 
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak C-9">
-              <circle cx="32" cy="32" r="28" fill="#1f4ea1"/>
-              <path d="M32 14 Q44 14 44 26 L44 44 L40 44 L40 26 Q40 18 32 18 Q24 18 24 26 L24 44 L20 44 L20 26 Q20 14 32 14 Z" fill="white"/>
-              <polygon points="44,42 50,46 44,50" fill="white"/>
-              <polygon points="20,42 14,46 20,50" fill="white"/>
-            </svg>
+            <img src="assets/signs/C-9.svg" alt="Znak C-9" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">C-9</div>
               <div class="sign-name">Nakaz jazdy z prawej strony znaku</div>
@@ -1040,10 +475,7 @@
 
         <div class="signs-grid">
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak D-1">
-              <polygon points="32,4 60,32 32,60 4,32" fill="white" stroke="#111" stroke-width="2"/>
-              <polygon points="32,12 52,32 32,52 12,32" fill="#ffcc00"/>
-            </svg>
+            <img src="assets/signs/D-1.svg" alt="Znak D-1" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">D-1</div>
               <div class="sign-name">Droga z pierwszeństwem</div>
@@ -1052,19 +484,7 @@
           </div>
 
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak D-6">
-              <rect x="4" y="4" width="56" height="56" fill="#1f4ea1"/>
-              <polygon points="32,10 56,54 8,54" fill="white"/>
-              <g fill="#111">
-                <rect x="22" y="34" width="3" height="14"/>
-                <rect x="27" y="34" width="3" height="14"/>
-                <rect x="32" y="34" width="3" height="14"/>
-                <rect x="37" y="34" width="3" height="14"/>
-                <rect x="42" y="34" width="3" height="14"/>
-              </g>
-              <circle cx="33" cy="22" r="3" fill="#111"/>
-              <rect x="30" y="25" width="6" height="8" fill="#111"/>
-            </svg>
+            <img src="assets/signs/D-6.svg" alt="Znak D-6" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">D-6</div>
               <div class="sign-name">Przejście dla pieszych</div>
@@ -1073,18 +493,7 @@
           </div>
 
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak D-40">
-              <rect x="4" y="4" width="56" height="56" fill="#1f4ea1"/>
-              <rect x="14" y="22" width="14" height="22" fill="white"/>
-              <polygon points="14,22 21,14 28,22" fill="white"/>
-              <rect x="32" y="32" width="22" height="6" fill="white"/>
-              <rect x="34" y="38" width="3" height="6" fill="white"/>
-              <rect x="49" y="38" width="3" height="6" fill="white"/>
-              <circle cx="35" cy="46" r="2" fill="white"/>
-              <circle cx="50" cy="46" r="2" fill="white"/>
-              <circle cx="42" cy="20" r="2.5" fill="white"/>
-              <rect x="40" y="22" width="4" height="6" fill="white"/>
-            </svg>
+            <img src="assets/signs/D-40.svg" alt="Znak D-40" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">D-40</div>
               <div class="sign-name">Strefa zamieszkania</div>
@@ -1093,23 +502,7 @@
           </div>
 
           <div class="sign-card">
-            <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="Znak D-42">
-              <rect x="4" y="4" width="56" height="56" fill="white" stroke="#111" stroke-width="2"/>
-              <rect x="12" y="24" width="14" height="28" fill="#111"/>
-              <rect x="14" y="28" width="3" height="3" fill="white"/>
-              <rect x="20" y="28" width="3" height="3" fill="white"/>
-              <rect x="14" y="34" width="3" height="3" fill="white"/>
-              <rect x="20" y="34" width="3" height="3" fill="white"/>
-              <rect x="14" y="40" width="3" height="3" fill="white"/>
-              <rect x="20" y="40" width="3" height="3" fill="white"/>
-              <rect x="32" y="18" width="20" height="34" fill="#111"/>
-              <rect x="35" y="22" width="4" height="4" fill="white"/>
-              <rect x="44" y="22" width="4" height="4" fill="white"/>
-              <rect x="35" y="30" width="4" height="4" fill="white"/>
-              <rect x="44" y="30" width="4" height="4" fill="white"/>
-              <rect x="35" y="38" width="4" height="4" fill="white"/>
-              <rect x="44" y="38" width="4" height="4" fill="white"/>
-            </svg>
+            <img src="assets/signs/D-42.svg" alt="Znak D-42" loading="lazy" width="64" height="64">
             <div class="sign-meta">
               <div class="sign-code">D-42</div>
               <div class="sign-name">Obszar zabudowany</div>
@@ -1127,8 +520,11 @@
           <li><strong>Sygnalizacja taktowa</strong> przy przejazdach kolejowych (czerwony pulsujący lub dwa naprzemienne) – obowiązek zatrzymania.</li>
         </ul>
 
-        <div class="quick-quiz">
-          <div class="quick-quiz-title">Szybki test</div>
+        <div class="quick-quiz" id="quiz-4">
+          <div class="quick-quiz-header">
+            <p class="quick-quiz-title">Szybki test</p>
+            <button class="quiz-reset-btn" type="button" aria-label="Resetuj odpowiedzi">Resetuj</button>
+          </div>
           <div class="quiz-question" data-answer="tak" data-explain="Bezwzględny obowiązek — zatrzymanie pojazdu przed linią P-12 (lub przed znakiem, jeśli linii nie ma) i ustąpienie pierwszeństwa pojazdom z drogi z pierwszeństwem.">
             <p class="quiz-q">Czy przy znaku B-20 STOP musisz się zatrzymać nawet wtedy, gdy droga z pierwszeństwem jest pusta?</p>
             <div class="quiz-buttons">
@@ -1255,8 +651,11 @@
           <p style="margin:0">Jazda zbyt blisko pojazdu poprzedzającego („ogon"). Egzaminator obserwuje, czy widoczne są tablice rejestracyjne pojazdu z przodu — jeżeli nie, odstęp jest za mały. Zbyt mały odstęp w ruchu drogowym może być <strong>powodem zakończenia egzaminu</strong>.</p>
         </div>
 
-        <div class="quick-quiz">
-          <div class="quick-quiz-title">Szybki test</div>
+        <div class="quick-quiz" id="quiz-5">
+          <div class="quick-quiz-header">
+            <p class="quick-quiz-title">Szybki test</p>
+            <button class="quiz-reset-btn" type="button" aria-label="Resetuj odpowiedzi">Resetuj</button>
+          </div>
           <div class="quiz-question" data-answer="nie" data-explain="Limit ustawowy w obszarze zabudowanym to 50 km/h przez całą dobę (art. 20 ust. 1 PoRD). Brak znaku oznacza limit ustawowy, nie zezwolenie na szybszą jazdę.">
             <p class="quiz-q">Czy w obszarze zabudowanym wolno jechać 60 km/h, jeżeli nie ma znaku ograniczającego prędkość?</p>
             <div class="quiz-buttons">
@@ -1293,20 +692,113 @@
         <p>Brak znaków regulujących pierwszeństwo i sygnalizacji. Obowiązuje <strong>zasada prawej ręki</strong>: ustępujesz każdemu pojazdowi nadjeżdżającemu z twojej prawej strony.</p>
 
         <div class="svg-figure">
-          <svg width="320" height="320" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skrzyżowanie równorzędne — zasada prawej ręki">
-            <rect x="120" y="0"   width="80" height="320" fill="#f6f6f6" stroke="#111"/>
-            <rect x="0"   y="120" width="320" height="80" fill="#f6f6f6" stroke="#111"/>
-            <rect x="120" y="120" width="80" height="80" fill="#ffffff" stroke="#111"/>
-            <rect x="148" y="220" width="24" height="40" fill="#111"/>
-            <text x="155" y="280" font-size="11" font-family="sans-serif" fill="#111">A</text>
-            <rect x="240" y="148" width="40" height="24" fill="#111"/>
-            <text x="255" y="142" font-size="11" font-family="sans-serif" fill="#111">B</text>
-            <path d="M160 215 L160 195 M155 200 L160 195 L165 200" stroke="#111" stroke-width="1.5" fill="none"/>
-            <path d="M235 160 L215 160 M220 155 L215 160 L220 165" stroke="#111" stroke-width="1.5" fill="none"/>
-            <text x="20"  y="30"  font-size="12" font-family="sans-serif" fill="#111">A ustępuje B</text>
-            <text x="20"  y="48"  font-size="11" font-family="sans-serif" fill="#555">(B nadjeżdża z prawej strony A)</text>
+          <svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skrzyżowanie równorzędne — zasada prawej ręki, widok z góry">
+            <!-- Trawa / chodniki dookoła -->
+            <rect x="0" y="0" width="400" height="400" fill="#f3f3f3"/>
+            <!-- Jezdnia pionowa -->
+            <rect x="140" y="0" width="120" height="400" fill="#e8e8e8"/>
+            <!-- Jezdnia pozioma -->
+            <rect x="0" y="140" width="400" height="120" fill="#e8e8e8"/>
+            <!-- Skrzyżowanie -->
+            <rect x="140" y="140" width="120" height="120" fill="#e0e0e0"/>
+            <!-- Linie środkowe (P-1) na obu drogach -->
+            <line x1="200" y1="0"   x2="200" y2="135" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
+            <line x1="200" y1="265" x2="200" y2="400" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
+            <line x1="0"   y1="200" x2="135" y2="200" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
+            <line x1="265" y1="200" x2="400" y2="200" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
+            <!-- Linie krawędziowe jezdni (P-7a) -->
+            <g stroke="#fff" stroke-width="1">
+              <line x1="140" y1="0"   x2="140" y2="140"/>
+              <line x1="260" y1="0"   x2="260" y2="140"/>
+              <line x1="140" y1="260" x2="140" y2="400"/>
+              <line x1="260" y1="260" x2="260" y2="400"/>
+              <line x1="0"   y1="140" x2="140" y2="140"/>
+              <line x1="0"   y1="260" x2="140" y2="260"/>
+              <line x1="260" y1="140" x2="400" y2="140"/>
+              <line x1="260" y1="260" x2="400" y2="260"/>
+            </g>
+            <!-- Przejścia dla pieszych (4 zebry) -->
+            <g fill="#fff">
+              <!-- północne -->
+              <rect x="148" y="118" width="8" height="20"/>
+              <rect x="160" y="118" width="8" height="20"/>
+              <rect x="172" y="118" width="8" height="20"/>
+              <rect x="184" y="118" width="8" height="20"/>
+              <rect x="196" y="118" width="8" height="20"/>
+              <rect x="208" y="118" width="8" height="20"/>
+              <rect x="220" y="118" width="8" height="20"/>
+              <rect x="232" y="118" width="8" height="20"/>
+              <rect x="244" y="118" width="8" height="20"/>
+              <!-- południowe -->
+              <rect x="148" y="262" width="8" height="20"/>
+              <rect x="160" y="262" width="8" height="20"/>
+              <rect x="172" y="262" width="8" height="20"/>
+              <rect x="184" y="262" width="8" height="20"/>
+              <rect x="196" y="262" width="8" height="20"/>
+              <rect x="208" y="262" width="8" height="20"/>
+              <rect x="220" y="262" width="8" height="20"/>
+              <rect x="232" y="262" width="8" height="20"/>
+              <rect x="244" y="262" width="8" height="20"/>
+              <!-- zachodnie -->
+              <rect x="118" y="148" width="20" height="8"/>
+              <rect x="118" y="160" width="20" height="8"/>
+              <rect x="118" y="172" width="20" height="8"/>
+              <rect x="118" y="184" width="20" height="8"/>
+              <rect x="118" y="196" width="20" height="8"/>
+              <rect x="118" y="208" width="20" height="8"/>
+              <rect x="118" y="220" width="20" height="8"/>
+              <rect x="118" y="232" width="20" height="8"/>
+              <rect x="118" y="244" width="20" height="8"/>
+              <!-- wschodnie -->
+              <rect x="262" y="148" width="20" height="8"/>
+              <rect x="262" y="160" width="20" height="8"/>
+              <rect x="262" y="172" width="20" height="8"/>
+              <rect x="262" y="184" width="20" height="8"/>
+              <rect x="262" y="196" width="20" height="8"/>
+              <rect x="262" y="208" width="20" height="8"/>
+              <rect x="262" y="220" width="20" height="8"/>
+              <rect x="262" y="232" width="20" height="8"/>
+              <rect x="262" y="244" width="20" height="8"/>
+            </g>
+            <!-- Pojazd 1 (niebieski) — z dołu, jadący do góry -->
+            <g>
+              <rect x="208" y="300" width="32" height="50" fill="#1f4ea1" stroke="#0a285c" stroke-width="1" rx="3"/>
+              <rect x="212" y="306" width="24" height="14" fill="#9bb6df" rx="1"/>
+              <circle cx="224" cy="335" r="9" fill="#fff"/>
+              <text x="224" y="339" font-size="11" font-weight="700" text-anchor="middle" fill="#1f4ea1">1</text>
+              <!-- strzałka kierunku -->
+              <path d="M224 295 L224 275 M218 281 L224 275 L230 281" stroke="#1f4ea1" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </g>
+            <!-- Pojazd 2 (zielony) — z prawej, jadący w lewo -->
+            <g>
+              <rect x="300" y="160" width="50" height="32" fill="#2f7a2f" stroke="#143514" stroke-width="1" rx="3"/>
+              <rect x="306" y="164" width="14" height="24" fill="#a8d4a8" rx="1"/>
+              <circle cx="335" cy="176" r="9" fill="#fff"/>
+              <text x="335" y="180" font-size="11" font-weight="700" text-anchor="middle" fill="#2f7a2f">2</text>
+              <!-- strzałka -->
+              <path d="M295 176 L275 176 M281 170 L275 176 L281 182" stroke="#2f7a2f" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </g>
+            <!-- Pojazd 3 (pomarańczowy) — z lewej, jadący w prawo -->
+            <g>
+              <rect x="50" y="208" width="50" height="32" fill="#e0801a" stroke="#5e3408" stroke-width="1" rx="3"/>
+              <rect x="80" y="212" width="14" height="24" fill="#f4c98c" rx="1"/>
+              <circle cx="65" cy="224" r="9" fill="#fff"/>
+              <text x="65" y="228" font-size="11" font-weight="700" text-anchor="middle" fill="#e0801a">3</text>
+              <!-- strzałka -->
+              <path d="M105 224 L125 224 M119 218 L125 224 L119 230" stroke="#e0801a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </g>
+            <!-- Etykiety/legenda nad rysunkiem -->
+            <text x="10" y="20" font-size="13" font-weight="600" font-family="sans-serif" fill="#111">Skrzyżowanie równorzędne</text>
+            <text x="10" y="36" font-size="11" font-family="sans-serif" fill="#555">Brak znaków, brak sygnalizacji.</text>
           </svg>
-          <div class="svg-caption">Zasada prawej ręki na skrzyżowaniu równorzędnym.</div>
+          <div class="svg-caption">
+            Pojazd <strong>1</strong> jedzie na wprost. Z prawej (z drogi poprzecznej) zbliża się pojazd <strong>2</strong> — to jego musi przepuścić jako pierwszego. Pojazd <strong>3</strong> nadjeżdża z lewej i ustępuje pojazdowi 1.
+          </div>
+          <div class="svg-legend">
+            <span><span class="dot" style="background:#1f4ea1"></span>1 — Twój pojazd</span>
+            <span><span class="dot" style="background:#2f7a2f"></span>2 — z prawej (ma pierwszeństwo)</span>
+            <span><span class="dot" style="background:#e0801a"></span>3 — z lewej (ustępuje)</span>
+          </div>
         </div>
 
         <h3>Skrzyżowanie ze znakami pierwszeństwa</h3>
@@ -1362,8 +854,70 @@
           <p style="margin:0">Skręcając w lewo z pasa biegnącego obok torowiska, <strong>zawsze sprawdź, czy tramwaj nie nadjeżdża z naprzeciwka</strong>. Tramwaj ma pierwszeństwo — masz obowiązek go przepuścić, niezależnie od tego, że Ty jedziesz na wprost po drodze z pierwszeństwem.</p>
         </div>
 
-        <div class="quick-quiz">
-          <div class="quick-quiz-title">Szybki test</div>
+        <div class="svg-figure">
+          <svg width="400" height="280" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Skręt w lewo a tramwaj nadjeżdżający z naprzeciwka">
+            <rect x="0" y="0" width="400" height="280" fill="#f3f3f3"/>
+            <!-- Jezdnia pozioma z dwoma pasami w każdą stronę -->
+            <rect x="0" y="80" width="400" height="120" fill="#e8e8e8"/>
+            <!-- Torowisko po środku jezdni — tramwaj jedzie po lewej stronie pojazdu skręcającego -->
+            <rect x="0" y="130" width="400" height="20" fill="#d0d0d0"/>
+            <!-- Tory -->
+            <line x1="0" y1="135" x2="400" y2="135" stroke="#7a7a7a" stroke-width="1"/>
+            <line x1="0" y1="145" x2="400" y2="145" stroke="#7a7a7a" stroke-width="1"/>
+            <!-- Linia środkowa (P-1) między pasami w obie strony -->
+            <line x1="0" y1="115" x2="400" y2="115" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
+            <line x1="0" y1="165" x2="400" y2="165" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
+            <!-- Linie krawędziowe -->
+            <line x1="0" y1="80"  x2="400" y2="80"  stroke="#fff" stroke-width="1"/>
+            <line x1="0" y1="200" x2="400" y2="200" stroke="#fff" stroke-width="1"/>
+            <!-- Droga prostopadła (cel skrętu) -->
+            <rect x="170" y="200" width="60" height="80" fill="#e8e8e8"/>
+            <line x1="200" y1="200" x2="200" y2="280" stroke="#fff" stroke-width="2" stroke-dasharray="10 8"/>
+            <line x1="170" y1="200" x2="170" y2="280" stroke="#fff" stroke-width="1"/>
+            <line x1="230" y1="200" x2="230" y2="280" stroke="#fff" stroke-width="1"/>
+            <!-- Pojazd 1: niebieski, jedzie z prawej w lewo, sygnalizuje skręt w lewo (do drogi w dół) -->
+            <g>
+              <rect x="248" y="170" width="50" height="24" fill="#1f4ea1" stroke="#0a285c" stroke-width="1" rx="3"/>
+              <rect x="252" y="174" width="14" height="16" fill="#9bb6df" rx="1"/>
+              <circle cx="283" cy="182" r="8" fill="#fff"/>
+              <text x="283" y="186" font-size="11" font-weight="700" text-anchor="middle" fill="#1f4ea1">1</text>
+              <!-- mrugające światło lewego kierunkowskazu -->
+              <circle cx="248" cy="172" r="3" fill="#ffaa00"/>
+              <!-- planowany tor — łuk w lewo -->
+              <path d="M243 182 Q210 182 200 220 L200 250" stroke="#1f4ea1" stroke-width="2" fill="none" stroke-dasharray="4 4" stroke-linecap="round"/>
+              <path d="M194 244 L200 254 L206 244" stroke="#1f4ea1" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </g>
+            <!-- Tramwaj: nadjeżdża z lewej, jedzie torowiskiem w prawo -->
+            <g>
+              <rect x="60" y="128" width="80" height="24" fill="#c63030" stroke="#5d1010" stroke-width="1" rx="2"/>
+              <rect x="68" y="132" width="14" height="16" fill="#fff" opacity="0.55" rx="1"/>
+              <rect x="86" y="132" width="14" height="16" fill="#fff" opacity="0.55" rx="1"/>
+              <rect x="104" y="132" width="14" height="16" fill="#fff" opacity="0.55" rx="1"/>
+              <circle cx="124" cy="140" r="8" fill="#fff"/>
+              <text x="124" y="144" font-size="11" font-weight="700" text-anchor="middle" fill="#c63030">T</text>
+              <!-- strzałka -->
+              <path d="M148 140 L165 140 M159 134 L165 140 L159 146" stroke="#c63030" stroke-width="2" fill="none" stroke-linecap="round"/>
+            </g>
+            <!-- Etykieta-zatrzymanie -->
+            <g>
+              <circle cx="200" cy="218" r="14" fill="#fff" stroke="#c63030" stroke-width="2"/>
+              <text x="200" y="222" font-size="12" font-weight="700" text-anchor="middle" fill="#c63030">!</text>
+            </g>
+            <text x="10" y="22" font-size="13" font-weight="600" font-family="sans-serif" fill="#111">Skręcasz w lewo — tramwaj nadjeżdża z naprzeciwka</text>
+            <text x="10" y="38" font-size="11" font-family="sans-serif" fill="#555">Pojazd 1 musi się zatrzymać przed torowiskiem i przepuścić tramwaj T.</text>
+          </svg>
+          <div class="svg-caption">Skręcając w lewo, ustępujesz pierwszeństwa tramwajowi nadjeżdżającemu z naprzeciwka.</div>
+          <div class="svg-legend">
+            <span><span class="dot" style="background:#1f4ea1"></span>1 — Twój pojazd (skręca w lewo)</span>
+            <span><span class="dot" style="background:#c63030"></span>T — tramwaj (ma pierwszeństwo)</span>
+          </div>
+        </div>
+
+        <div class="quick-quiz" id="quiz-6">
+          <div class="quick-quiz-header">
+            <p class="quick-quiz-title">Szybki test</p>
+            <button class="quiz-reset-btn" type="button" aria-label="Resetuj odpowiedzi">Resetuj</button>
+          </div>
           <div class="quiz-question" data-answer="nie" data-explain="Na skrzyżowaniu równorzędnym ustępuje się pojazdowi z prawej strony — to klasyczna „zasada prawej ręki".">
             <p class="quiz-q">Czy na skrzyżowaniu równorzędnym ustępujesz pojazdowi nadjeżdżającemu z lewej strony?</p>
             <div class="quiz-buttons">
@@ -1432,6 +986,34 @@
 
         <h3 style="margin-top:36px">Wyprzedzanie</h3>
         <p>Przejeżdżanie obok pojazdu lub uczestnika ruchu poruszającego się <strong>w tym samym kierunku</strong> (art. 24 PoRD). Najbardziej ryzykowny z trzech manewrów — wymaga wjazdu na pas przeciwny lub sąsiedni.</p>
+
+        <h4>Sekwencja 6 kroków — niezawodna procedura</h4>
+        <ol class="hierarchy">
+          <li>
+            <strong>Obserwuj</strong>
+            <small>Sprawdź lusterko wewnętrzne i lewe lusterko boczne, oceń odległość pojazdu z tyłu. Spójrz przed siebie — czy widoczność jest dostateczna (zakręt? wzniesienie?).</small>
+          </li>
+          <li>
+            <strong>Sygnalizuj</strong>
+            <small>Włącz lewy kierunkowskaz <em>z odpowiednim wyprzedzeniem</em>, by inni kierujący zdążyli zareagować.</small>
+          </li>
+          <li>
+            <strong>Sprawdź martwe pole</strong>
+            <small>Krótkie spojrzenie przez lewe ramię — to obszar niewidoczny w lusterkach. Pomijanie tego kroku jest typowym błędem na egzaminie.</small>
+          </li>
+          <li>
+            <strong>Wyprzedzaj</strong>
+            <small>Płynnie zjedź na lewy pas, przyspieszaj, zachowując bezpieczny odstęp boczny (≥ 1 m w obszarze zabudowanym, ≥ 1,5 m poza nim — wobec rowerzystów).</small>
+          </li>
+          <li>
+            <strong>Sprawdź odległość</strong>
+            <small>Spójrz w lusterko wewnętrzne — wyprzedzony pojazd musi być w pełni widoczny przed powrotem na prawy pas.</small>
+          </li>
+          <li>
+            <strong>Powróć i wyłącz kierunkowskaz</strong>
+            <small>Włącz prawy kierunkowskaz, płynnie wróć na prawy pas (nie odcinaj toru jazdy wyprzedzanemu), wyłącz kierunkowskaz po manewrze.</small>
+          </li>
+        </ol>
 
         <h4>Obowiązki przed rozpoczęciem manewru</h4>
         <ul>
@@ -1618,8 +1200,11 @@
         </div>
         <p>W przypadku zwężenia liczby pasów (z 2 do 1, z 3 do 2), kierujący na pasie zanikającym ma <strong>prawo wjechać przed pojazd</strong> jadący pasem docelowym, naprzemiennie po jednym pojeździe z każdego pasa — to <strong>jazda na suwak</strong>. Stosuje się <strong>bezpośrednio przed miejscem zwężenia</strong>.</p>
 
-        <div class="quick-quiz">
-          <div class="quick-quiz-title">Szybki test</div>
+        <div class="quick-quiz" id="quiz-7">
+          <div class="quick-quiz-header">
+            <p class="quick-quiz-title">Szybki test</p>
+            <button class="quiz-reset-btn" type="button" aria-label="Resetuj odpowiedzi">Resetuj</button>
+          </div>
           <div class="quiz-question" data-answer="nie" data-explain="Objechanie zaparkowanego pojazdu to omijanie. Wyprzedzanie dotyczy tylko poruszających się uczestników ruchu jadących w tym samym kierunku.">
             <p class="quiz-q">Czy objechanie zaparkowanego samochodu to wyprzedzanie?</p>
             <div class="quiz-buttons">
@@ -1807,8 +1392,11 @@
           <li><strong>Tempomat</strong> — aktywny układ utrzymania prędkości.</li>
         </ul>
 
-        <div class="quick-quiz">
-          <div class="quick-quiz-title">Szybki test</div>
+        <div class="quick-quiz" id="quiz-8">
+          <div class="quick-quiz-header">
+            <p class="quick-quiz-title">Szybki test</p>
+            <button class="quiz-reset-btn" type="button" aria-label="Resetuj odpowiedzi">Resetuj</button>
+          </div>
           <div class="quiz-question" data-answer="nie" data-explain="Płyn chłodzący sprawdzamy tylko przy zimnym silniku. Otwarcie nagrzanego układu grozi gwałtownym wytryskiem pary i poważnym poparzeniem.">
             <p class="quiz-q">Czy poziom płynu chłodzącego sprawdza się przy gorącym silniku?</p>
             <div class="quiz-buttons">
@@ -1913,8 +1501,11 @@
           <p style="margin:0">Przestępstwo (art. 178a Kodeksu karnego). Grzywna od 5000 zł, ograniczenie wolności lub <strong>do 3 lat pozbawienia wolności</strong>, zakaz prowadzenia pojazdów na <strong>3–15 lat</strong>, świadczenie pieniężne min. 5000 zł, możliwy przepadek pojazdu (od 2024 r. obligatoryjny przy stężeniu &gt; 1,5 ‰).</p>
         </div>
 
-        <div class="quick-quiz">
-          <div class="quick-quiz-title">Szybki test</div>
+        <div class="quick-quiz" id="quiz-9">
+          <div class="quick-quiz-header">
+            <p class="quick-quiz-title">Szybki test</p>
+            <button class="quiz-reset-btn" type="button" aria-label="Resetuj odpowiedzi">Resetuj</button>
+          </div>
           <div class="quiz-question" data-answer="nie" data-explain="24 punkty oznaczają skierowanie na egzamin sprawdzający kwalifikacje (dla kierowcy z PJ ponad rok). Cofnięcie uprawnień następuje dopiero po niezdaniu egzaminu lub w okresie próbnym (gdy próg wynosi 20 pkt).">
             <p class="quiz-q">Czy 24 punkty karne automatycznie pozbawiają prawa jazdy?</p>
             <div class="quiz-buttons">
@@ -2019,8 +1610,11 @@
           <li>w razie 2 wykroczeń (z 3 możliwych w okresie próbnym) musi odbyć kurs reedukacyjny.</li>
         </ul>
 
-        <div class="quick-quiz">
-          <div class="quick-quiz-title">Szybki test</div>
+        <div class="quick-quiz" id="quiz-10">
+          <div class="quick-quiz-header">
+            <p class="quick-quiz-title">Szybki test</p>
+            <button class="quiz-reset-btn" type="button" aria-label="Resetuj odpowiedzi">Resetuj</button>
+          </div>
           <div class="quiz-question" data-answer="nie" data-explain="Pytania w egzaminie teoretycznym są wyświetlane kolejno z limitem czasu na każde — brak możliwości powrotu do wcześniejszych pytań.">
             <p class="quiz-q">Czy w trakcie egzaminu teoretycznego można wrócić do poprzedniego pytania?</p>
             <div class="quiz-buttons">
@@ -2142,8 +1736,11 @@
           </p>
         </div>
 
-        <div class="quick-quiz">
-          <div class="quick-quiz-title">Szybki test</div>
+        <div class="quick-quiz" id="quiz-11">
+          <div class="quick-quiz-header">
+            <p class="quick-quiz-title">Szybki test</p>
+            <button class="quiz-reset-btn" type="button" aria-label="Resetuj odpowiedzi">Resetuj</button>
+          </div>
           <div class="quiz-question" data-answer="tak" data-explain="Bezpieczeństwo to pierwsza zasada. Bez zabezpieczenia sceny zdarzenia ratownik sam może stać się ofiarą — wówczas poszkodowanym jest dwoje ludzi.">
             <p class="quiz-q">Czy przed udzieleniem pierwszej pomocy należy najpierw zabezpieczyć miejsce zdarzenia?</p>
             <div class="quiz-buttons">
@@ -2208,8 +1805,11 @@
           <p style="margin:0"><strong>112</strong> — uniwersalny numer alarmowy działający we wszystkich krajach Unii Europejskiej oraz większości krajów europejskich. Przyjmuje zgłoszenia we wszystkich językach urzędowych UE.</p>
         </div>
 
-        <div class="quick-quiz">
-          <div class="quick-quiz-title">Szybki test</div>
+        <div class="quick-quiz" id="quiz-12">
+          <div class="quick-quiz-header">
+            <p class="quick-quiz-title">Szybki test</p>
+            <button class="quiz-reset-btn" type="button" aria-label="Resetuj odpowiedzi">Resetuj</button>
+          </div>
           <div class="quiz-question" data-answer="tak" data-explain="Polskie prawo jazdy jest honorowane bez dodatkowych dokumentów we wszystkich państwach UE, EOG, Szwajcarii oraz krajach-stronach Konwencji Wiedeńskiej.">
             <p class="quiz-q">Czy polskie prawo jazdy jest honorowane w państwach UE bez dodatkowych dokumentów?</p>
             <div class="quiz-buttons">
@@ -2229,174 +1829,15 @@
         </div>
       </section>
 
-      <footer style="margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 13px; color: var(--muted);">
-        <p style="margin: 0">Materiał ma charakter pomocniczy. Wiążące są aktualne przepisy: ustawy z dnia 20 czerwca 1997 r. — Prawo o ruchu drogowym, Kodeksu wykroczeń, rozporządzenia Ministra Infrastruktury z dn. 31.07.2002 w sprawie znaków i sygnałów drogowych oraz rozporządzenia w sprawie warunków technicznych pojazdów (z późn. zm.).</p>
-      </footer>
     </main>
   </div>
 
-  <script>
-    // Pasek postępu czytania
-    (function() {
-      const bar = document.getElementById('progressBar');
-      function update() {
-        const h = document.documentElement;
-        const scrolled = h.scrollTop;
-        const max = h.scrollHeight - h.clientHeight;
-        const pct = max > 0 ? (scrolled / max) * 100 : 0;
-        bar.style.width = pct + '%';
-      }
-      window.addEventListener('scroll', update, { passive: true });
-      window.addEventListener('resize', update);
-      update();
-    })();
+  <footer class="page-footer">
+    <p>Materiał ma charakter pomocniczy. Wiążące są aktualne przepisy: ustawy z dnia 20 czerwca 1997 r. — Prawo o ruchu drogowym, Kodeksu wykroczeń, rozporządzenia Ministra Infrastruktury z dn. 31.07.2002 w sprawie znaków i sygnałów drogowych oraz rozporządzenia w sprawie warunków technicznych pojazdów (z późn. zm.).</p>
+  </footer>
 
-    // Tryb skupienia
-    (function() {
-      const btn = document.querySelector('.btn[data-action="focus"]');
-      const KEY = 'pjb_focus_mode';
-      function apply(on) {
-        document.body.classList.toggle('focus-mode', on);
-        btn.setAttribute('aria-pressed', String(on));
-        try { localStorage.setItem(KEY, on ? '1' : '0'); } catch (e) {}
-      }
-      let saved = '0';
-      try { saved = localStorage.getItem(KEY) || '0'; } catch (e) {}
-      apply(saved === '1');
-      btn.addEventListener('click', () => apply(!document.body.classList.contains('focus-mode')));
-    })();
-
-    // Aktywna pozycja w spisie treści
-    (function() {
-      const links = document.querySelectorAll('.sidebar a[href^="#"]');
-      const map = new Map();
-      links.forEach(a => {
-        const id = a.getAttribute('href').slice(1);
-        const sec = document.getElementById(id);
-        if (sec) map.set(sec, a);
-      });
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          const link = map.get(e.target);
-          if (!link) return;
-          if (e.isIntersecting) {
-            links.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-          }
-        });
-      }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
-      map.forEach((_, sec) => observer.observe(sec));
-    })();
-
-    // Wyszukiwarka
-    (function() {
-      const input = document.getElementById('search');
-      const counter = document.getElementById('searchCount');
-      const content = document.querySelector('.content');
-      const SKIP_TAGS = new Set(['SCRIPT', 'STYLE', 'MARK', 'NOSCRIPT', 'INPUT', 'TEXTAREA']);
-
-      function escapeRegex(s) {
-        return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      }
-
-      function clearMarks(root) {
-        const marks = root.querySelectorAll('mark');
-        marks.forEach(m => {
-          const parent = m.parentNode;
-          if (!parent) return;
-          parent.replaceChild(document.createTextNode(m.textContent), m);
-          parent.normalize();
-        });
-      }
-
-      function highlight(node, regex) {
-        if (node.nodeType === Node.TEXT_NODE) {
-          const text = node.nodeValue;
-          if (!text || !text.trim()) return 0;
-          regex.lastIndex = 0;
-          if (!regex.test(text)) return 0;
-
-          regex.lastIndex = 0;
-          const frag = document.createDocumentFragment();
-          let lastIdx = 0;
-          let count = 0;
-          let m;
-          while ((m = regex.exec(text)) !== null) {
-            if (m.index > lastIdx) frag.appendChild(document.createTextNode(text.slice(lastIdx, m.index)));
-            const mark = document.createElement('mark');
-            mark.textContent = m[0];
-            frag.appendChild(mark);
-            lastIdx = m.index + m[0].length;
-            count++;
-            if (m[0].length === 0) regex.lastIndex++;
-          }
-          if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
-          if (node.parentNode) node.parentNode.replaceChild(frag, node);
-          return count;
-        }
-        if (node.nodeType !== Node.ELEMENT_NODE) return 0;
-        const tag = node.tagName;
-        if (SKIP_TAGS.has(tag)) return 0;
-        if (tag.toLowerCase() === 'svg') return 0;
-
-        let total = 0;
-        const children = Array.from(node.childNodes);
-        for (const child of children) total += highlight(child, regex);
-        return total;
-      }
-
-      let timer;
-      function run() {
-        clearMarks(content);
-        const q = input.value.trim();
-        if (q.length < 2) { counter.textContent = ''; return; }
-        const regex = new RegExp(escapeRegex(q), 'gi');
-        const count = highlight(content, regex);
-        if (count > 0) {
-          counter.textContent = `${count} ${count === 1 ? 'dopasowanie' : (count < 5 ? 'dopasowania' : 'dopasowań')}`;
-          const first = content.querySelector('mark');
-          if (first) first.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          counter.textContent = 'brak wyników';
-        }
-      }
-
-      input.addEventListener('input', () => {
-        clearTimeout(timer);
-        timer = setTimeout(run, 200);
-      });
-
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') { input.value = ''; clearMarks(content); counter.textContent = ''; }
-      });
-    })();
-
-    // Szybki test — moduł obsługujący pytania TAK/NIE z natychmiastową informacją zwrotną.
-    // Każde pytanie ma data-answer ("tak"/"nie") i data-explain (treść wyjaśnienia po odpowiedzi).
-    (function() {
-      document.querySelectorAll('.quiz-question').forEach(q => {
-        const correct = (q.dataset.answer || '').toLowerCase();
-        const explain = q.dataset.explain || '';
-        const buttons = q.querySelectorAll('.quiz-btn');
-        const fb = q.querySelector('.quiz-feedback');
-        if (!fb || !correct) return;
-
-        buttons.forEach(btn => {
-          btn.addEventListener('click', () => {
-            const choice = (btn.dataset.value || '').toLowerCase();
-            const ok = choice === correct;
-            // Wizualne zaznaczenie wybranego przycisku
-            buttons.forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            // Feedback z wyjaśnieniem (zielony / czerwony)
-            fb.classList.remove('correct', 'wrong');
-            fb.classList.add('shown', ok ? 'correct' : 'wrong');
-            const prefix = ok ? '✓ Tak, zgadza się.' : '✗ Niepoprawnie.';
-            fb.innerHTML = '<strong>' + prefix + '</strong> ' + explain;
-          });
-        });
-      });
-    })();
-  </script>
+  <script src="js/content.js" defer></script>
+  <script src="js/search.js" defer></script>
+  <script src="js/quiz.js" defer></script>
 </body>
 </html>
