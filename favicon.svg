@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  favicon.svg — teoriakatb.pl
+  Minimalistyczny romb (inspiracja znakiem D-1 „Droga z pierwszeństwem")
+  z czarną literą „B" oznaczającą kategorię prawa jazdy.
+  Zaprojektowany do czytelności od 16 × 16 px wzwyż.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="teoriakatb.pl — kategoria B">
+  <title>teoriakatb.pl — Teoria prawa jazdy kategoria B</title>
+  <!-- Romb tła (D-1 żółty) z ciemną obwódką dla kontrastu na każdym tle przeglądarki -->
+  <polygon points="32,3 61,32 32,61 3,32" fill="#fcd116" stroke="#111111" stroke-width="2.5"/>
+  <!-- Wewnętrzna biała obwódka — sygnaturalny detal D-1 -->
+  <polygon points="32,11 53,32 32,53 11,32" fill="none" stroke="#ffffff" stroke-width="2"/>
+  <!-- Litera „B" — pogrubiona, centralnie -->
+  <text x="32" y="43" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="800" fill="#111111">B</text>
+</svg>

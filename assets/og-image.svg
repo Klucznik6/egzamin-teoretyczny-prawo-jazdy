@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  og-image.svg — 1200×630
+  Open Graph / Twitter card preview dla teoriakatb.pl
+  Konwertowany do PNG (assets/og-image.png) — większość parserów
+  social wymaga rastra, mimo że SVG jest formalnie wspierany przez OG.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f5f5f5"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+
+  <!-- Górny pasek -->
+  <rect x="0" y="0" width="1200" height="6" fill="#111111"/>
+
+  <!-- Logo / favicon-romb po lewej (200×200) -->
+  <g transform="translate(90, 215)">
+    <polygon points="100,0 200,100 100,200 0,100" fill="#fcd116" stroke="#111111" stroke-width="5"/>
+    <polygon points="100,25 175,100 100,175 25,100" fill="none" stroke="#ffffff" stroke-width="4"/>
+    <text x="100" y="132" text-anchor="middle" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="100" font-weight="800" fill="#111111">B</text>
+  </g>
+
+  <!-- Tekst po prawej -->
+  <g transform="translate(340, 0)">
+    <!-- Eyebrow -->
+    <text x="0" y="225" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="22" font-weight="600" letter-spacing="3" fill="#555555">KATEGORIA B · 2026</text>
+
+    <!-- Tytuł główny — w dwóch liniach, mniejsza czcionka -->
+    <text x="0" y="298" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="58" font-weight="800" fill="#111111" letter-spacing="-1.5">Teoria prawa jazdy</text>
+    <text x="0" y="362" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="58" font-weight="800" fill="#111111" letter-spacing="-1.5">Darmowe kompendium</text>
+
+    <!-- Podtytuł / opis -->
+    <text x="0" y="418" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="22" fill="#555555">Znaki · manewry · pierwszeństwo · pierwsza pomoc</text>
+    <text x="0" y="448" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="22" fill="#555555">Egzamin teoretyczny PWPW · stan prawny 2026</text>
+
+    <!-- Linia separująca -->
+    <line x1="0" y1="485" x2="700" y2="485" stroke="#e5e5e5" stroke-width="1"/>
+
+    <!-- Domena -->
+    <text x="0" y="528" font-family="-apple-system, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="700" fill="#1f4ea1">teoriakatb.pl</text>
+  </g>
+
+  <!-- Pasek dolny — sygnalizacja R/Y/G -->
+  <g transform="translate(0, 624)">
+    <rect x="0" y="0" width="400" height="6" fill="#c63030"/>
+    <rect x="400" y="0" width="400" height="6" fill="#d6a800"/>
+    <rect x="800" y="0" width="400" height="6" fill="#2f7a2f"/>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+# robots.txt — teoriakatb.pl
+# Pełny dostęp dla wyszukiwarek (cała strona to publiczne kompendium edukacyjne).
+
+User-agent: *
+Allow: /
+
+# Blokujemy tylko śmieci VCS / lokalne pliki, gdyby kiedyś trafiły na produkcję.
+Disallow: /.git/
+Disallow: /.claude/
+Disallow: /node_modules/
+
+# Sitemap
+Sitemap: https://teoriakatb.pl/sitemap.xml
