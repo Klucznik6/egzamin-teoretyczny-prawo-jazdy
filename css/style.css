@@ -188,6 +188,33 @@ body {
 .sidebar a:hover { border-bottom-color: var(--border-strong); }
 .sidebar a.active { font-weight: 600; }
 
+.sidebar a.coming-soon {
+  color: var(--muted);
+  opacity: 0.75;
+}
+.sidebar a.coming-soon:hover { border-bottom-color: transparent; }
+
+.badge-soon {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 6px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--yellow);
+  background: var(--card-alert-bg);
+  border: 1px solid var(--yellow);
+  border-radius: 3px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.section-soon h2 .badge-soon {
+  font-size: 11px;
+  vertical-align: 3px;
+}
+
 .sidebar-footer {
   font-size: 12px;
   color: var(--muted);
